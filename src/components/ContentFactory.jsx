@@ -1,104 +1,68 @@
 import { useRef, useState } from "react";
 import { rooms } from "../content";
+import BlueprintFrame from "./factory/BlueprintFrame";
+import RoomShell from "./factory/RoomShell";
 
 const locale = "en";
 const read = (value) =>
   typeof value === "string" ? value : value[locale] ?? value.en;
 
-function BlueprintOverlay({ activeRoute }) {
-  return (
-    <svg
-      className="blueprint-overlay"
-      viewBox="0 0 1000 720"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      <defs>
-        <pattern id="blueprint-minor-grid" width="25" height="25" patternUnits="userSpaceOnUse">
-          <path d="M 25 0 L 0 0 0 25" />
-        </pattern>
-        <filter id="ai-glow">
-          <feGaussianBlur stdDeviation="6" />
-        </filter>
-      </defs>
-      <rect className="bp-grid" width="1000" height="720" fill="url(#blueprint-minor-grid)" />
-      <g className="bp-registration">
-        <path d="M30 45h32M46 29v32M938 45h32M954 29v32M30 670h32M46 654v32M938 670h32M954 654v32" />
-      </g>
-      <g className="bp-measurements">
-        <path d="M74 54V30M74 38H710M710 54V30M78 38l10-5v10zM706 38l-10-5v10z" />
-        <path d="M754 38H930M754 54V30M930 54V30" />
-        <text x="335" y="29">PUBLISHING FOUNDATION / 06.40 M</text>
-        <text x="770" y="29">RESEARCH WING</text>
-      </g>
-      <path className="bp-building" d="M72 76H928V652H72Z" />
-      <path className="bp-corridor" d="M482 78V414H545V514H928" />
-      <path className="bp-corridor" d="M72 470H449V652" />
-      <g className={`bp-route bp-route--publishing ${activeRoute === "publishing" ? "is-active" : ""}`}>
-        <path d="M170 195H353V365H266" />
-      </g>
-      <g className={`bp-route bp-route--delivery ${activeRoute === "delivery" ? "is-active" : ""}`}>
-        <path d="M205 564H520H680" />
-      </g>
-      <g className={`bp-route bp-route--research ${activeRoute === "research" ? "is-active" : ""}`}>
-        <path d="M616 190H808V210M616 220V365H835V555" />
-      </g>
-      <path className="bp-ai-glow" d="M802 340H879V454H844V590" filter="url(#ai-glow)" />
-      <path className="bp-ai-circuit" d="M802 340H879V454H844V590" />
-      <g className="bp-leaders">
-        <path d="M166 118V91H111" />
-        <path d="M271 443V461H160" />
-        <path d="M822 263H902V244" />
-        <path d="M849 584H928" />
-      </g>
-      <g className="bp-notes">
-        <text x="82" y="87">INPUT BAY</text>
-        <text x="96" y="477">PRODUCTION ROUTE</text>
-        <text x="838" y="237">NARRATIVE SYSTEM</text>
-        <text x="855" y="580">HITL NODE</text>
-      </g>
-    </svg>
-  );
-}
+const roomFunctions = {
+  "print-engine-room": "Print to System",
+  "editorial-kitchen": "Editorial Room",
+  "cookbook-production-floor": "Brief to Delivery",
+  "story-archive-ip-office": "Story to Interaction",
+  "operation-control-room": "Research Engine",
+  "commerce-visual-line": "Design Studio",
+  "multimedia-workshop": "Case Files",
+  "ai-workflow-lab": "Archive / Protocol",
+};
 
-function RoomModule({ active, index, room, roomRefs, onActivate, onNavigate }) {
-  return (
-    <button
-      className={`room room--${room.diagram.area} ${active ? "active" : ""}`}
-      id={`room-${room.id}`}
-      key={room.id}
-      role="tab"
-      ref={(element) => {
-        roomRefs.current[index] = element;
-      }}
-      aria-selected={active}
-      aria-controls={`panel-${room.id}`}
-      tabIndex={active ? 0 : -1}
-      type="button"
-      onClick={() => onActivate(room.id)}
-      onKeyDown={(event) => onNavigate(event, index)}
-    >
-      <span className="room__header">
-        <span className="room__code">{room.code}</span>
-        <span className="room__period">{room.period}</span>
-      </span>
-      <span className="room__zone">{room.diagram.zone}</span>
-      <strong>{read(room.title)}</strong>
-      <span className="room__callout">{room.diagram.callout}</span>
-      <span className="room__instruction">Open dossier</span>
-    </button>
-  );
-}
+const floors = [
+  {
+    id: "04",
+    label: "Publishing Foundation",
+    rooms: ["print-engine-room", "editorial-kitchen"],
+  },
+  {
+    id: "03",
+    label: "Production Deck",
+    rooms: ["cookbook-production-floor"],
+  },
+  {
+    id: "02",
+    label: "Narrative and Control",
+    rooms: ["story-archive-ip-office", "operation-control-room"],
+  },
+  {
+    id: "01",
+    label: "Visual and Media Line",
+    rooms: ["commerce-visual-line", "multimedia-workshop"],
+  },
+  {
+    id: "00",
+    label: "Assisted Research Lab",
+    rooms: ["ai-workflow-lab"],
+  },
+];
 
-function ModuleDossier({ room }) {
+function ModuleDossier({ room, onClose }) {
   return (
     <article
       className="manual-panel dossier"
       id={`panel-${room.id}`}
-      role="tabpanel"
+      role="region"
       aria-labelledby={`room-${room.id}`}
       tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          onClose();
+        }
+      }}
     >
+      <button className="dossier-close" type="button" onClick={onClose}>
+        Close
+      </button>
       <div className="dossier-tabs" aria-hidden="true">
         <span className="active">Module</span>
         <span>Evidence</span>
@@ -140,10 +104,29 @@ function ModuleDossier({ room }) {
   );
 }
 
-export default function ContentFactory({ eyebrow, title, description }) {
-  const [activeRoom, setActiveRoom] = useState(rooms[0].id);
+export default function ContentFactory({
+  heroEyebrow,
+  subtitle,
+  positioning,
+  eyebrow,
+  title,
+  description,
+}) {
+  const [activeRoom, setActiveRoom] = useState(null);
   const roomRefs = useRef([]);
-  const selectedRoom = rooms.find((room) => room.id === activeRoom);
+  const selectedRoom = rooms.find((room) => room.id === activeRoom) ?? null;
+
+  function closeDossier() {
+    const selectedIndex = rooms.findIndex((room) => room.id === activeRoom);
+    setActiveRoom(null);
+    roomRefs.current[selectedIndex]?.focus();
+  }
+
+  function activateFromIndex(roomId) {
+    const index = rooms.findIndex((room) => room.id === roomId);
+    setActiveRoom(roomId);
+    roomRefs.current[index]?.focus();
+  }
 
   function moveFocus(event, index) {
     let target = null;
@@ -165,54 +148,119 @@ export default function ContentFactory({ eyebrow, title, description }) {
   }
 
   return (
-    <section className="factory section-shell" id="factory">
-      <div className="section-heading">
-        <p className="eyebrow">{eyebrow}</p>
-        <h2>{title}</h2>
-        <p className="section-copy">{description}</p>
-      </div>
-      <div className="factory-grid">
-        <div className="cutaway">
-          <div className="blueprint-titlebar">
-            <div>
-              <span className="plan-ref">MCL / FACTORY PLAN 02</span>
-              <strong>Mercury Content Laboratory</strong>
-            </div>
-            <div className="blueprint-tabs" aria-hidden="true">
-              <span className="active">Floor Plan</span>
-              <span>Routing</span>
-              <span>Rights</span>
-            </div>
-            <span className="signal" aria-hidden="true" />
+    <section className="factory factory-cutaway" id="factory">
+      <header className="factory-masthead">
+        <div className="factory-identity">
+          <p className="eyebrow">{heroEyebrow}</p>
+          <h1>
+            Mercury
+            <span>Lab</span>
+          </h1>
+        </div>
+        <div className="factory-intro">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2>{title}</h2>
+          <p className="subtitle">{subtitle}</p>
+          <p className="positioning">{positioning}</p>
+          <p className="section-copy">{description}</p>
+        </div>
+        <aside className="factory-status" aria-label="Factory drawing status">
+          <p>Content Factory / Section A</p>
+          <strong>Status / Operational</strong>
+          <span>Drawing / CUT-03</span>
+          <span>Language / EN</span>
+          <div className="barcode" aria-hidden="true" />
+          <small>Evidence controlled / Human responsible</small>
+        </aside>
+      </header>
+
+      <div className="cutaway-layout">
+        <nav className="route-index" aria-label="Factory route index">
+          <div className="route-index__head">
+            <p>Factory Route</p>
+            <span>Explore / 01-08</span>
           </div>
-          <div className="blueprint-drawing">
-            <BlueprintOverlay activeRoute={selectedRoom.diagram.route} />
-            <div className="technical-label label--left">Level / 01</div>
-            <div className="technical-label label--right">Scale / Diagrammatic</div>
-            <div
-              className="rooms-grid"
-              role="tablist"
-              aria-label="Mercury Lab production rooms"
-            >
-              {rooms.map((room, index) => (
-                <RoomModule
-                  active={room.id === activeRoom}
-                  index={index}
-                  key={room.id}
-                  room={room}
-                  roomRefs={roomRefs}
-                  onActivate={setActiveRoom}
-                  onNavigate={moveFocus}
-                />
+          <ol>
+            {rooms.map((room, index) => (
+              <li key={room.id} className={room.id === activeRoom ? "active" : ""}>
+                <button type="button" onClick={() => activateFromIndex(room.id)}>
+                  <span>{room.code}</span>
+                  <strong>{roomFunctions[room.id]}</strong>
+                  <small>{read(room.title)}</small>
+                </button>
+              </li>
+            ))}
+          </ol>
+          <div className="route-index__legend">
+            <p>System Legend</p>
+            <span>People flow</span>
+            <span>Evidence gate</span>
+            <span>Public release</span>
+          </div>
+        </nav>
+
+        <div className="building-column">
+          <div className="factory-building">
+            <BlueprintFrame activeRoute={selectedRoom?.diagram.route} />
+            <div className="factory-roof" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="factory-shaft" aria-hidden="true">
+              <span>Vertical route</span>
+            </div>
+            <div className="factory-levels" aria-label="Mercury Lab production rooms">
+              {floors.map((floor) => (
+                <section className={`factory-level factory-level--${floor.id}`} key={floor.id}>
+                  <header className="level-label" aria-hidden="true">
+                    <span>Level / {floor.id}</span>
+                    <strong>{floor.label}</strong>
+                  </header>
+                  <div className={`level-rooms level-rooms--${floor.rooms.length}`}>
+                    {floor.rooms.map((roomId) => {
+                      const room = rooms.find((item) => item.id === roomId);
+                      const index = rooms.indexOf(room);
+                      const isActive = room.id === activeRoom;
+                      return (
+                        <div className="room-bay" key={room.id}>
+                          <RoomShell
+                            active={isActive}
+                            focusable={!activeRoom && index === 0}
+                            functionLabel={roomFunctions[room.id]}
+                            index={index}
+                            room={room}
+                            roomRefs={roomRefs}
+                            onActivate={setActiveRoom}
+                            onNavigate={moveFocus}
+                          />
+                          {isActive && (
+                            <ModuleDossier room={room} onClose={closeDossier} />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </section>
               ))}
             </div>
-            <div className="mobile-route" aria-hidden="true">
-              <span />
-              Selected route / {selectedRoom.diagram.route}
-            </div>
           </div>
+
+          <footer className="factory-console" aria-hidden="true">
+            <div>
+              <p>System Principles</p>
+              <span>Traceable source / Rights aware / Human reviewed</span>
+            </div>
+            <div>
+              <p>Machine Status</p>
+              <strong>All systems operational</strong>
+            </div>
+            <div>
+              <p>Active Feed</p>
+              <span>{selectedRoom ? read(selectedRoom.title) : "Select a room to inspect its module record"}</span>
+            </div>
+          </footer>
         </div>
-        <ModuleDossier room={selectedRoom} />
       </div>
     </section>
   );

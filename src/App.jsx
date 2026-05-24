@@ -35,45 +35,14 @@ function App() {
           <a href="#cases">Cases</a>
           <a href="#protocol">Protocol</a>
         </nav>
-        <span className="edition">v0.2 / EN</span>
+        <span className="edition">v0.3 / EN</span>
       </header>
 
       <main id="top">
-        <section className="hero section-shell">
-          <div className="hero-copy">
-            <p className="eyebrow">{read(sectionContent.hero.eyebrow)}</p>
-            <h1>
-              Mercury
-              <span>Lab</span>
-            </h1>
-            <p className="subtitle">{read(brand.subtitle)}</p>
-            <p className="positioning">{read(brand.positioning)}</p>
-            <div className="hero-actions">
-              <a className="primary-action" href="#factory">
-                Enter the factory
-              </a>
-              <a className="secondary-action" href="#protocol">
-                Read protocol
-              </a>
-            </div>
-          </div>
-          <div className="hero-instrument" aria-hidden="true">
-            <div className="dial">
-              <span>INPUT</span>
-              <span>METHOD</span>
-              <span>OUTPUT</span>
-              <i />
-            </div>
-            <div className="receipt">
-              <p>ACTIVE LINE</p>
-              <strong>PRINT - CONTENT - AI</strong>
-              <div className="barcode" />
-              <small>HUMAN-IN-THE-LOOP / EVIDENCE CONTROLLED</small>
-            </div>
-          </div>
-        </section>
-
         <ContentFactory
+          heroEyebrow={read(sectionContent.hero.eyebrow)}
+          subtitle={read(brand.subtitle)}
+          positioning={read(brand.positioning)}
           eyebrow={read(sectionContent.factory.eyebrow)}
           title={read(sectionContent.factory.title)}
           description={read(sectionContent.factory.description)}
@@ -155,7 +124,7 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <span>Mercury Lab / Prototype v0.2</span>
+        <span>Mercury Lab / Prototype v0.3</span>
         <span>English-first / Rights-aware / Evidence-controlled</span>
       </footer>
     </div>

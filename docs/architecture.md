@@ -2,8 +2,7 @@
 
 ## Main Sections
 
-- `Hero` - project identity and entry links.
-- `ContentFactory` - interactive production-room blueprint and dossier.
+- `ContentFactory` - combined homepage identity and architectural Factory Cutaway hero.
 - `How to Use Mercury` - reading method.
 - `Processing Modes` - route descriptions.
 - `Case Files` - potential public stories and display state.
@@ -11,74 +10,56 @@
 
 ## Main Components
 
-- `src/App.jsx` - page composition and non-factory sections.
-- `src/components/ContentFactory.jsx` - factory section state, room modules, dossier, and SVG overlay.
-- `BlueprintOverlay` - decorative technical drawing layer inside `ContentFactory`.
-- `RoomModule` - accessible room tab rendered from room data.
-- `ModuleDossier` - selected-room manual panel.
+- `src/App.jsx` - page composition and non-factory sections; supplies approved identity copy to the opening Factory.
+- `src/components/ContentFactory.jsx` - masthead, route index, five levels, room activation, floating/mobile dossier, and console.
+- `src/components/factory/BlueprintFrame.jsx` - decorative section-grid accents, measurements, level guides, and route highlighting.
+- `src/components/factory/RoomShell.jsx` - accessible room button rendered from factual room data.
+- `src/components/factory/RoomMotifs.jsx` - small decorative prototype motifs for selected room directions.
+- `ModuleDossier` - selected-room inspector, declared within `ContentFactory`.
 
 ## Data Sources
 
-- `src/content.js` - display content and non-copy diagram metadata.
+- `src/content.js` - public display content and existing non-copy diagram metadata.
 - `docs/mercury-content-source.md` - facts, approved wording, rights rules, language policy, and overclaim rules.
 - `docs/decision-log.md` - implementation decisions that must not drift.
 
-## Content Structure
+## Content Rules
 
-- Public-facing copy should be stored in data objects where practical, not long bilingual strings inside React components.
-- UI currently reads English values only.
-- Content objects use bilingual-ready values:
-
-```js
-{
-  title: {
-    en: "Cookbook Production Floor",
-    zh: "..."
-  }
-}
-```
-
+- UI currently reads English values only, from bilingual-ready data objects.
+- Formal room names remain the factual experience-based labels in `src/content.js`.
+- Route-index functional labels are interface framing only and must not overwrite approved public copy.
 - Chinese values may remain pending until confirmed; do not invent public translations.
 
-## Content Factory System
+## Factory Cutaway System
 
-- `rooms` data supplies title, period, discipline, evidence, display rule, and diagram metadata.
-- `diagram.area` maps each room to a CSS Grid named area.
-- `diagram.zone`, `route`, and `callout` provide technical floor-plan labeling without altering approved copy.
-- Selection state chooses the active dossier and highlighted SVG route.
+- `floors` inside `ContentFactory` assigns the eight factual rooms to five visual building levels; this is visual metadata only.
+- `roomFunctions` supplies exploratory navigation language approved for technical labeling, separate from formal room names.
+- HTML/CSS provides building structure: masthead, roofline, level slabs, bays, room panels, service shaft, sticky route rail, and status console.
+- Selection state controls room highlight, corresponding SVG route group, and a single on-demand dossier.
+- Desktop dossier is positioned as a floating inspector so it never claims permanent building width.
+- Mobile dossier remains in document flow immediately after its active room.
 
-## Blueprint Overlay System
+## SVG Boundary
 
-- Inline SVG is contained inside the factory drawing frame.
-- SVG layers include drafting grid, measurement marks, building boundary, corridors, route lines, annotation leaders, and AI circuit.
-- SVG is decorative only: `aria-hidden="true"` and `pointer-events: none`.
-- Active route styling is driven by React-selected room route group.
-- Next iteration should split visual primitives into reusable components under `src/components/factory/`.
-
-## Planned SVG Visual Kit
-
-- `BlueprintFrame` - outer frame, scale marks, corner brackets, title/zone guides.
-- `BlueprintRoutes` - publishing, research, and delivery connector layers with active highlight.
-- `RoomMotif` - per-room decorative micro-diagrams keyed from room `id`.
-- `AnnotationLayer` - technical tags, leader lines, and restricted/archive labels.
-- `DossierDecor` - file notch, strip, section marks, and stamp graphics.
-- Keep room content and user interaction in HTML/CSS; SVG remains non-interactive decoration.
+- `BlueprintFrame` spans the tall building as a non-interactive overlay.
+- SVG is limited to coordinate grid accents, dimension marks, technical annotations, workflow lines, and circular nodes.
+- Rooms, readable labels, interaction, status text, and the inspector remain HTML/CSS.
+- Every decorative SVG is `aria-hidden="true"` and receives no pointer events.
 
 ## Accessibility Notes
 
-- Rooms remain HTML buttons with `role="tab"`.
-- Active room uses `aria-selected` and connects to `role="tabpanel"` via `aria-controls` / `aria-labelledby`.
-- Arrow-key order follows source reading order for predictable navigation.
-- Focus styling must remain clearer than hover or active glow.
-- Status meanings remain text labels, never color alone.
+- Rooms are HTML buttons linked to the conditional inspector with `aria-controls` and `aria-expanded`.
+- Arrow keys plus Home/End move through rooms in chronological source order.
+- The inspector has an explicit Close button and supports `Escape` while focused.
+- Focus treatments remain visible independently of amber selected-room styling.
+- Display restrictions remain text labels rather than color-only communication.
 
-## Mobile Notes
+## Responsive Notes
 
-- Desktop: blueprint floor plan beside dossier.
-- Tablet: floor plan above dossier.
-- Mobile: technical directory list with simplified active route indicator.
-- Dense SVG drawing detail is hidden on mobile to preserve legibility.
+- Desktop: tall building cutaway with sticky left route index and floating inspector.
+- Narrow desktop/tablet: stacked masthead with building still presented as a large section.
+- Mobile: simplified technical overlay, large vertically stacked room sections, and in-flow expanded dossier.
 
 ## Related Decisions
 
-- See [decision-log.md](decision-log.md).
+- See [decision-log.md](decision-log.md) and [handoff-next-session.md](handoff-next-session.md).

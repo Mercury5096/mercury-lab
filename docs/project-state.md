@@ -1,60 +1,56 @@
 # Project State
 
-- **Current version:** `v0.2`; `v0.1` baseline is Git commit `2930e03`.
-- **Current goal:** Retain the accepted factory structure and strengthen it with a modular SVG visual kit.
+- **Current version:** `v0.3`; `v0.1` baseline is Git commit `2930e03`, and the saved v0.2 baseline is `3ac3835`.
+- **Current goal:** Evaluate the new full-scale Factory Cutaway structure before adding richer drawing detail.
+- **Source of truth:** [mercury-content-source.md](mercury-content-source.md).
 
 ## Completed
 
-- Built React / Vite / Tailwind one-page prototype.
-- Implemented required page sections and English-first content rendering.
-- Established bilingual-ready `en` / `zh` content objects.
-- Added accessible room selection and Module Manual Panel interaction.
-- Saved `v0.1` baseline commit before factory redesign.
-- Implemented v0.2 Content Factory component, inline SVG overlay, named-area room layout, and dossier panel.
-- Verified build, desktop interaction, keyboard navigation, SVG accessibility safeguards, and mobile layout.
-- Added concise project documentation for handoff, architecture, decisions, and future asset intake.
+- Built the English-first, bilingual-ready React / Vite site foundation.
+- Preserved all approved public room wording and evidence/display constraints in `src/content.js`.
+- Replaced the compact v0.2 floor-plan treatment with a large architectural section interface.
+- Fused project identity and Factory entry experience: the cutaway is now the first major visual on the homepage.
+- Distributed all eight approved rooms over five large structural levels.
+- Added a sticky desktop route index using functional exploration labels without replacing formal room names.
+- Changed the dossier from a permanent side column to an on-demand floating inspector on desktop.
+- Implemented mobile behavior as stacked large room levels with the dossier expanded below the selected room.
+- Added a restrained SVG measurement/route overlay and three motif prototypes only: Print, Editorial, and AI.
+- Verified build, selection, floating inspector behavior, and mobile in-flow dossier layout.
 
-## In Progress
+## Current Structure
 
-- Visual system refinement planning: current structure is acceptable, but presentation feels too plain.
-- Preparing a new-session handoff for modular SVG kit implementation.
+- `ContentFactory` now owns the integrated identity header, route index, building section, room activation, and inspector state.
+- HTML/CSS builds the roofline, levels, rooms, shaft, platforms, sticky route index, and system console.
+- `BlueprintFrame` contributes decorative measurement lines, level marks, route traces, nodes, and annotations only.
+- `RoomShell` remains a readable interactive HTML button generated from approved room data.
+- `RoomMotifs` contains only subtle prototype decorations and does not imply real portfolio assets.
+
+## Review Focus
+
+- Does the homepage now immediately read as a content-factory architectural cutaway?
+- Are the five-level proportions and room placements compelling enough before deeper illustration work?
+- Is the pale blueprint panel an acceptable visual direction against the existing dark site frame?
+- Should the inspector remain a floating drawer or later become more closely anchored to an active room?
+
+## Known Boundaries
+
+- This is a low-detail structural prototype, not final architectural artwork.
+- Only three room motifs have been prototyped intentionally.
+- Existing lower sections retain their earlier dark manual styling pending approval of the Factory direction.
+- The generated visual reference is used for direction only and is not published as a site asset.
 
 ## Next Steps
 
-- Build modular SVG visual kit: frame, room shells, connectors, annotations, dossier frame, and room motifs.
-- Integrate visual kit without replacing HTML interactions or content data.
-- Review user-supplied portfolio links, imagery, LinkedIn destinations, and licensed fonts through intake rules.
-- Consider aligning Hero, Processing Modes, and Case Files with the blueprint/manual language in a later iteration.
+- Review the v0.3 cutaway composition and scale before expanding visual detail.
+- If approved, tune architecture line weight, route behavior, and two or three additional motif directions.
+- Only afterward decide whether the remaining page sections should adopt the pale blueprint treatment.
+- Continue asset intake and rights review before exposing any real work imagery.
 
-## Known Issues
-
-- Only Content Factory has the stronger v0.2 blueprint identity; other sections still reflect v0.1 styling.
-- Current factory visual vocabulary is structurally sound but too sparse and minimally differentiated.
-- Mobile intentionally omits dense SVG drawing details for readability.
-- Route highlighting is room-group based, not yet driven by processing modes or case files.
-
-## Visual Direction
-
-- Editorial Archive x Architectural Blueprint x Laboratory Manual.
-- Move from minimal linework to a designed modular drawing kit with distinctive room motifs.
-- Technical frames, file tabs, status chips, archival notes, amber selection, subtle cyan system trace.
-
-## Technical Approach
-
-- React HTML room tabs remain the interaction surface.
-- CSS Grid named areas form the spatial floor plan.
-- Inline decorative SVG supplies blueprint lines and routing graphics.
-- Next implementation extends SVG into reusable visual primitives, not one large static artwork.
-- Copy remains data-driven in `src/content.js`.
-- Source-of-truth constraints remain in [mercury-content-source.md](mercury-content-source.md).
-- Next-session brief: [handoff-next-session.md](handoff-next-session.md).
-- Future assets and fonts: [asset-intake.md](asset-intake.md).
-
-## Update Template
+## Update Note
 
 - **Date:** 2026-05-24
-- **Task:** Prepare visual refinement handoff and safe project checkpoint.
-- **Changed:** Recorded modular SVG kit direction and contributor asset requirements.
-- **Files:** `README.md`, `docs/project-state.md`, `docs/handoff-next-session.md`, `docs/asset-intake.md`, `docs/architecture.md`, `docs/decision-log.md`.
-- **Risks:** Visual system not implemented yet; supplied assets require rights review.
-- **Next:** Implement SVG kit in a new session, starting with reusable frame and room shell components.
+- **Task:** Rebuild the homepage Factory as a large architectural cutaway.
+- **Changed:** Hero/Factory integration, five-level building structure, route index, floating/mobile inspector, basic technical overlay, and three motif prototypes.
+- **Files:** `src/App.jsx`, `src/components/ContentFactory.jsx`, `src/components/factory/*`, `src/styles.css`, `package*.json`, and project documents.
+- **Risks:** Final art density and cross-section styling remain subject to user review.
+- **Next:** Review structural impact before decorative expansion.

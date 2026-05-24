@@ -2,33 +2,40 @@
 
 ## Fixed Decisions
 
-- **Language:** v0.1+ is an English-first prototype.
-- **Content model:** content data supports `en` / `zh` from day one.
-- **Future localization:** use a same-site language switch.
-- **No duplicate site:** do not build a separate Chinese website.
+- **Language:** Mercury Lab remains an English-first prototype with bilingual-ready content data.
+- **Content control:** facts, approved wording, rights status, and overclaim limits remain governed by [mercury-content-source.md](mercury-content-source.md).
 - **Cookbook wording:** use only `50+ cookbook-related publishing projects`.
-- **Concept:** Mercury Lab is a content factory and human workflow manual, grounded in real practice.
-- **Factory v0.2 approach:** accessible HTML rooms + CSS Grid floor plan + inline SVG blueprint overlay.
-- **Visual asset strategy:** do not use one large static image as the main factory solution.
-- **Excluded for v0.2:** no Three.js, WebGL, canvas, or React Flow.
-- **SVG safety:** overlay is decorative, `aria-hidden="true"`, and `pointer-events: none`.
-- **Room interaction:** rooms remain accessible HTML buttons or tabs connected to a manual panel.
-- **Next visual refinement:** enrich v0.2 using a modular SVG visual kit, not a giant background illustration.
-- **Asset intake:** user-supplied works, links, imagery, and fonts require recorded source/rights/display status before use.
+- **Formal rooms:** keep the approved eight experience-based room names from `src/content.js`.
+- **Exploration labels:** reference concepts such as `Print to System` may guide route/index language, but do not replace formal room names or add factual claims.
+- **Asset safety:** do not show unverified company, brand, publisher, client, or commissioned imagery.
 
-## Source Of Truth
+## v0.3 Factory Cutaway Decisions
 
-- Facts, wording, display rights, and overclaim boundaries: [mercury-content-source.md](mercury-content-source.md).
-- Current implementation and remaining work: [project-state.md](project-state.md).
-- Code structure: [architecture.md](architecture.md).
-- Next-session implementation brief: [handoff-next-session.md](handoff-next-session.md).
-- Asset submission format: [asset-intake.md](asset-intake.md).
+- **Direction correction:** do not further decorate the v0.2 compact floor plan; rebuild the Factory as an architectural section/cutaway.
+- **Homepage hierarchy:** Hero identity is integrated into the Factory drawing header so the building is the initial homepage visual.
+- **Scale:** the building is intentionally taller than a viewport and supports scrolling through five levels.
+- **Structure layer:** HTML/CSS provides rooms, floor slabs, roofline, shaft, platforms, side index, and console.
+- **SVG layer:** decorative SVG is limited to measurement marks, grid accents, level guides, route traces, nodes, and annotations.
+- **Room motifs:** v0.3 begins with only three subtle motif prototypes rather than decorating all rooms prematurely.
+- **Inspector behavior:** no permanent right-side panel; desktop displays an on-demand floating inspector, while mobile expands the dossier below its selected room.
+- **Interaction:** formal rooms remain accessible HTML buttons with visible focus, expanded state, keyboard movement, and an explicitly closable inspector.
+- **No static reference image:** the supplied concept image informs layout direction only and is not inserted into the product.
 
-## Change Note Format
+## Superseded Decisions
 
-- **Date:**
-- **Task:**
-- **Changed:**
-- **Files:**
-- **Risks:**
-- **Next:**
+- The v0.2 CSS Grid floor-plan arrangement and permanently adjacent dossier are superseded by the v0.3 cutaway.
+- The prior plan to enrich the compact plan through SVG ornament is superseded; architecture and scale now precede decoration.
+
+## Technical Constraints
+
+- No new package is required.
+- No canvas, Three.js, WebGL, React Flow, or monolithic illustrated SVG building.
+- SVG decoration remains `aria-hidden="true"` and non-interactive.
+- Public copy remains data-driven from `src/content.js`.
+
+## Change Note
+
+- **Date:** 2026-05-24
+- **Task:** Implement approved v0.3 Factory Cutaway direction.
+- **Decision:** Prioritize immersive building structure and room scale over detailed decoration.
+- **Next:** Request visual-structure review before building more motifs or restyling downstream sections.
