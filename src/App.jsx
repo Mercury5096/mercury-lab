@@ -1,12 +1,11 @@
-import { useRef, useState } from "react";
 import {
   brand,
   caseFiles,
   processingModes,
-  rooms,
   sectionContent,
   usageSteps,
 } from "./content";
+import ContentFactory from "./components/ContentFactory";
 
 const locale = "en";
 const read = (value) =>
@@ -19,129 +18,6 @@ function SectionHeading({ eyebrow, title, description }) {
       <h2>{title}</h2>
       {description && <p className="section-copy">{description}</p>}
     </div>
-  );
-}
-
-function ManualPanel({ room }) {
-  return (
-    <article
-      className="manual-panel"
-      id={`panel-${room.id}`}
-      role="tabpanel"
-      aria-labelledby={`room-${room.id}`}
-      tabIndex={0}
-    >
-      <div className="manual-panel__top">
-        <div>
-          <p className="eyebrow">Module Manual / {room.code}</p>
-          <h3>{read(room.title)}</h3>
-        </div>
-        <span className={`status ${room.displayLevel === "abstract" ? "restricted" : ""}`}>
-          {read(room.status)}
-        </span>
-      </div>
-      <p className="manual-summary">{read(room.summary)}</p>
-      <dl className="manual-spec">
-        <div>
-          <dt>Active period</dt>
-          <dd>{room.period}</dd>
-        </div>
-        <div>
-          <dt>Production scope</dt>
-          <dd>{read(room.discipline)}</dd>
-        </div>
-        <div>
-          <dt>Evidence basis</dt>
-          <dd>{read(room.evidence)}</dd>
-        </div>
-        <div>
-          <dt>Display rule</dt>
-          <dd>{read(room.display)}</dd>
-        </div>
-      </dl>
-    </article>
-  );
-}
-
-function ContentFactory() {
-  const [activeRoom, setActiveRoom] = useState(rooms[0].id);
-  const roomRefs = useRef([]);
-  const selectedRoom = rooms.find((room) => room.id === activeRoom);
-
-  function moveFocus(event, index) {
-    let target = null;
-    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-      target = (index + 1) % rooms.length;
-    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-      target = (index - 1 + rooms.length) % rooms.length;
-    } else if (event.key === "Home") {
-      target = 0;
-    } else if (event.key === "End") {
-      target = rooms.length - 1;
-    }
-
-    if (target !== null) {
-      event.preventDefault();
-      setActiveRoom(rooms[target].id);
-      roomRefs.current[target]?.focus();
-    }
-  }
-
-  return (
-    <section className="factory section-shell" id="factory">
-      <SectionHeading
-        eyebrow={read(sectionContent.factory.eyebrow)}
-        title={read(sectionContent.factory.title)}
-        description={read(sectionContent.factory.description)}
-      />
-      <div className="factory-grid">
-        <div className="cutaway">
-          <div className="factory-sign">
-            <span>Mercury Content Works</span>
-            <span className="signal" aria-hidden="true" />
-          </div>
-          <div
-            className="rooms-grid"
-            role="tablist"
-            aria-label="Mercury Lab production rooms"
-          >
-            {rooms.map((room, index) => {
-              const active = room.id === activeRoom;
-              return (
-                <button
-                  className={`room ${active ? "active" : ""}`}
-                  id={`room-${room.id}`}
-                  key={room.id}
-                  role="tab"
-                  ref={(element) => {
-                    roomRefs.current[index] = element;
-                  }}
-                  aria-selected={active}
-                  aria-controls={`panel-${room.id}`}
-                  tabIndex={active ? 0 : -1}
-                  type="button"
-                  onClick={() => setActiveRoom(room.id)}
-                  onKeyDown={(event) => moveFocus(event, index)}
-                >
-                  <span className="room__code">{room.code}</span>
-                  <span className="room__period">{room.period}</span>
-                  <strong>{read(room.title)}</strong>
-                  <span className="room__line" aria-hidden="true" />
-                  <span className="room__instruction">Open manual</span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="conveyor" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
-        <ManualPanel room={selectedRoom} />
-      </div>
-    </section>
   );
 }
 
@@ -159,7 +35,7 @@ function App() {
           <a href="#cases">Cases</a>
           <a href="#protocol">Protocol</a>
         </nav>
-        <span className="edition">v0.1 / EN</span>
+        <span className="edition">v0.2 / EN</span>
       </header>
 
       <main id="top">
@@ -197,7 +73,11 @@ function App() {
           </div>
         </section>
 
-        <ContentFactory />
+        <ContentFactory
+          eyebrow={read(sectionContent.factory.eyebrow)}
+          title={read(sectionContent.factory.title)}
+          description={read(sectionContent.factory.description)}
+        />
 
         <section className="usage section-shell" id="use">
           <SectionHeading
@@ -275,7 +155,7 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <span>Mercury Lab / Prototype v0.1</span>
+        <span>Mercury Lab / Prototype v0.2</span>
         <span>English-first / Rights-aware / Evidence-controlled</span>
       </footer>
     </div>

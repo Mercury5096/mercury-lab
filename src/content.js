@@ -64,6 +64,12 @@ export const rooms = [
   {
     id: "print-engine-room",
     code: "01",
+    diagram: {
+      area: "print",
+      zone: "Publishing Foundation",
+      route: "publishing",
+      callout: "Prepress / Input",
+    },
     title: copy("Print Engine Room"),
     period: "2002-2003",
     discipline: copy("Comic layout and print prepress"),
@@ -79,6 +85,12 @@ export const rooms = [
   {
     id: "editorial-kitchen",
     code: "02",
+    diagram: {
+      area: "editorial",
+      zone: "Publishing Foundation",
+      route: "publishing",
+      callout: "Editorial / Repeat Cycle",
+    },
     title: copy("Editorial Kitchen"),
     period: "2003-2004",
     discipline: copy("Magazine, cookbook, food content, and writing"),
@@ -94,6 +106,12 @@ export const rooms = [
   {
     id: "cookbook-production-floor",
     code: "03",
+    diagram: {
+      area: "cookbook",
+      zone: "Publishing Foundation",
+      route: "publishing",
+      callout: "Production Floor / 50+",
+    },
     title: copy("Cookbook Production Floor", "食譜出版製作樓層"),
     period: "2010-2014",
     discipline: copy(
@@ -112,6 +130,12 @@ export const rooms = [
   {
     id: "story-archive-ip-office",
     code: "04",
+    diagram: {
+      area: "story",
+      zone: "Narrative Research Wing",
+      route: "research",
+      callout: "Story / Rights Check",
+    },
     title: copy("Story Archive & IP Office"),
     period: "2015-2016",
     discipline: copy("Fiction, publications, and creator collaboration"),
@@ -127,6 +151,12 @@ export const rooms = [
   {
     id: "operation-control-room",
     code: "05",
+    diagram: {
+      area: "operation",
+      zone: "Delivery Control Level",
+      route: "delivery",
+      callout: "Workflow Control",
+    },
     title: copy("Operation Control Room"),
     period: "2016-2018",
     discipline: copy("Creative workflow development"),
@@ -142,6 +172,12 @@ export const rooms = [
   {
     id: "commerce-visual-line",
     code: "06",
+    diagram: {
+      area: "commerce",
+      zone: "Delivery Control Level",
+      route: "delivery",
+      callout: "Restricted Visual Assets",
+    },
     title: copy("Commerce Visual Line"),
     period: "2018-2020",
     discipline: copy("GSK e-commerce visuals and promotional assets"),
@@ -157,6 +193,12 @@ export const rooms = [
   {
     id: "multimedia-workshop",
     code: "07",
+    diagram: {
+      area: "multimedia",
+      zone: "Narrative Research Wing",
+      route: "research",
+      callout: "Media Extension",
+    },
     title: copy("Multimedia Workshop"),
     period: "2020-present",
     discipline: copy("Web, video, 3D, games, and e-book practice"),
@@ -171,6 +213,12 @@ export const rooms = [
   {
     id: "ai-workflow-lab",
     code: "08",
+    diagram: {
+      area: "ai",
+      zone: "Narrative Research Wing",
+      route: "research",
+      callout: "Assisted Research / HITL",
+    },
     title: copy("AI Workflow Lab"),
     period: "2020-present",
     discipline: copy("AI-assisted interactive storytelling research"),

@@ -131,6 +131,7 @@ button {
 }
 
 .section-shell {
+  scroll-margin-top: 72px;
   padding: clamp(4.25rem, 8vw, 7rem) 0;
   border-bottom: 1px solid var(--line);
 }
@@ -367,28 +368,63 @@ button {
 
 .factory-grid {
   display: grid;
-  grid-template-columns: minmax(34rem, 1.2fr) minmax(20rem, 0.8fr);
-  gap: 1rem;
+  grid-template-columns: minmax(42rem, 1.42fr) minmax(20rem, 0.72fr);
+  gap: clamp(0.8rem, 1.5vw, 1.25rem);
 }
 
 .cutaway {
   position: relative;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--line-bright);
-  background: var(--canvas-deep);
+  background:
+    linear-gradient(140deg, rgba(120, 198, 192, 0.03), transparent 30%),
+    var(--canvas-deep);
 }
 
-.factory-sign {
+.blueprint-titlebar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.65rem 0.85rem;
-  margin-bottom: 0.8rem;
+  gap: 1rem;
+  min-height: 57px;
+  padding: 0.55rem 0.75rem;
   border: 1px solid var(--line);
   color: var(--muted);
   font-family: Consolas, monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  font-size: 0.62rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.blueprint-titlebar > div:first-child {
+  display: grid;
+  gap: 0.27rem;
+  margin-right: auto;
+}
+
+.blueprint-titlebar strong {
+  color: var(--mercury);
+  font-weight: 500;
+  font-size: 0.69rem;
+}
+
+.plan-ref {
+  color: var(--teal);
+}
+
+.blueprint-tabs {
+  display: flex;
+  gap: 2px;
+}
+
+.blueprint-tabs span {
+  padding: 0.54rem 0.62rem;
+  border: 1px solid var(--line);
+}
+
+.blueprint-tabs .active {
+  border-color: rgba(228, 168, 60, 0.5);
+  color: var(--amber);
+  background: var(--amber-soft);
 }
 
 .signal {
@@ -401,22 +437,175 @@ button {
   animation: signal 2.4s ease infinite;
 }
 
+.blueprint-drawing {
+  position: relative;
+  min-height: 650px;
+  margin-top: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(6, 11, 14, 0.55);
+}
+
+.blueprint-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.bp-grid path {
+  fill: none;
+  stroke: rgba(120, 198, 192, 0.09);
+  stroke-width: 1;
+}
+
+.bp-registration path,
+.bp-measurements path {
+  fill: none;
+  stroke: rgba(120, 198, 192, 0.44);
+  stroke-width: 1;
+}
+
+.bp-measurements text,
+.bp-notes text {
+  fill: rgba(120, 198, 192, 0.7);
+  font-family: Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.bp-building {
+  fill: rgba(120, 198, 192, 0.025);
+  stroke: rgba(120, 198, 192, 0.58);
+  stroke-width: 2;
+}
+
+.bp-corridor {
+  fill: none;
+  stroke: rgba(120, 198, 192, 0.38);
+  stroke-width: 2;
+  stroke-dasharray: 5 6;
+}
+
+.bp-route path {
+  fill: none;
+  stroke: rgba(164, 170, 160, 0.26);
+  stroke-width: 2;
+  stroke-dasharray: 8 7;
+  transition: stroke 220ms ease, stroke-width 220ms ease;
+}
+
+.bp-route.is-active path {
+  stroke: rgba(228, 168, 60, 0.94);
+  stroke-width: 3;
+}
+
+.bp-ai-glow {
+  fill: none;
+  stroke: rgba(120, 198, 192, 0.62);
+  stroke-width: 11;
+  opacity: 0.45;
+}
+
+.bp-ai-circuit {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+  animation: blueprint-route 12s linear infinite;
+}
+
+.bp-leaders path {
+  fill: none;
+  stroke: rgba(228, 168, 60, 0.58);
+  stroke-width: 1;
+}
+
+.bp-notes text {
+  fill: rgba(228, 168, 60, 0.74);
+}
+
+.technical-label {
+  position: absolute;
+  top: 0.78rem;
+  color: var(--teal);
+  font-family: Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.label--left {
+  left: 2.45rem;
+}
+
+.label--right {
+  top: auto;
+  right: 2.45rem;
+  bottom: 0.78rem;
+}
+
 .rooms-grid {
+  position: absolute;
+  inset: 70px 6.7% 58px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.65rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  grid-template-areas:
+    "print print print editorial editorial editorial . story story story multimedia multimedia"
+    "print print print editorial editorial editorial . story story story multimedia multimedia"
+    "cookbook cookbook cookbook cookbook cookbook . . story story story multimedia multimedia"
+    "cookbook cookbook cookbook cookbook cookbook . . . ai ai ai ai"
+    "operation operation operation operation . commerce commerce commerce ai ai ai ai"
+    "operation operation operation operation . commerce commerce commerce ai ai ai ai";
+  gap: 0.58rem;
+}
+
+.room--print {
+  grid-area: print;
+}
+
+.room--editorial {
+  grid-area: editorial;
+}
+
+.room--cookbook {
+  grid-area: cookbook;
+}
+
+.room--story {
+  grid-area: story;
+}
+
+.room--operation {
+  grid-area: operation;
+}
+
+.room--commerce {
+  grid-area: commerce;
+}
+
+.room--multimedia {
+  grid-area: multimedia;
+}
+
+.room--ai {
+  grid-area: ai;
 }
 
 .room {
   position: relative;
-  min-height: 164px;
-  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.62rem;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(120, 198, 192, 0.34);
   color: var(--muted);
   background:
-    linear-gradient(180deg, transparent 0 63%, rgba(255, 255, 255, 0.025) 63%),
-    var(--panel);
+    linear-gradient(135deg, rgba(120, 198, 192, 0.055), transparent 58%),
+    rgba(9, 16, 20, 0.86);
   text-align: left;
   cursor: pointer;
   transition:
@@ -427,25 +616,34 @@ button {
 
 .room::after {
   position: absolute;
-  right: 0.7rem;
-  bottom: 2.3rem;
-  width: 31px;
-  height: 29px;
-  border: 1px solid var(--line-bright);
+  top: -1px;
+  right: -1px;
+  width: 17px;
+  height: 17px;
+  border-bottom: 1px solid rgba(120, 198, 192, 0.52);
+  border-left: 1px solid rgba(120, 198, 192, 0.52);
   content: "";
 }
 
 .room:hover,
-.room:focus-visible,
 .room.active {
   border-color: var(--amber);
   color: var(--text);
-  background-color: var(--panel-raised);
+  background-color: rgba(19, 32, 39, 0.95);
+  box-shadow: inset 0 0 22px var(--amber-soft);
 }
 
 .room:focus-visible {
-  outline: 2px solid var(--teal);
-  outline-offset: 2px;
+  z-index: 2;
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+  border-color: var(--teal);
+}
+
+.room__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.45rem;
 }
 
 .room__code {
@@ -455,73 +653,112 @@ button {
 }
 
 .room__period {
-  float: right;
   font-family: Consolas, monospace;
-  font-size: 0.61rem;
+  font-size: 0.56rem;
+}
+
+.room__zone {
+  margin-top: clamp(0.8rem, 2.2vh, 1.45rem);
+  color: var(--teal);
+  font-family: Consolas, monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
 }
 
 .room strong {
   display: block;
-  max-width: 9rem;
-  margin-top: 2.3rem;
+  max-width: 11.5rem;
+  margin-top: 0.42rem;
   color: var(--text);
-  font-size: 0.85rem;
+  font-size: clamp(0.69rem, 0.84vw, 0.82rem);
   font-weight: 600;
-  line-height: 1.22;
-}
-
-.room__line {
-  position: absolute;
-  left: 0.75rem;
-  bottom: 2.65rem;
-  display: block;
-  width: 42%;
-  height: 2px;
-  background: var(--line-bright);
-}
-
-.room.active .room__line {
-  background: var(--amber);
-}
-
-.room__instruction {
-  position: absolute;
-  bottom: 0.7rem;
-  left: 0.75rem;
-  font-family: Consolas, monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.13em;
+  line-height: 1.3;
   text-transform: uppercase;
 }
 
-.conveyor {
-  display: flex;
-  gap: 1.2rem;
-  justify-content: space-around;
-  height: 27px;
-  padding-top: 9px;
-  margin-top: 0.85rem;
-  border-top: 2px solid var(--line-bright);
-  background: repeating-linear-gradient(90deg, transparent 0 9%, var(--line) 9.2% 9.5%);
+.room__callout {
+  margin-top: auto;
+  padding-top: 0.42rem;
+  border-top: 1px dashed rgba(120, 198, 192, 0.28);
+  color: var(--muted);
+  font-family: Consolas, monospace;
+  font-size: 0.51rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.conveyor span {
-  width: 42px;
-  height: 7px;
-  background: var(--amber);
-  opacity: 0.7;
+.room__instruction {
+  margin-top: 0.4rem;
+  color: var(--amber);
+  font-family: Consolas, monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.mobile-route {
+  display: none;
 }
 
 .manual-panel {
-  padding: clamp(1.4rem, 2vw, 2rem);
+  position: relative;
+  padding: clamp(1.2rem, 1.7vw, 1.65rem);
   border: 1px solid var(--line-bright);
   background:
     linear-gradient(130deg, var(--teal-soft), transparent 40%),
     var(--panel);
 }
 
+.dossier::before {
+  position: absolute;
+  top: 94px;
+  left: -1.3rem;
+  width: 1.3rem;
+  border-top: 1px dashed var(--amber);
+  content: "";
+}
+
+.dossier-tabs {
+  display: flex;
+  gap: 3px;
+  margin: -1.65rem -1.65rem 1.3rem;
+  padding: 0.72rem 0.72rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.dossier-tabs span {
+  padding: 0.48rem 0.62rem;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  color: var(--muted);
+  font-family: Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.dossier-tabs .active {
+  border-color: rgba(228, 168, 60, 0.46);
+  color: var(--amber);
+}
+
+.dossier-index {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.86rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--line-bright);
+  color: var(--teal);
+  font-family: Consolas, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
 .manual-panel:focus-visible {
-  outline: 2px solid var(--teal);
+  outline: 3px solid var(--teal);
   outline-offset: -3px;
 }
 
@@ -530,6 +767,10 @@ button {
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1.8rem;
+}
+
+.dossier .manual-panel__top {
+  flex-direction: column;
 }
 
 .manual-panel h3 {
@@ -559,8 +800,8 @@ button {
 }
 
 .manual-summary {
-  min-height: 7rem;
-  margin: 0 0 2rem;
+  min-height: 5.2rem;
+  margin: 0 0 1.5rem;
   color: var(--mercury);
   font-size: 1.04rem;
   line-height: 1.7;
@@ -568,7 +809,7 @@ button {
 
 .manual-spec {
   display: grid;
-  gap: 1rem;
+  gap: 0.8rem;
   margin: 0;
 }
 
@@ -590,6 +831,28 @@ button {
   margin: 0;
   font-size: 0.91rem;
   line-height: 1.5;
+}
+
+.archival-note {
+  padding: 0.95rem;
+  margin-top: 1.15rem;
+  border: 1px dashed rgba(228, 168, 60, 0.45);
+  background: rgba(228, 168, 60, 0.045);
+}
+
+.archival-note span {
+  color: var(--amber);
+  font-family: Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.archival-note p {
+  margin: 0.65rem 0 0;
+  color: var(--mercury);
+  font-size: 0.84rem;
+  line-height: 1.55;
 }
 
 .usage-grid {
@@ -792,6 +1055,12 @@ button {
   }
 }
 
+@keyframes blueprint-route {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
 @media (max-width: 1080px) {
   .hero,
   .factory-grid {
@@ -806,8 +1075,8 @@ button {
     min-height: 440px;
   }
 
-  .rooms-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .dossier::before {
+    display: none;
   }
 
   .case-grid {
@@ -849,12 +1118,68 @@ button {
     min-height: 360px;
   }
 
+  .blueprint-titlebar {
+    flex-wrap: wrap;
+  }
+
+  .blueprint-tabs {
+    order: 3;
+    width: 100%;
+  }
+
+  .blueprint-drawing {
+    min-height: auto;
+    padding: 0.75rem;
+  }
+
+  .blueprint-overlay,
+  .technical-label {
+    display: none;
+  }
+
   .rooms-grid {
+    position: relative;
+    inset: auto;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+    grid-template-areas: none;
+    gap: 0.55rem;
+    padding-top: 0;
+  }
+
+  .room--print,
+  .room--editorial,
+  .room--cookbook,
+  .room--story,
+  .room--operation,
+  .room--commerce,
+  .room--multimedia,
+  .room--ai {
+    grid-area: auto;
   }
 
   .room {
-    min-height: 154px;
+    min-height: 166px;
+  }
+
+  .mobile-route {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.8rem 0.15rem 0.2rem;
+    color: var(--teal);
+    font-family: Consolas, monospace;
+    font-size: 0.59rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .mobile-route span {
+    display: inline-block;
+    flex: 0 0 52px;
+    height: 1px;
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
   }
 
   .manual-panel__top {
@@ -895,6 +1220,14 @@ button {
     padding-left: 0.35rem;
     font-size: 0.67rem;
     letter-spacing: 0.12em;
+  }
+
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .room {
+    min-height: 146px;
   }
 }
 
