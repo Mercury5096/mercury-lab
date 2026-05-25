@@ -1484,6 +1484,10 @@ button {
   grid-column: 1 / 2;
 }
 
+.factory-level--03 .level-rooms--1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .factory-level--00 .level-rooms--1 {
   grid-template-columns: minmax(0, 0.22fr) minmax(0, 0.78fr);
 }
@@ -1608,6 +1612,243 @@ button {
 .factory-room:hover .room-interior,
 .factory-room.active .room-interior {
   opacity: 0.58;
+}
+
+.room-interior--cookbook {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+}
+
+.factory-room:hover .room-interior--cookbook,
+.factory-room.active .room-interior--cookbook {
+  opacity: 1;
+}
+
+.cookbook-scene {
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  background: #edf0ec;
+}
+
+.cookbook-scene__picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.cookbook-scene__backdrop {
+  position: absolute;
+  inset: 0;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 57%;
+  filter: saturate(0.92) contrast(1.03);
+  transform: scale(1.4);
+  transform-origin: 50% 55%;
+}
+
+.cookbook-scene__wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(232, 232, 223, 0.14) 0%, transparent 34%, rgba(232, 232, 223, 0.1) 100%),
+    linear-gradient(90deg, rgba(232, 232, 223, 0.14), transparent 11%, transparent 89%, rgba(232, 232, 223, 0.15));
+}
+
+.cookbook-system-route {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  fill: var(--blueprint-paper);
+  stroke: rgba(182, 112, 19, 0.74);
+  stroke-width: 1.4;
+  stroke-dasharray: 4 7;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.cookbook-prop {
+  --prop-delay: 0s;
+  position: absolute;
+  z-index: 2;
+  display: block;
+  opacity: 0.74;
+  transform: translate(-50%, -50%);
+  transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
+}
+
+.cookbook-prop img {
+  display: block;
+  max-width: none;
+  width: 100%;
+  height: auto;
+  filter: saturate(0.66) contrast(0.93);
+  mix-blend-mode: multiply;
+}
+
+.cookbook-prop__label {
+  position: absolute;
+  top: calc(100% - 0.3rem);
+  left: 50%;
+  padding: 0.2rem 0.36rem;
+  border-left: 1px solid rgba(166, 103, 17, 0.5);
+  color: #88530f;
+  background: rgba(242, 237, 222, 0.83);
+  font-family: Consolas, monospace;
+  font-size: clamp(0.43rem, 0.62vw, 0.52rem);
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  opacity: 0;
+  text-transform: uppercase;
+  transform: translate(-50%, 0.2rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.cookbook-prop--plan {
+  top: 52%;
+  left: 12%;
+  width: clamp(3.1rem, 6.1vw, 5.2rem);
+}
+
+.cookbook-prop--cook {
+  --prop-delay: 0.32s;
+  top: 64%;
+  left: 34%;
+  width: clamp(2.8rem, 5.1vw, 4.35rem);
+}
+
+.cookbook-prop--style {
+  --prop-delay: 0.7s;
+  top: 65%;
+  left: 55%;
+  width: clamp(3.55rem, 6vw, 5.15rem);
+}
+
+.cookbook-prop--capture {
+  --prop-delay: 1.05s;
+  top: 62%;
+  left: 77%;
+  width: clamp(4rem, 5.7vw, 5.15rem);
+  opacity: 0.88;
+}
+
+.cookbook-prop--capture img {
+  filter: saturate(0.86) contrast(1.01);
+}
+
+.cookbook-steam,
+.cookbook-steam::before,
+.cookbook-steam::after {
+  position: absolute;
+  display: block;
+  width: 0.42rem;
+  height: 1.25rem;
+  content: "";
+  border-left: 1.5px solid #bd7a16;
+  border-radius: 50%;
+}
+
+.cookbook-steam {
+  bottom: 73%;
+  left: 50%;
+  animation: cookbook-steam 2.8s ease-out infinite;
+}
+
+.cookbook-steam::before {
+  right: 0.55rem;
+  bottom: -0.24rem;
+  animation: cookbook-steam 2.8s 0.55s ease-out infinite;
+}
+
+.cookbook-steam::after {
+  bottom: -0.1rem;
+  left: 0.42rem;
+  animation: cookbook-steam 2.8s 1.05s ease-out infinite;
+}
+
+.cookbook-focus {
+  position: absolute;
+  top: 19%;
+  left: 50%;
+  width: 35%;
+  aspect-ratio: 1;
+  display: block;
+  border: 1px solid #ae6d11;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.cookbook-focus::before,
+.cookbook-focus::after {
+  position: absolute;
+  content: "";
+  background: #ae6d11;
+}
+
+.cookbook-focus::before {
+  top: 50%;
+  left: -0.42rem;
+  width: calc(100% + 0.84rem);
+  height: 1px;
+}
+
+.cookbook-focus::after {
+  top: -0.42rem;
+  left: 50%;
+  width: 1px;
+  height: calc(100% + 0.84rem);
+}
+
+.cookbook-scene__key {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.9rem;
+  z-index: 1;
+  display: grid;
+  gap: 0.14rem;
+  padding: 0.42rem 0.55rem;
+  border-left: 2px solid #bd7a16;
+  color: #173d65;
+  background: rgba(243, 241, 233, 0.9);
+  font-family: Consolas, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cookbook-scene__key small {
+  font-size: 0.44rem;
+}
+
+.cookbook-scene__key strong {
+  color: #9e620f;
+  font-size: 0.49rem;
+}
+
+.factory-room:hover .cookbook-system-route,
+.factory-room.active .cookbook-system-route {
+  opacity: 0.35;
+  animation: cookbook-route 16s linear infinite;
+}
+
+.factory-room:hover .cookbook-prop,
+.factory-room.active .cookbook-prop {
+  opacity: 0.95;
+  filter: brightness(1.03);
+  animation: cookbook-prop-lift 3.6s var(--prop-delay) ease-in-out infinite;
+}
+
+.factory-room:hover .cookbook-prop__label,
+.factory-room.active .cookbook-prop__label,
+.factory-room:hover .cookbook-focus,
+.factory-room.active .cookbook-focus {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .room-label {
@@ -1954,6 +2195,36 @@ button {
   }
 }
 
+@keyframes cookbook-prop-lift {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  44% {
+    transform: translate(-50%, calc(-50% - 2px)) scale(1.015);
+  }
+}
+
+@keyframes cookbook-route {
+  to {
+    stroke-dashoffset: -88;
+  }
+}
+
+@keyframes cookbook-steam {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scaleY(0.6);
+  }
+  26% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-0.95rem) scaleY(1.12);
+  }
+}
+
 @media (max-width: 1080px) {
   .hero,
   .factory-grid {
@@ -2000,6 +2271,41 @@ button {
   .factory-building {
     padding-right: 3.5rem;
     padding-left: 2.6rem;
+  }
+
+  .factory-cutaway .dossier {
+    position: static;
+    width: 100%;
+    max-height: none;
+    margin-top: 0.68rem;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .cookbook-scene__backdrop {
+    object-position: 50% 54%;
+    transform: scale(1.18);
+    transform-origin: 50% 54%;
+  }
+
+  .cookbook-system-route,
+  .cookbook-prop--plan {
+    display: none;
+  }
+
+  .cookbook-prop--cook {
+    top: 67%;
+    left: 30%;
+  }
+
+  .cookbook-prop--style {
+    top: 65%;
+    left: 53%;
+  }
+
+  .cookbook-prop--capture {
+    top: 62%;
+    left: 82%;
   }
 }
 
@@ -2100,13 +2406,29 @@ button {
     opacity: 0.3;
   }
 
-  .factory-cutaway .dossier {
-    position: static;
-    width: 100%;
-    max-height: none;
-    margin-top: 0.68rem;
-    overflow: visible;
-    box-shadow: none;
+  .room-interior--cookbook {
+    opacity: 1;
+  }
+
+  .cookbook-scene__backdrop {
+    object-position: 50% 54%;
+  }
+
+  .cookbook-prop--cook {
+    left: 33%;
+  }
+
+  .cookbook-prop--style {
+    left: 54%;
+  }
+
+  .cookbook-prop--capture {
+    left: 75%;
+  }
+
+  .cookbook-scene__key {
+    right: 0.65rem;
+    bottom: 0.65rem;
   }
 
   .factory-console {
@@ -2313,6 +2635,43 @@ button {
 
   .level-rooms--1 .factory-room {
     min-height: clamp(390px, 60vh, 520px);
+  }
+
+  .cookbook-scene__backdrop {
+    object-position: 50% 53%;
+    transform: scale(1.2);
+    transform-origin: 50% 54%;
+  }
+
+  .cookbook-prop {
+    opacity: 0.84;
+  }
+
+  .cookbook-prop--plan {
+    display: none;
+  }
+
+  .cookbook-prop--cook {
+    top: 67%;
+    left: 30%;
+    width: 3.1rem;
+  }
+
+  .cookbook-prop--style {
+    top: 64%;
+    left: 53%;
+    width: 3.6rem;
+  }
+
+  .cookbook-prop--capture {
+    top: 62%;
+    left: 82%;
+    width: 3.2rem;
+  }
+
+  .cookbook-scene__key {
+    right: 0.45rem;
+    bottom: 0.45rem;
   }
 }
 

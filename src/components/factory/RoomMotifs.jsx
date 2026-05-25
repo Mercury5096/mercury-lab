@@ -1,3 +1,5 @@
+import CookbookProductionScene from "./scenes/CookbookProductionScene";
+
 function InteriorGrid() {
   return (
     <g className="interior-grid">
@@ -175,6 +177,14 @@ const interiors = {
 };
 
 export default function RoomInterior({ roomId }) {
+  if (roomId === "cookbook-production-floor") {
+    return (
+      <span className="room-interior room-interior--cookbook" aria-hidden="true">
+        <CookbookProductionScene />
+      </span>
+    );
+  }
+
   return (
     <span className="room-interior" aria-hidden="true">
       <svg viewBox="0 0 600 370" preserveAspectRatio="none">
