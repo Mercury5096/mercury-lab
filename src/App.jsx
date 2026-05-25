@@ -35,7 +35,7 @@ function App() {
           <a href="#cases">Cases</a>
           <a href="#protocol">Protocol</a>
         </nav>
-        <span className="edition">v0.3 / EN</span>
+        <span className="edition">v0.4 / EN</span>
       </header>
 
       <main id="top">
@@ -124,7 +124,7 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <span>Mercury Lab / Prototype v0.3</span>
+        <span>Mercury Lab / Prototype v0.4</span>
         <span>English-first / Rights-aware / Evidence-controlled</span>
       </footer>
     </div>

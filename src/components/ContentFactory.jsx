@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { rooms } from "../content";
 import BlueprintFrame from "./factory/BlueprintFrame";
 import RoomShell from "./factory/RoomShell";
@@ -45,6 +45,10 @@ const floors = [
     rooms: ["ai-workflow-lab"],
   },
 ];
+
+const floorByRoom = Object.fromEntries(
+  floors.flatMap((floor) => floor.rooms.map((roomId) => [roomId, floor.id])),
+);
 
 function ModuleDossier({ room, onClose }) {
   return (
@@ -113,8 +117,42 @@ export default function ContentFactory({
   description,
 }) {
   const [activeRoom, setActiveRoom] = useState(null);
+  const [activeFloor, setActiveFloor] = useState(floors[0].id);
   const roomRefs = useRef([]);
+  const floorRefs = useRef({});
+  const floorVisibility = useRef({});
   const selectedRoom = rooms.find((room) => room.id === activeRoom) ?? null;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          floorVisibility.current[entry.target.dataset.floor] = entry.isIntersecting
+            ? entry.intersectionRatio
+            : 0;
+        });
+        const visibleFloor = Object.entries(floorVisibility.current).sort(
+          (left, right) => right[1] - left[1],
+        )[0];
+        if (visibleFloor?.[1] > 0) {
+          setActiveFloor(visibleFloor[0]);
+        }
+      },
+      {
+        rootMargin: "-18% 0px -18% 0px",
+        threshold: [0.08, 0.25, 0.5, 0.72],
+      },
+    );
+
+    floors.forEach((floor) => {
+      const element = floorRefs.current[floor.id];
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   function closeDossier() {
     const selectedIndex = rooms.findIndex((room) => room.id === activeRoom);
@@ -125,7 +163,11 @@ export default function ContentFactory({
   function activateFromIndex(roomId) {
     const index = rooms.findIndex((room) => room.id === roomId);
     setActiveRoom(roomId);
-    roomRefs.current[index]?.focus();
+    floorRefs.current[floorByRoom[roomId]]?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+    roomRefs.current[index]?.focus({ preventScroll: true });
   }
 
   function moveFocus(event, index) {
@@ -167,7 +209,7 @@ export default function ContentFactory({
         <aside className="factory-status" aria-label="Factory drawing status">
           <p>Content Factory / Section A</p>
           <strong>Status / Operational</strong>
-          <span>Drawing / CUT-03</span>
+          <span>Drawing / CUT-04</span>
           <span>Language / EN</span>
           <div className="barcode" aria-hidden="true" />
           <small>Evidence controlled / Human responsible</small>
@@ -179,10 +221,16 @@ export default function ContentFactory({
           <div className="route-index__head">
             <p>Factory Route</p>
             <span>Explore / 01-08</span>
+            <strong>Viewing / Level {activeFloor}</strong>
           </div>
           <ol>
-            {rooms.map((room, index) => (
-              <li key={room.id} className={room.id === activeRoom ? "active" : ""}>
+            {rooms.map((room) => (
+              <li
+                key={room.id}
+                className={`${room.id === activeRoom ? "active" : ""} ${
+                  floorByRoom[room.id] === activeFloor ? "is-current-level" : ""
+                }`}
+              >
                 <button type="button" onClick={() => activateFromIndex(room.id)}>
                   <span>{room.code}</span>
                   <strong>{roomFunctions[room.id]}</strong>
@@ -212,7 +260,16 @@ export default function ContentFactory({
             </div>
             <div className="factory-levels" aria-label="Mercury Lab production rooms">
               {floors.map((floor) => (
-                <section className={`factory-level factory-level--${floor.id}`} key={floor.id}>
+                <section
+                  className={`factory-level factory-level--${floor.id} ${
+                    floor.id === activeFloor ? "is-current" : ""
+                  }`}
+                  data-floor={floor.id}
+                  key={floor.id}
+                  ref={(element) => {
+                    floorRefs.current[floor.id] = element;
+                  }}
+                >
                   <header className="level-label" aria-hidden="true">
                     <span>Level / {floor.id}</span>
                     <strong>{floor.label}</strong>

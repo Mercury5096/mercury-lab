@@ -25,6 +25,16 @@
 
 - The v0.2 CSS Grid floor-plan arrangement and permanently adjacent dossier are superseded by the v0.3 cutaway.
 - The prior plan to enrich the compact plan through SVG ornament is superseded; architecture and scale now precede decoration.
+- The v0.3 compressed five-level overview is superseded by the v0.4 scroll-based scale model; the building is not intended to fit into one viewport.
+
+## v0.4 Scale Decisions
+
+- **Traversal:** Factory is a continuous multi-level scroll experience, not a complete-building overview.
+- **Floor scale:** desktop levels target approximately `80vh` to `100vh`, with one or two major rooms per level.
+- **Room priority:** new vertical space is deliberately left available for later spatial detail; v0.4 does not add more motif types.
+- **Current location:** the sticky route index observes and highlights the floor passing through the viewport.
+- **Index activation:** selecting an index destination scrolls to its level and opens that room dossier.
+- **Preserved behavior:** Hero/Factory fusion, formal room names, `src/content.js`, floating desktop inspector, and in-flow mobile dossier continue unchanged.
 
 ## Technical Constraints
 
@@ -35,7 +45,7 @@
 
 ## Change Note
 
-- **Date:** 2026-05-24
-- **Task:** Implement approved v0.3 Factory Cutaway direction.
-- **Decision:** Prioritize immersive building structure and room scale over detailed decoration.
-- **Next:** Request visual-structure review before building more motifs or restyling downstream sections.
+- **Date:** 2026-05-25
+- **Task:** Implement approved v0.4 Factory scale correction.
+- **Decision:** Prioritize viewport-scale floors and scroll exploration over additional visual detail.
+- **Next:** Request scale and traversal review before building more motifs or restyling downstream sections.

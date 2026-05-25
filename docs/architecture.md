@@ -36,6 +36,8 @@
 - `roomFunctions` supplies exploratory navigation language approved for technical labeling, separate from formal room names.
 - HTML/CSS provides building structure: masthead, roofline, level slabs, bays, room panels, service shaft, sticky route rail, and status console.
 - Selection state controls room highlight, corresponding SVG route group, and a single on-demand dossier.
+- An `IntersectionObserver` tracks the most visible level and drives current-location highlighting in the sticky route index.
+- Desktop floors are intentionally near viewport height so the cutaway is explored across multiple scroll intervals.
 - Desktop dossier is positioned as a floating inspector so it never claims permanent building width.
 - Mobile dossier remains in document flow immediately after its active room.
 
@@ -56,7 +58,7 @@
 
 ## Responsive Notes
 
-- Desktop: tall building cutaway with sticky left route index and floating inspector.
+- Desktop: multi-viewport building cutaway with near-viewport floors, scroll-aware sticky left route index, and floating inspector.
 - Narrow desktop/tablet: stacked masthead with building still presented as a large section.
 - Mobile: simplified technical overlay, large vertically stacked room sections, and in-flow expanded dossier.
 
