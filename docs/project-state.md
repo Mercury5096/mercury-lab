@@ -1,7 +1,7 @@
 # Project State
 
-- **Current version:** `v0.4`; saved checkpoints include `v0.1` at `2930e03`, `v0.2` at `3ac3835`, and `v0.3` at `9cebda6`.
-- **Current goal:** Evaluate a scroll-based, multi-viewport Factory experience before adding richer drawing detail.
+- **Current version:** `v0.5`; saved checkpoints include `v0.1` at `2930e03`, `v0.2` at `3ac3835`, `v0.3` at `9cebda6`, `v0.4` at `d12e3f0`, and the current `v0.5` checkpoint.
+- **Current goal:** Evaluate low-density room interiors within the accepted multi-level Factory scale.
 - **Source of truth:** [mercury-content-source.md](mercury-content-source.md).
 
 ## Completed
@@ -18,6 +18,8 @@
 - Verified build, selection, floating inspector behavior, and mobile in-flow dossier layout.
 - Expanded the cutaway in v0.4 so each of five floors approaches a viewport in height rather than fitting the entire building into one drawing.
 - Added scroll-aware current-level highlighting in the sticky route index and route-index jumps to rooms on distant floors.
+- Added v0.5 interior SVG systems for all eight rooms, using room-specific equipment silhouettes and workflow symbols.
+- Strengthened the continuous service shaft with subtle ladder, pipe, and data-line cues across floors.
 
 ## Current Structure
 
@@ -25,35 +27,34 @@
 - HTML/CSS builds the roofline, levels, rooms, shaft, platforms, sticky route index, and system console.
 - `BlueprintFrame` contributes decorative measurement lines, level marks, route traces, nodes, and annotations only.
 - `RoomShell` remains a readable interactive HTML button generated from approved room data.
-- `RoomMotifs` contains only subtle prototype decorations and does not imply real portfolio assets.
+- `RoomMotifs` now provides decorative room-interior linework for all eight rooms and does not imply real portfolio assets.
 - Each desktop level now establishes its own large viewing interval; users travel through the building rather than viewing a compressed full diagram.
 
 ## Review Focus
 
-- Does the scroll-based building now provide enough spatial room for future visual detail?
-- Are single-room and two-room floor scales balanced enough before deeper illustration work?
+- Do the eight interior silhouettes make the rooms identifiable before selection without becoming noisy?
+- Does active-state detail contrast remain restrained enough alongside the floating dossier?
 - Is the pale blueprint panel an acceptable visual direction against the existing dark site frame?
 - Should the inspector remain a floating drawer or later become more closely anchored to an active room?
 
 ## Known Boundaries
 
-- This is a low-detail scale and scroll prototype, not final architectural artwork.
-- Only three room motifs have been prototyped intentionally.
+- This is a lightweight blueprint-interior pass, not final architectural artwork or portfolio imagery.
 - Existing lower sections retain their earlier dark manual styling pending approval of the Factory direction.
 - The generated visual reference is used for direction only and is not published as a site asset.
 
 ## Next Steps
 
-- Review the v0.4 multi-level scroll rhythm and room scale before expanding visual detail.
-- If approved, tune architecture line weight, route behavior, and two or three additional motif directions.
+- Review the v0.5 room identities and interior density before adding richer architecture detail.
+- If approved, tune line weights, floor-to-floor continuity, and active-room emphasis.
 - Only afterward decide whether the remaining page sections should adopt the pale blueprint treatment.
 - Continue asset intake and rights review before exposing any real work imagery.
 
 ## Update Note
 
 - **Date:** 2026-05-25
-- **Task:** Scale the Factory Cutaway into a scroll-based multi-level experience.
-- **Changed:** Near-viewport desktop floors, enlarged mobile spaces, current-floor observation/highlighting, and indexed floor navigation; no new motif detail.
+- **Task:** Add lightweight functional interiors to the accepted multi-level Factory.
+- **Changed:** Eight decorative interior systems, equipment silhouettes, symbolic motifs, and vertical service-shaft cues while retaining v0.4 scale.
 - **Files:** `src/App.jsx`, `src/components/ContentFactory.jsx`, `src/components/factory/*`, `src/styles.css`, `package*.json`, and project documents.
 - **Risks:** Final art density and cross-section styling remain subject to user review.
-- **Next:** Review spatial impact and traversal rhythm before decorative expansion.
+- **Next:** Use this checkpoint as the clean baseline for reviewing room recognizability and density before additional visual refinement.

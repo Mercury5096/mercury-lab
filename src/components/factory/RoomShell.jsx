@@ -1,4 +1,4 @@
-import RoomMotif from "./RoomMotifs";
+import RoomInterior from "./RoomMotifs";
 
 const locale = "en";
 const read = (value) =>
@@ -41,7 +41,7 @@ export default function RoomShell({
         <strong>{read(room.title)}</strong>
         <span className="room-function">{functionLabel}</span>
       </span>
-      <RoomMotif roomId={room.id} />
+      <RoomInterior roomId={room.id} />
       <span className="room-footer">
         <span>{room.diagram.callout}</span>
         <span>Open dossier</span>

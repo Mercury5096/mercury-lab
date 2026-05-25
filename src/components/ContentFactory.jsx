@@ -257,6 +257,9 @@ export default function ContentFactory({
             </div>
             <div className="factory-shaft" aria-hidden="true">
               <span>Vertical route</span>
+              <i className="shaft-ladder" />
+              <i className="shaft-pipe" />
+              <i className="shaft-data" />
             </div>
             <div className="factory-levels" aria-label="Mercury Lab production rooms">
               {floors.map((floor) => (

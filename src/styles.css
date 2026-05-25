@@ -1387,6 +1387,43 @@ button {
   writing-mode: vertical-rl;
 }
 
+.factory-shaft i {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.shaft-ladder {
+  top: 4rem;
+  right: 11px;
+  bottom: 1.2rem;
+  width: 21px;
+  border-right: 1px solid rgba(18, 54, 90, 0.4);
+  border-left: 1px solid rgba(18, 54, 90, 0.4);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 27px,
+    rgba(18, 54, 90, 0.36) 27px 28px
+  );
+}
+
+.shaft-pipe {
+  top: 5.5rem;
+  bottom: 1.6rem;
+  left: 10px;
+  width: 5px;
+  border: 1px solid rgba(18, 54, 90, 0.37);
+  border-radius: 5px;
+  background: rgba(18, 54, 90, 0.08);
+}
+
+.shaft-data {
+  top: 5.5rem;
+  bottom: 1.6rem;
+  left: 22px;
+  border-left: 2px dashed rgba(199, 139, 37, 0.47);
+}
+
 .factory-levels {
   position: relative;
   z-index: 1;
@@ -1528,6 +1565,51 @@ button {
   border-right: 1px solid rgba(18, 54, 90, 0.45);
 }
 
+.room-interior {
+  position: absolute;
+  inset: clamp(3.85rem, 7vw, 5.25rem) 0 1.8rem;
+  z-index: 0;
+  display: block;
+  color: var(--blueprint-ink);
+  opacity: 0.24;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.room-interior svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  vector-effect: non-scaling-stroke;
+}
+
+.interior-grid {
+  opacity: 0.32;
+  stroke-width: 0.85;
+}
+
+.interior-floor {
+  opacity: 0.9;
+  stroke-width: 2;
+}
+
+.interior-equipment {
+  opacity: 0.82;
+  stroke-width: 2;
+}
+
+.interior-detail {
+  opacity: 0.76;
+  stroke-width: 1.5;
+}
+
+.factory-room:hover .room-interior,
+.factory-room.active .room-interior {
+  opacity: 0.58;
+}
+
 .room-label {
   position: relative;
   z-index: 1;
@@ -1588,24 +1670,6 @@ button {
 
 .room-footer span:last-child {
   color: #ad701a;
-}
-
-.room-motif {
-  position: absolute;
-  right: 1rem;
-  bottom: 2.25rem;
-  width: clamp(128px, 18vw, 240px);
-  height: auto;
-  opacity: 0.34;
-  pointer-events: none;
-}
-
-.room-motif svg {
-  width: 100%;
-  height: auto;
-  fill: none;
-  stroke: var(--blueprint-ink);
-  stroke-width: 1.25;
 }
 
 .factory-console {
@@ -2031,8 +2095,9 @@ button {
     width: min(82%, 305px);
   }
 
-  .room-motif {
-    width: min(34vw, 152px);
+  .room-interior {
+    inset: 4.2rem 0 1.8rem;
+    opacity: 0.3;
   }
 
   .factory-cutaway .dossier {

@@ -14,7 +14,7 @@
 - `src/components/ContentFactory.jsx` - masthead, route index, five levels, room activation, floating/mobile dossier, and console.
 - `src/components/factory/BlueprintFrame.jsx` - decorative section-grid accents, measurements, level guides, and route highlighting.
 - `src/components/factory/RoomShell.jsx` - accessible room button rendered from factual room data.
-- `src/components/factory/RoomMotifs.jsx` - small decorative prototype motifs for selected room directions.
+- `src/components/factory/RoomMotifs.jsx` - eight decorative room-interior SVG systems keyed by formal room id.
 - `ModuleDossier` - selected-room inspector, declared within `ContentFactory`.
 
 ## Data Sources
@@ -40,10 +40,12 @@
 - Desktop floors are intentionally near viewport height so the cutaway is explored across multiple scroll intervals.
 - Desktop dossier is positioned as a floating inspector so it never claims permanent building width.
 - Mobile dossier remains in document flow immediately after its active room.
+- The building service shaft supplies cross-level ladder, pipe, and data marks to keep floors visually connected.
 
 ## SVG Boundary
 
 - `BlueprintFrame` spans the tall building as a non-interactive overlay.
+- `RoomMotifs` contributes non-interactive interior grids, equipment silhouettes, and symbolic room diagrams behind HTML labels.
 - SVG is limited to coordinate grid accents, dimension marks, technical annotations, workflow lines, and circular nodes.
 - Rooms, readable labels, interaction, status text, and the inspector remain HTML/CSS.
 - Every decorative SVG is `aria-hidden="true"` and receives no pointer events.

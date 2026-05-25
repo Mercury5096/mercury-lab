@@ -38,7 +38,7 @@ npm run build
 
 ## Current Status
 
-- Current working version: `v0.4`
+- Current working version: `v0.5`
 - `v0.1` baseline saved in Git commit `2930e03`
 - Current focus: refine the Content Factory into a richer modular SVG-driven visual system
 - Handoff state: see [docs/project-state.md](docs/project-state.md)

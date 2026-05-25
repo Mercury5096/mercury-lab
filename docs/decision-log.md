@@ -36,6 +36,14 @@
 - **Index activation:** selecting an index destination scrolls to its level and opens that room dossier.
 - **Preserved behavior:** Hero/Factory fusion, formal room names, `src/content.js`, floating desktop inspector, and in-flow mobile dossier continue unchanged.
 
+## v0.5 Interior Decisions
+
+- **Scope:** retain v0.4 scale and traversal; work only on making existing large rooms visually identifiable.
+- **Room interiors:** every room receives a decorative blueprint SVG layer with a grid, floor line, equipment silhouette, and room-specific workflow symbol.
+- **Density:** inactive interiors remain low opacity; active or hovered rooms reveal stronger linework without replacing readable HTML labels.
+- **Continuity:** enhance the existing service shaft with ladder, pipe, and data-line cues rather than adding another structural layout.
+- **Content protection:** room interiors are abstract diagrams only; they do not expose or imply unapproved portfolio/client assets.
+
 ## Technical Constraints
 
 - No new package is required.
@@ -46,6 +54,6 @@
 ## Change Note
 
 - **Date:** 2026-05-25
-- **Task:** Implement approved v0.4 Factory scale correction.
-- **Decision:** Prioritize viewport-scale floors and scroll exploration over additional visual detail.
-- **Next:** Request scale and traversal review before building more motifs or restyling downstream sections.
+- **Task:** Implement v0.5 functional interior pass after checkpointing v0.4.
+- **Decision:** Add restrained room identity and equipment silhouettes without changing accepted floor scale or approved content data.
+- **Next:** Checkpoint v0.5 as the baseline for the next-session density and room-recognition review.
