@@ -2,25 +2,28 @@
 
 ## Start Here
 
-Continue Mercury Lab from the current visual benchmark checkpoint:
+Continue Mercury Lab from the approved Cookbook and AI Workflow Lab desktop benchmark state:
 
 - Read this file and `docs/mercury-content-source.md` first.
-- Treat commit `251e13c` (`Create cookbook production floor visual benchmark`) as the current checkpoint.
-- Work room by room on interior content, spatial identity, prop integration, and line density.
+- The latest visual checkpoint is `16ffd10` (`Create AI workflow lab visual benchmark`); the Cookbook visual baseline began at `251e13c`.
+- Treat Cookbook and AI Workflow Lab as the two approved desktop benchmark rooms.
+- Next work should plan a contrasting third room, preferably `Story Archive & IP Office`, before changing the complete floor structure.
 - Do not modify `src/content.js` or the formal content source unless the user explicitly changes that instruction.
 
 Suggested opening request for a new window:
 
-> Please read `docs/handoff-next-session.md` and `docs/mercury-content-source.md`, then continue Mercury Lab from checkpoint `251e13c`. Focus on the Cookbook Production Floor visual benchmark and its next room-level refinements. Do not change formal content sources.
+> Please read `docs/handoff-next-session.md`, `docs/mercury-content-source.md`, and `docs/room-benchmark-workflow.md`, then continue Mercury Lab from visual checkpoint `16ffd10`. Use the approved Cookbook and AI Workflow Lab desktop benchmarks to plan Story Archive & IP Office as the next contrasting room. Do not change formal content sources.
 
 ## Snapshot
 
-- **Date:** 2026-05-25
-- **Current checkpoint:** `251e13c` - `Create cookbook production floor visual benchmark`
+- **Date:** 2026-05-26
+- **Latest visual checkpoint:** `16ffd10` - `Create AI workflow lab visual benchmark`
+- **Previous handoff checkpoint:** `c3088c2` - `Update handoff for cookbook visual benchmark`
+- **Cookbook visual baseline commit:** `251e13c` - `Create cookbook production floor visual benchmark`
 - **Previous v0.5 checkpoint:** `a14993d`
-- **Current focus:** develop a refined room-illustration system using Cookbook Production Floor as the first benchmark.
+- **Current focus:** use the two approved desktop benchmarks and the documented room workflow to prepare `Story Archive & IP Office`.
 - **Source of truth:** [mercury-content-source.md](mercury-content-source.md)
-- **Verified at checkpoint:** `npm run build` passed; repository was clean immediately after the commit.
+- **Verified in this working session:** `npm run build` passed after final AI placement refinement; desktop placement was inspected in local preview; formal content sources were not modified.
 
 ## User Direction
 
@@ -30,6 +33,7 @@ Suggested opening request for a new window:
 - Props already depicted in the base illustration may later be separated into interactive transparent assets.
 - Gold means interactive, active, or movable, but it is not restricted to simplified SVG icons.
 - Avoid defining one universal prop style for every room; each room may interpret gold interaction differently.
+- Desktop composition is the current priority; responsive treatment may later use one floor or department per view rather than compressing rich interaction layouts.
 
 ## Implemented Benchmark
 
@@ -37,17 +41,30 @@ Suggested opening request for a new window:
 
 - One full desktop room background in a pale blueprint / architectural illustration style.
 - Four transparent WebP visual props: recipe proofs, cooking pot, plated dish, and tripod camera.
-- A light system-interaction layer for route/focus feedback, separate from the visual props.
+- Four individual prop interactions: staggered proof stamps, pot rock-and-steam, plated-dish glints, and camera flash.
+- Props remain subdued when idle and become visually solid only while directly hovered or during their triggered interaction.
+- The tripod camera has been rescaled and grounded to photograph the plated dish from the right side of the styling table.
+- A light system-interaction layer for route/focus feedback remains separate from the visual props.
 - Desktop composition with the richer complete scene.
-- Tablet/mobile reuse the same base background with cropping and reduced prop density.
-- No default desktop-plus-mobile duplicate background maintenance strategy.
+- Existing tablet/mobile rules remain provisional and were not the target of the latest fine-tuning.
+
+`AI Workflow Lab` now establishes the second approved desktop room benchmark:
+
+- A new cool-blue architectural room background, installed as an optimized WebP fixed layer.
+- A full-width Level `00` presentation so research, prompt, central pipeline, review, and delivery areas are legible.
+- Five optional pointer-led exploration targets: `Research`, `Prompt`, `Generate`, `Review`, and `Deliver`.
+- The central `Generate` graph uses a controlled user-triggered pulse rather than ambient autonomous motion.
+- Desktop `Prompt` was relocated to its wall-mounted design board and `Generate` was raised to its central screen after visual review.
+- Pointer-led props remain acceptable as optional exploration while the factual dossier stays keyboard accessible.
 
 ## Asset And Component Map
 
 - `public/assets/factory/cookbook/background-desktop-v1.webp` - single base illustration for the Cookbook room.
 - `public/assets/factory/cookbook/props/*.webp` - transparent visual props intended to blend with the base illustration.
 - `src/components/factory/scenes/CookbookProductionScene.jsx` - Cookbook scene composition and interaction overlays.
-- `src/components/factory/RoomMotifs.jsx` - selects the Cookbook scene for its formal room id; other room motifs remain available.
+- `public/assets/factory/ai-workflow/background-desktop-v1.webp` - fixed AI Workflow Lab desktop illustration.
+- `src/components/factory/scenes/AiWorkflowLabScene.jsx` - AI Workflow Lab interaction prototype.
+- `src/components/factory/RoomMotifs.jsx` - selects dedicated Cookbook and AI Workflow Lab scenes; remaining room motifs stay schematic.
 - `src/styles.css` - scene layering, prop placement, route/focus accents, and responsive simplification.
 - `src/components/ContentFactory.jsx` - overall factory navigation, selection state, and dossier behavior.
 
@@ -63,11 +80,11 @@ Suggested opening request for a new window:
 
 ## Responsive Strategy
 
-- Desktop uses the complete base image and the richest prop arrangement.
-- Tablet/mobile first reuse that same image through scaling, crop, and `object-position` adjustments.
-- On smaller screens, prop density may be lowered and supporting effects may be hidden.
-- Create a mobile-focused crop only if a specific room becomes unreadable with the shared source image.
-- Do not assume every room needs two maintained background artworks.
+- Complete and approve desktop room composition first, because prop placement depends on fixed architectural surfaces.
+- Explore a desktop architecture in which each major visual floor presents one department/room, giving interactive objects sufficient readable scale.
+- Do not retrofit every remaining room immediately; prove the approach with one contrasting second benchmark before restructuring all floors.
+- Tablet/mobile strategy is now an open design question. A later compact experience may show one floor or one department at a time instead of squeezing the desktop cutaway and its precise prop hotspots.
+- Reuse shared assets when practical, but allow alternate crops or layouts only after the small-screen interaction model is chosen.
 
 ## Boundaries
 
@@ -79,34 +96,39 @@ Suggested opening request for a new window:
 
 ## Next Tasks
 
-### Priority 1: Refine Cookbook Props
+### Priority 1: Plan Story Archive & IP Office
 
-- Review the four current props in the running desktop scene for scale, placement, contrast, and stylistic integration.
-- Decide which props should be selectable, animated, or purely atmospheric.
-- Identify the first prop needing a custom regeneration pass, likely the tripod camera or cooking pot.
-- Reduce any remaining "sticker" appearance by adjusting color, edge softness, opacity, blend behavior, or asset rendering.
+- Request or review a composition reference that avoids identifiable real covers, publishers, or protected works.
+- Specify the room story, fixed archive/reading/collaboration zones, and optional gold exploration layers.
+- Test manuscripts, archive tabs, handoff folders, or rights-review stamps as a third interaction language.
 
-### Priority 2: Establish A Reusable Room Workflow
+### Priority 2: Use The Repeatable Room Workflow
 
-- Record a compact checklist for each new room: purpose, main work zones, fixed architecture, candidate interactive props, and desired density.
-- Keep system-interaction graphics separate from illustrated visual props.
-- Determine a consistent asset naming convention after one more prop refinement pass confirms the pattern.
+- Follow [room-benchmark-workflow.md](room-benchmark-workflow.md), now supported by Cookbook and AI Lab.
+- Continue treating pointer-led object effects as optional exploration unless any target begins carrying unique required information.
+- Preserve the wall-board `Prompt` and central-screen `Generate` treatment as the accepted AI Lab placement baseline.
 
-### Priority 3: Choose The Next Room
+### Priority 3: Decide Desktop Floor Structure
 
-- After Cookbook props feel convincing, select one contrasting room for a second visual benchmark.
-- A good comparison candidate should test whether the approach works outside a kitchen/studio space, such as AI Lab, Editorial Room, or Archive.
-- Design that room's interaction metaphor independently: data nodes, proof marks, or archive tabs rather than recycled kitchen props.
+- After the third room planning pass, compare the current mixed-room floors against a one-department-per-floor desktop model.
+- Draft the revised floor list for all eight approved formal rooms without changing room names or public content.
+- Decide whether the side route remains a chronological eight-room index while the building gains eight larger visual floors.
+
+### Priority 4: Responsive Direction After Desktop Proof
+
+- Postpone precision responsive placement while desktop room architecture is still being decided.
+- After two desktop room benchmarks, prototype a compact mode showing one department at a time and compare it with scaled full-building navigation.
+- Only then decide whether mobile needs alternate background crops, different prop density, or a separate navigation treatment.
 
 ### Later Tasks
 
-- Review tablet/mobile cropping only after the desktop Cookbook scene is visually settled.
-- Consider a Mercury Lab handoff skill after this workflow has been used once more and its recurring instructions are confirmed.
-- Harmonize downstream site sections only after the room illustration system is stable.
+- Consider a Mercury Lab handoff skill after the workflow has been used on a second room.
+- Harmonize downstream site sections only after the room illustration system and floor structure are stable.
 
 ## Verification Checklist For Next Session
 
-- Open the local preview and inspect Cookbook at desktop size before making visual decisions.
-- Confirm tablet/mobile still use the single base background and simplified props.
+- Open the local preview and use Cookbook and AI Lab as visual comparisons while planning the third room.
+- If either accepted benchmark is changed, re-check its prop targets and return-to-idle behavior.
+- Confirm whether the desktop one-department-per-floor proposal is accepted before changing any remaining floor assignments.
 - Run `npm run build` after changes.
 - Before making any checkpoint, confirm formal content sources were not modified.
