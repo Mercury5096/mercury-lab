@@ -15,7 +15,7 @@ const roomFunctions = {
   "operation-control-room": "Research Engine",
   "commerce-visual-line": "Design Studio",
   "multimedia-workshop": "Case Files",
-  "ai-workflow-lab": "Archive / Protocol",
+  "ai-workflow-lab": "Research to Output",
 };
 
 const floors = [

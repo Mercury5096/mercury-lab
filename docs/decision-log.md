@@ -44,6 +44,44 @@
 - **Continuity:** enhance the existing service shaft with ladder, pipe, and data-line cues rather than adding another structural layout.
 - **Content protection:** room interiors are abstract diagrams only; they do not expose or imply unapproved portfolio/client assets.
 
+## Cookbook Desktop Benchmark Decisions
+
+- **Benchmark role:** `Cookbook Production Floor` is the first rich illustrated desktop room benchmark and is close to approved for desktop presentation.
+- **Separated visual layers:** the architectural room background remains a cool blueprint illustration; four warm transparent props remain independent interaction layers.
+- **Interaction behavior:** recipe proofs, cooking pot, plated dish, and tripod camera each respond independently to pointer hover and click rather than brightening together with the full room.
+- **Idle and focus treatment:** interactive props remain translucent while idle and become solid only during direct exploration or their triggered animation.
+- **Prop actions:** recipe proofs receive staggered proof stamps; the pot rocks before steaming; the plated dish receives staggered glints; the camera produces a flash.
+- **Spatial credibility:** interactive props must be positioned on believable work surfaces or floors; the tripod camera is scaled to photograph the plated dish from beside its table.
+- **Current scope:** desktop interaction placement is being approved first. Existing narrow-screen placement is provisional until the overall room/floor model is settled.
+
+## Candidate Next Direction
+
+- **Proposal under review:** consider presenting one major department per visual floor on desktop, rather than asking richly illustrated interactive rooms to share a level.
+- **Reason:** dedicated floor height gives background architecture, interactive props, hover targets, and dossier overlap more predictable space.
+- **Do not pre-commit:** do not rebuild all remaining floors yet. Build one contrasting second room benchmark first and use it to confirm that the Cookbook workflow transfers beyond kitchen/studio objects.
+- **Responsive follow-up:** after two desktop benchmarks, evaluate a compact layout that presents one department at a time instead of scaling the full desktop building with precision-positioned props.
+
+## AI Workflow Lab Benchmark Selection
+
+- **Date:** 2026-05-26
+- **Selected second benchmark:** `AI Workflow Lab`, approved for planning after review of the supplied room reference image.
+- **Purpose:** test the illustrated-room approach on an abstract human-in-the-loop research workflow contrasting with Cookbook's physical production workflow.
+- **Working sequence:** research context, prompt design, assisted generation, human review/refinement, and output/delivery.
+- **Implementation boundary:** design and validate this room on its existing dedicated level before deciding whether the whole desktop factory moves to one department per floor.
+- **Reference boundary:** the supplied AI Workflow Lab reference guides design only and is not a public product asset.
+- **Design brief:** see [ai-workflow-lab-design-brief.md](ai-workflow-lab-design-brief.md).
+- **Initial integration:** the desktop fixed background was installed for visual review on
+  expanded Level `00` before interaction layers were prototyped.
+- **Interaction prototype:** five direct-trigger CSS/SVG workflow targets now test the spatial
+  reading and human-review behavior before committing to separate generated prop images.
+- **Exploration access boundary:** illustrated props may remain pointer-led when they add
+  optional desktop exploration only; approved factual content and dossier access must remain
+  keyboard available. Revisit prop-level keyboard interaction if any prop becomes essential content.
+- **Position refinement:** desktop `Prompt` was relocated to the wall-mounted prompt design
+  board above its computer, and `Generate` was raised to align with the central screen.
+- **Reusable workflow:** the two accepted room benchmarks now support documenting a repeatable
+  room-design process; see [room-benchmark-workflow.md](room-benchmark-workflow.md).
+
 ## Technical Constraints
 
 - No new package is required.
@@ -57,3 +95,12 @@
 - **Task:** Implement v0.5 functional interior pass after checkpointing v0.4.
 - **Decision:** Add restrained room identity and equipment silhouettes without changing accepted floor scale or approved content data.
 - **Next:** Checkpoint v0.5 as the baseline for the next-session density and room-recognition review.
+
+## Cookbook Refinement Change Note
+
+- **Date:** 2026-05-25
+- **Task:** Refine the Cookbook desktop benchmark through spatially grounded props and individual interactions.
+- **Decision:** Treat Cookbook as near-complete for desktop review and use it to evaluate a larger one-department-per-floor direction.
+- **Changed:** prop grounding, individual hover materialization, click-triggered proof/steam/glint/flash effects, and camera scale/placement for believable food photography.
+- **Boundary:** `src/content.js` and `docs/mercury-content-source.md` remain unchanged.
+- **Next:** review and checkpoint Cookbook, then choose one contrasting second room before restructuring the complete factory.

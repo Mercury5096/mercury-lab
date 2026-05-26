@@ -35,10 +35,9 @@ export default function BlueprintFrame({ activeRoute }) {
         <text x="878" y="1212">LEVEL 00</text>
       </g>
       <g className="section-annotations">
-        <path d="M121 138V111H254M750 123H866V176M124 1287V1320H278" />
+        <path d="M121 138V111H254M750 123H866V176" />
         <text x="126" y="103">UPPER PLANT / PUBLISHING INPUT</text>
         <text x="742" y="114">SERVICE SHAFT</text>
-        <text x="126" y="1338">ASSISTED RESEARCH TERMINAL</text>
       </g>
       <g className={`section-route section-route--publishing ${activeRoute === "publishing" ? "is-active" : ""}`}>
         <path d="M236 298H498V490H236" />
