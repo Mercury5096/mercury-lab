@@ -20,24 +20,39 @@ const roomFunctions = {
 
 const floors = [
   {
-    id: "04",
-    label: "Publishing Foundation",
-    rooms: ["print-engine-room", "editorial-kitchen"],
+    id: "07",
+    label: "Print Foundation",
+    rooms: ["print-engine-room"],
   },
   {
-    id: "03",
-    label: "Production Deck",
+    id: "06",
+    label: "Editorial Production",
+    rooms: ["editorial-kitchen"],
+  },
+  {
+    id: "05",
+    label: "Cookbook Production",
     rooms: ["cookbook-production-floor"],
   },
   {
+    id: "04",
+    label: "Story Archive",
+    rooms: ["story-archive-ip-office"],
+  },
+  {
+    id: "03",
+    label: "Operations Control",
+    rooms: ["operation-control-room"],
+  },
+  {
     id: "02",
-    label: "Narrative and Control",
-    rooms: ["story-archive-ip-office", "operation-control-room"],
+    label: "Commerce Visuals",
+    rooms: ["commerce-visual-line"],
   },
   {
     id: "01",
-    label: "Visual and Media Line",
-    rooms: ["commerce-visual-line", "multimedia-workshop"],
+    label: "Multimedia Practice",
+    rooms: ["multimedia-workshop"],
   },
   {
     id: "00",

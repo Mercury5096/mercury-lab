@@ -11,7 +11,7 @@
 ## Main Components
 
 - `src/App.jsx` - page composition and non-factory sections; supplies approved identity copy to the opening Factory.
-- `src/components/ContentFactory.jsx` - masthead, route index, five levels, room activation, floating/mobile dossier, and console.
+- `src/components/ContentFactory.jsx` - masthead, route index, eight department levels, room activation, floating/mobile dossier, and console.
 - `src/components/factory/BlueprintFrame.jsx` - decorative section-grid accents, measurements, level guides, and route highlighting.
 - `src/components/factory/RoomShell.jsx` - accessible room button rendered from factual room data.
 - `src/components/factory/RoomMotifs.jsx` - eight decorative room-interior SVG systems keyed by formal room id.
@@ -32,7 +32,7 @@
 
 ## Factory Cutaway System
 
-- `floors` inside `ContentFactory` assigns the eight factual rooms to five visual building levels; this is visual metadata only.
+- `floors` inside `ContentFactory` assigns the eight factual rooms to eight dedicated visual building levels; this is visual metadata only.
 - `roomFunctions` supplies exploratory navigation language approved for technical labeling, separate from formal room names.
 - HTML/CSS provides building structure: masthead, roofline, level slabs, bays, room panels, service shaft, sticky route rail, and status console.
 - Selection state controls room highlight, corresponding SVG route group, and a single on-demand dossier.

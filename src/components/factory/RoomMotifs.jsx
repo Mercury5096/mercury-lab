@@ -1,5 +1,6 @@
 import CookbookProductionScene from "./scenes/CookbookProductionScene";
 import AiWorkflowLabScene from "./scenes/AiWorkflowLabScene";
+import StoryArchiveScene from "./scenes/StoryArchiveScene";
 
 function InteriorGrid() {
   return (
@@ -190,6 +191,14 @@ export default function RoomInterior({ roomId }) {
     return (
       <span className="room-interior room-interior--ai" aria-hidden="true">
         <AiWorkflowLabScene />
+      </span>
+    );
+  }
+
+  if (roomId === "story-archive-ip-office") {
+    return (
+      <span className="room-interior room-interior--story" aria-hidden="true">
+        <StoryArchiveScene />
       </span>
     );
   }

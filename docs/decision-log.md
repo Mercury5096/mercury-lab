@@ -54,12 +54,28 @@
 - **Spatial credibility:** interactive props must be positioned on believable work surfaces or floors; the tripod camera is scaled to photograph the plated dish from beside its table.
 - **Current scope:** desktop interaction placement is being approved first. Existing narrow-screen placement is provisional until the overall room/floor model is settled.
 
-## Candidate Next Direction
+## Dedicated Desktop Floor Decision
 
-- **Proposal under review:** consider presenting one major department per visual floor on desktop, rather than asking richly illustrated interactive rooms to share a level.
-- **Reason:** dedicated floor height gives background architecture, interactive props, hover targets, and dossier overlap more predictable space.
-- **Do not pre-commit:** do not rebuild all remaining floors yet. Build one contrasting second room benchmark first and use it to confirm that the Cookbook workflow transfers beyond kitchen/studio objects.
-- **Responsive follow-up:** after two desktop benchmarks, evaluate a compact layout that presents one department at a time instead of scaling the full desktop building with precision-positioned props.
+- **Date:** 2026-05-26
+- **Accepted structure:** expand the desktop factory from five mixed visual levels to eight dedicated department floors while preserving approved room order and formal content.
+- **Floor sequence:** `07` Print Engine Room, `06` Editorial Kitchen, `05` Cookbook Production Floor, `04` Story Archive & IP Office, `03` Operation Control Room, `02` Commerce Visual Line, `01` Multimedia Workshop, and `00` AI Workflow Lab.
+- **Reason:** dedicated floor height gives backgrounds, interactive props, hover targets, and dossier overlap a stable composition scale for the remaining room benchmarks.
+- **Boundary:** this structural revision does not change `src/content.js`, `docs/mercury-content-source.md`, factual copy, or rights status.
+- **Responsive follow-up:** evaluate a compact layout that presents one department at a time instead of scaling the full desktop building with precision-positioned props.
+
+## Story Archive Benchmark Planning
+
+- **Date:** 2026-05-26
+- **Selected third benchmark:** `Story Archive & IP Office`, to be developed on dedicated `Level 04` after the accepted eight-floor structural revision.
+- **Purpose:** test archive shelves, story development surfaces, creator handoff, and rights-aware handling as a quiet paper-based interaction language distinct from Cookbook and AI Workflow Lab.
+- **Reference boundary:** the supplied archive-office image guides spatial composition only and is not a public product asset.
+- **Content boundary:** use generic manuscript and review materials only; do not show identifiable covers, publishers, commissioned imagery, contracts, or completed rights-clearance implications.
+- **Working interaction sequence:** `Archive`, `Develop`, `Review`, and `Protect`.
+- **Design brief:** see [story-archive-ip-office-design-brief.md](story-archive-ip-office-design-brief.md).
+- **Initial interaction prototype:** four direct-trigger targets are installed for visual
+  review; `Archive`, `Develop`, and `Protect` use lightweight interface signals, while the
+  central `Review` surface sequences a transparent generic manuscript-page asset through six
+  positions and two passes before returning to idle.
 
 ## AI Workflow Lab Benchmark Selection
 
