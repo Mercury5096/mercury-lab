@@ -77,6 +77,17 @@
   central `Review` surface sequences a transparent generic manuscript-page asset through six
   positions and two passes before returning to idle.
 
+## 2026-05-29 Room Foundation Expansion
+
+- **Scope:** extend the eight-floor desktop factory foundation by adding first-pass illustrated backgrounds and basic interaction scaffolds for `Operation Control Room`, `Commerce Visual Line`, and `Multimedia Workshop`.
+- **Current status:** six of eight departments now have dedicated illustrated scene treatments: Cookbook, Story Archive, Operation, Commerce, Multimedia, and AI Workflow Lab.
+- **Content boundary:** no formal public copy, room order, rights status, or source-of-truth wording was changed. `src/content.js` and `docs/mercury-content-source.md` remain protected.
+- **Operation Control Room:** accepted as an original blue-floor room on Level `03`, using a command-room background and four basic coordination targets: `Intake`, `Assign`, `Track`, and `Deliver`.
+- **Commerce Visual Line:** accepted as a grey-blue Level `02` visual production line using generic posters, typography samples, logo marks, video frames, packaging/product mockups, color cards, and export surfaces. It must not show GSK, real brands, recognizable products, real platform UI, medicine, or client materials.
+- **Multimedia Workshop:** accepted as an original blue Level `01` mixed-media prototype studio using storyboard/script materials, web/video/motion screens, 3D/prototype/game-test and listening references, and physical media materials.
+- **Interaction decision:** new room interactions are intentionally basic placeholders until all eight room foundations are present. The user noted they feel somewhat stiff; defer a dedicated interaction-polish pass until `Print Engine Room` and `Editorial Kitchen` are also scaffolded.
+- **Remaining room foundations:** `Editorial Kitchen` / Level `06` / grey-blue, and `Print Engine Room` / Level `07` / original blue.
+
 ## AI Workflow Lab Benchmark Selection
 
 - **Date:** 2026-05-26

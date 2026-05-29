@@ -2,30 +2,32 @@
 
 ## Start Here
 
-Continue Mercury Lab from the approved Cookbook, AI Workflow Lab, and Story Archive desktop benchmark state:
+Continue Mercury Lab from the six-room desktop foundation state:
 
 - Read this file and `docs/mercury-content-source.md` first.
-- The latest visual checkpoint is `54b725b` (`Create story archive visual benchmark`); the Story Archive implementation builds on `16ffd10`.
-- Treat Cookbook, AI Workflow Lab, and Story Archive as reviewed desktop benchmark rooms.
+- The latest committed visual checkpoint is `54b725b` (`Create story archive visual benchmark`).
+- Today's uncommitted work adds first-pass desktop backgrounds and basic interaction scaffolds for `Operation Control Room`, `Commerce Visual Line`, and `Multimedia Workshop`.
+- Treat Cookbook, AI Workflow Lab, and Story Archive as reviewed desktop benchmark rooms; treat Operation, Commerce, and Multimedia as accepted visual directions with intentionally basic interactions.
 - The desktop factory now uses eight full-width department floors with alternating blue and grey-blue floor treatment.
-- Next work should either refine the accepted Story Archive interaction assets or select the next contrasting department room.
+- Next work should complete the remaining two desktop room foundations: `Editorial Kitchen` on Level `06` and `Print Engine Room` on Level `07`.
 - Do not modify `src/content.js` or the formal content source unless the user explicitly changes that instruction.
 
 Suggested opening request for a new window:
 
-> Please read `docs/handoff-next-session.md`, `docs/mercury-content-source.md`, `docs/room-benchmark-workflow.md`, and `docs/story-archive-ip-office-design-brief.md`, then continue Mercury Lab from visual checkpoint `54b725b`. Preserve the accepted eight-floor desktop structure and Story Archive interactions while deciding the next refinement or room benchmark. Do not change formal content sources, and give a visible progress update before any longer production pass.
+> Please read `docs/handoff-next-session.md`, `docs/mercury-content-source.md`, and `docs/room-benchmark-workflow.md`, then continue Mercury Lab from committed checkpoint `54b725b` plus the uncommitted six-room foundation work from 2026-05-29. Preserve the accepted eight-floor desktop structure, do not change formal content sources, and continue by planning `Editorial Kitchen` or `Print Engine Room` before any interaction-polish pass.
 
 ## Snapshot
 
-- **Date:** 2026-05-26
-- **Latest visual checkpoint:** `54b725b` - `Create story archive visual benchmark`
+- **Date:** 2026-05-29
+- **Latest committed visual checkpoint:** `54b725b` - `Create story archive visual benchmark`
 - **Previous handoff checkpoint:** `f1085fd` - `Update handoff after AI workflow benchmark`
 - **AI Workflow Lab visual checkpoint:** `16ffd10` - `Create AI workflow lab visual benchmark`
 - **Cookbook visual baseline commit:** `251e13c` - `Create cookbook production floor visual benchmark`
 - **Previous v0.5 checkpoint:** `a14993d`
-- **Current focus:** preserve the reviewed `Story Archive & IP Office` desktop prototype and choose the next bounded iteration without altering formal content.
+- **Current focus:** complete the eight desktop room foundations before returning for interaction refinement.
 - **Source of truth:** [mercury-content-source.md](mercury-content-source.md)
-- **Verified in this working session:** `npm run build` passed after Story Archive WebP integration and final manuscript-page contrast adjustment; the user reviewed the desktop room in local preview; formal content sources were not modified.
+- **Uncommitted work in current working tree:** Operation, Commerce, and Multimedia scene components, WebP backgrounds, and CSS interaction scaffolds.
+- **Verified in this working session:** `npm run build` passed after Multimedia integration; browser checks confirmed Operation, Commerce, and Multimedia backgrounds and target layers load; formal content sources were not modified.
 
 ## User Direction
 
@@ -71,6 +73,28 @@ Suggested opening request for a new window:
 - Archive and Protect idle cues were strengthened for discoverability; the Review page brightness was reduced after visual review so its drawn detail remains legible.
 - These interactions remain optional visual exploration; no formal room copy, publication claim, or rights status was changed.
 
+`Operation Control Room` now has a first-pass desktop foundation:
+
+- A blue architectural operations-room background was generated from the user's reference direction, then revised because the first draft was too pale.
+- It occupies full-width Level `03` using the original blue floor family.
+- The room emphasizes central command desk, workflow boards, resource shelving, and delivery/status surfaces.
+- Four basic pointer-led targets are installed: `Intake`, `Assign`, `Track`, and `Deliver`.
+- The user accepted the overall visual direction while noting that interactions across the new rooms are still basic and should be improved later.
+
+`Commerce Visual Line` now has a first-pass desktop foundation:
+
+- A grey-blue visual-production background is installed on Level `02`.
+- The accepted direction is product-visual sampling and adaptation rather than information-board workflow: abstract posters, typography samples, generic logo marks, video frames, product mockups, packaging boxes, color cards, and export surfaces.
+- Four basic pointer-led targets are installed: `Sample`, `Compose`, `Adapt`, and `Export`.
+- The room deliberately uses generic, non-branded objects only; no GSK, real platform, product, medicine, or client imagery is displayed.
+
+`Multimedia Workshop` now has a first-pass desktop foundation:
+
+- A blue mixed-media prototype-studio background is installed on Level `01`.
+- The room emphasizes storyboard/script materials, web and video screens, motion/animation timelines, 3D/prototype testing, game test/listening equipment, sketchbooks, storage, and physical media materials.
+- Four basic pointer-led targets are installed: `Storyboard`, `Edit`, `Prototype`, and `Test`.
+- The user approved the visual direction; the interaction layer remains intentionally simple until the remaining rooms are completed.
+
 ## Asset And Component Map
 
 - `public/assets/factory/cookbook/background-desktop-v1.webp` - single base illustration for the Cookbook room.
@@ -81,7 +105,13 @@ Suggested opening request for a new window:
 - `public/assets/factory/story-archive/background-desktop-v1.webp` - fixed Story Archive desktop illustration.
 - `public/assets/factory/story-archive/props/review-page-v1.webp` - transparent generic manuscript page used in the central sequence.
 - `src/components/factory/scenes/StoryArchiveScene.jsx` - Story Archive direct-trigger interaction prototype.
-- `src/components/factory/RoomMotifs.jsx` - selects dedicated Cookbook, AI Workflow Lab, and Story Archive scenes; remaining room motifs stay schematic.
+- `public/assets/factory/operation/background-desktop-v1.webp` - fixed Operation Control Room desktop illustration.
+- `src/components/factory/scenes/OperationControlScene.jsx` - Operation basic interaction scaffold.
+- `public/assets/factory/commerce/background-desktop-v1.webp` - fixed Commerce Visual Line desktop illustration.
+- `src/components/factory/scenes/CommerceVisualScene.jsx` - Commerce basic interaction scaffold.
+- `public/assets/factory/multimedia/background-desktop-v1.webp` - fixed Multimedia Workshop desktop illustration.
+- `src/components/factory/scenes/MultimediaWorkshopScene.jsx` - Multimedia basic interaction scaffold.
+- `src/components/factory/RoomMotifs.jsx` - selects dedicated scenes for six rooms; Print and Editorial still use schematic SVG interiors.
 - `src/components/factory/BlueprintFrame.jsx` - eight-level desktop frame and route guides.
 - `src/styles.css` - scene layering, prop placement, route/focus accents, and responsive simplification.
 - `src/components/ContentFactory.jsx` - overall factory navigation, selection state, and dossier behavior.
@@ -101,7 +131,7 @@ Suggested opening request for a new window:
 
 - Complete and approve desktop room composition first, because prop placement depends on fixed architectural surfaces.
 - Preserve the accepted desktop architecture in which each visual floor presents one department/room, giving interactive objects sufficient readable scale.
-- Continue building remaining rooms gradually; only three departments currently have rich illustrated scene treatments.
+- Continue building remaining rooms gradually; six departments currently have illustrated scene treatments.
 - Tablet/mobile strategy is now an open design question. A later compact experience may show one floor or one department at a time instead of squeezing the desktop cutaway and its precise prop hotspots.
 - Reuse shared assets when practical, but allow alternate crops or layouts only after the small-screen interaction model is chosen.
 
@@ -115,18 +145,22 @@ Suggested opening request for a new window:
 
 ## Next Tasks
 
-### Priority 1: Review Story Archive Follow-up
-
-- Preserve the accepted fixed background, alternating floor palette, and central two-pass manuscript-page sequence.
-- If additional illustrated props are requested, consider Archive or Protect only after a focused desktop visual review; their current cues were acceptable at checkpoint time.
-- Inspect the Story Archive room with the dossier open before any further placement refinement, particularly around the right-side secure records area.
-
-### Priority 2: Select The Next Room Benchmark
+### Priority 1: Complete Remaining Room Foundations
 
 - Use [room-benchmark-workflow.md](room-benchmark-workflow.md), now supported by Cookbook, AI Lab, and Story Archive.
 - Continue treating pointer-led object effects as optional exploration unless any target begins carrying unique required information.
-- Select a fourth room whose imagery and interaction problem contrasts with the three completed benchmarks; do not produce assets for multiple rooms at once.
+- Build the remaining two room foundations one at a time:
+  - `Editorial Kitchen` / Level `06` / grey-blue floor.
+  - `Print Engine Room` / Level `07` / original blue floor.
 - Preserve the existing formal room order, wording, and rights constraints while planning it.
+- Do not change `src/content.js` or `docs/mercury-content-source.md`.
+
+### Priority 2: Interaction Upgrade Pass
+
+- The user explicitly noticed that Operation, Commerce, and Multimedia interactions are visually useful but still somewhat stiff.
+- Defer polish until all eight rooms have at least a background and basic interaction scaffold.
+- Later upgrade each room's interaction language according to its material identity rather than forcing one universal animation style.
+- Possible focus: make Commerce more tactile and design-sampling oriented, Multimedia more motion/prototype/test oriented, and Operation more coordination/control oriented.
 
 ### Priority 3: Responsive Direction After Desktop Proof
 
@@ -141,8 +175,9 @@ Suggested opening request for a new window:
 
 ## Verification Checklist For Next Session
 
-- Open the local preview and use Cookbook, AI Lab, and Story Archive as visual comparisons when planning the next room.
+- Open the local preview and use the six illustrated rooms as visual comparisons when planning the next room.
 - If an accepted benchmark is changed, re-check its prop targets and return-to-idle behavior; for Story Archive specifically, verify the six-page/two-pass Review sequence.
+- For Operation, Commerce, and Multimedia, confirm the background loads and basic target labels still appear after any CSS edits.
 - Preserve the accepted eight dedicated desktop floors and alternating palette unless a later design review explicitly revises them.
 - Run `npm run build` after changes.
 - Before making any checkpoint, confirm formal content sources were not modified.

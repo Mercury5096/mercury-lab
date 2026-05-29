@@ -1,6 +1,9 @@
 import CookbookProductionScene from "./scenes/CookbookProductionScene";
 import AiWorkflowLabScene from "./scenes/AiWorkflowLabScene";
 import StoryArchiveScene from "./scenes/StoryArchiveScene";
+import OperationControlScene from "./scenes/OperationControlScene";
+import CommerceVisualScene from "./scenes/CommerceVisualScene";
+import MultimediaWorkshopScene from "./scenes/MultimediaWorkshopScene";
 
 function InteriorGrid() {
   return (
@@ -199,6 +202,30 @@ export default function RoomInterior({ roomId }) {
     return (
       <span className="room-interior room-interior--story" aria-hidden="true">
         <StoryArchiveScene />
+      </span>
+    );
+  }
+
+  if (roomId === "operation-control-room") {
+    return (
+      <span className="room-interior room-interior--operation" aria-hidden="true">
+        <OperationControlScene />
+      </span>
+    );
+  }
+
+  if (roomId === "commerce-visual-line") {
+    return (
+      <span className="room-interior room-interior--commerce" aria-hidden="true">
+        <CommerceVisualScene />
+      </span>
+    );
+  }
+
+  if (roomId === "multimedia-workshop") {
+    return (
+      <span className="room-interior room-interior--multimedia" aria-hidden="true">
+        <MultimediaWorkshopScene />
       </span>
     );
   }
