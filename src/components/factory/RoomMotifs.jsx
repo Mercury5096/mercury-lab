@@ -1,6 +1,8 @@
 import CookbookProductionScene from "./scenes/CookbookProductionScene";
+import PrintEngineScene from "./scenes/PrintEngineScene";
 import AiWorkflowLabScene from "./scenes/AiWorkflowLabScene";
 import StoryArchiveScene from "./scenes/StoryArchiveScene";
+import EditorialKitchenScene from "./scenes/EditorialKitchenScene";
 import OperationControlScene from "./scenes/OperationControlScene";
 import CommerceVisualScene from "./scenes/CommerceVisualScene";
 import MultimediaWorkshopScene from "./scenes/MultimediaWorkshopScene";
@@ -182,6 +184,14 @@ const interiors = {
 };
 
 export default function RoomInterior({ roomId }) {
+  if (roomId === "print-engine-room") {
+    return (
+      <span className="room-interior room-interior--print" aria-hidden="true">
+        <PrintEngineScene />
+      </span>
+    );
+  }
+
   if (roomId === "cookbook-production-floor") {
     return (
       <span className="room-interior room-interior--cookbook" aria-hidden="true">
@@ -202,6 +212,14 @@ export default function RoomInterior({ roomId }) {
     return (
       <span className="room-interior room-interior--story" aria-hidden="true">
         <StoryArchiveScene />
+      </span>
+    );
+  }
+
+  if (roomId === "editorial-kitchen") {
+    return (
+      <span className="room-interior room-interior--editorial" aria-hidden="true">
+        <EditorialKitchenScene />
       </span>
     );
   }

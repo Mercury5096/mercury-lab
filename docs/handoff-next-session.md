@@ -2,32 +2,32 @@
 
 ## Start Here
 
-Continue Mercury Lab from the six-room desktop foundation state:
+Continue Mercury Lab from the completed eight-room desktop foundation state:
 
 - Read this file and `docs/mercury-content-source.md` first.
-- The latest committed visual checkpoint is `54b725b` (`Create story archive visual benchmark`).
-- Today's uncommitted work adds first-pass desktop backgrounds and basic interaction scaffolds for `Operation Control Room`, `Commerce Visual Line`, and `Multimedia Workshop`.
-- Treat Cookbook, AI Workflow Lab, and Story Archive as reviewed desktop benchmark rooms; treat Operation, Commerce, and Multimedia as accepted visual directions with intentionally basic interactions.
+- The latest committed checkpoint before this handoff is `e851bba` (`Create three room foundation scenes`).
+- Today's work adds first-pass desktop backgrounds and basic interaction scaffolds for `Editorial Kitchen` and `Print Engine Room`, completing illustrated foundations for all eight rooms.
+- Treat Cookbook, AI Workflow Lab, and Story Archive as reviewed desktop benchmark rooms; treat Operation, Commerce, Multimedia, Editorial, and Print as accepted or near-accepted visual directions with intentionally basic interactions.
 - The desktop factory now uses eight full-width department floors with alternating blue and grey-blue floor treatment.
-- Next work should complete the remaining two desktop room foundations: `Editorial Kitchen` on Level `06` and `Print Engine Room` on Level `07`.
+- Next work should pause room creation and review the full project structure, handoff clarity, interaction upgrade plan, and responsive strategy before beginning the detailed animation pass.
 - Do not modify `src/content.js` or the formal content source unless the user explicitly changes that instruction.
 
 Suggested opening request for a new window:
 
-> Please read `docs/handoff-next-session.md`, `docs/mercury-content-source.md`, and `docs/room-benchmark-workflow.md`, then continue Mercury Lab from committed checkpoint `54b725b` plus the uncommitted six-room foundation work from 2026-05-29. Preserve the accepted eight-floor desktop structure, do not change formal content sources, and continue by planning `Editorial Kitchen` or `Print Engine Room` before any interaction-polish pass.
+> Please read `docs/handoff-next-session.md`, `docs/mercury-content-source.md`, and `docs/room-benchmark-workflow.md`, then continue Mercury Lab from the completed eight-room desktop foundation state. Preserve the accepted eight-floor desktop structure, do not change formal content sources, and begin by reviewing project organization, handoff clarity, and the interaction-upgrade plan before modifying room animations.
 
 ## Snapshot
 
-- **Date:** 2026-05-29
-- **Latest committed visual checkpoint:** `54b725b` - `Create story archive visual benchmark`
+- **Date:** 2026-06-04
+- **Latest committed checkpoint before handoff update:** `e851bba` - `Create three room foundation scenes`
 - **Previous handoff checkpoint:** `f1085fd` - `Update handoff after AI workflow benchmark`
 - **AI Workflow Lab visual checkpoint:** `16ffd10` - `Create AI workflow lab visual benchmark`
 - **Cookbook visual baseline commit:** `251e13c` - `Create cookbook production floor visual benchmark`
 - **Previous v0.5 checkpoint:** `a14993d`
-- **Current focus:** complete the eight desktop room foundations before returning for interaction refinement.
+- **Current focus:** all eight desktop room foundations are now present; next focus is project review, cleanup planning, and interaction refinement strategy.
 - **Source of truth:** [mercury-content-source.md](mercury-content-source.md)
-- **Uncommitted work in current working tree:** Operation, Commerce, and Multimedia scene components, WebP backgrounds, and CSS interaction scaffolds.
-- **Verified in this working session:** `npm run build` passed after Multimedia integration; browser checks confirmed Operation, Commerce, and Multimedia backgrounds and target layers load; formal content sources were not modified.
+- **Uncommitted work before checkpoint:** Editorial and Print scene components, WebP backgrounds, CSS interaction scaffolds, and this handoff update.
+- **Verified in this working session:** `npm run build` passed after Editorial integration and again after Print integration; browser checks confirmed Editorial and Print backgrounds and key target layers load; formal content sources were not modified.
 
 ## User Direction
 
@@ -40,6 +40,7 @@ Suggested opening request for a new window:
 - Avoid defining one universal prop style for every room; each room may interpret gold interaction differently.
 - Desktop composition is the current priority; responsive treatment may later use one floor or department per view rather than compressing rich interaction layouts.
 - For work likely to take longer than a brief edit, give a progress/milestone update so the user knows the preview has not stalled.
+- Current Operation, Commerce, Multimedia, Editorial, and Print interactions are intentionally rough foundation scaffolds. The user expects a later pass with finer, more material-specific micro-animations closer in polish to the Cookbook benchmark.
 
 ## Implemented Benchmark
 
@@ -95,6 +96,20 @@ Suggested opening request for a new window:
 - Four basic pointer-led targets are installed: `Storyboard`, `Edit`, `Prototype`, and `Test`.
 - The user approved the visual direction; the interaction layer remains intentionally simple until the remaining rooms are completed.
 
+`Editorial Kitchen` now has a first-pass desktop foundation:
+
+- A grey-blue editorial-production background is installed on Level `06`, aligned with the alternating grey-blue floor family.
+- The room combines food/lifestyle editorial workflow, blank page spreads, clipping boards, layout tables, review desks, shelves, and neutral food-prep references without implying a complete archive.
+- Four basic pointer-led targets are installed: `Draft`, `Layout`, `Edit`, and `Release`.
+- The background uses generic blank or abstract page materials only; no real magazine covers, publishers, client materials, or readable publication text are displayed.
+
+`Print Engine Room` now has a first-pass desktop foundation:
+
+- A blue print-production background is installed on Level `07`, aligned with the original blue floor family.
+- The first generated version was visually acceptable but too similar to other workstation rooms. The accepted v2 direction keeps the print/check machine while adding clearer generic printed output: product posters, restaurant-style promotional flyers, book proofs, folded brochures, paper swatches, color bars, crop marks, and registration boards.
+- Four basic pointer-led targets are installed: `Scan`, `Arrange`, `Proof`, and `Output`.
+- All printed samples remain abstract and non-identifying; no logos, brands, publishers, real products, restaurant identities, characters, or readable client/publication text are displayed.
+
 ## Asset And Component Map
 
 - `public/assets/factory/cookbook/background-desktop-v1.webp` - single base illustration for the Cookbook room.
@@ -111,7 +126,12 @@ Suggested opening request for a new window:
 - `src/components/factory/scenes/CommerceVisualScene.jsx` - Commerce basic interaction scaffold.
 - `public/assets/factory/multimedia/background-desktop-v1.webp` - fixed Multimedia Workshop desktop illustration.
 - `src/components/factory/scenes/MultimediaWorkshopScene.jsx` - Multimedia basic interaction scaffold.
-- `src/components/factory/RoomMotifs.jsx` - selects dedicated scenes for six rooms; Print and Editorial still use schematic SVG interiors.
+- `public/assets/factory/editorial/background-desktop-v1.webp` - fixed Editorial Kitchen desktop illustration.
+- `src/components/factory/scenes/EditorialKitchenScene.jsx` - Editorial basic interaction scaffold.
+- `public/assets/factory/print/background-desktop-v1.webp` - first Print Engine Room generated draft, retained but not used.
+- `public/assets/factory/print/background-desktop-v2.webp` - active Print Engine Room desktop illustration with stronger print-sample identity.
+- `src/components/factory/scenes/PrintEngineScene.jsx` - Print basic interaction scaffold.
+- `src/components/factory/RoomMotifs.jsx` - selects dedicated scenes for all eight rooms.
 - `src/components/factory/BlueprintFrame.jsx` - eight-level desktop frame and route guides.
 - `src/styles.css` - scene layering, prop placement, route/focus accents, and responsive simplification.
 - `src/components/ContentFactory.jsx` - overall factory navigation, selection state, and dossier behavior.
@@ -145,22 +165,21 @@ Suggested opening request for a new window:
 
 ## Next Tasks
 
-### Priority 1: Complete Remaining Room Foundations
+### Priority 1: Review And Prepare The Next Phase
 
-- Use [room-benchmark-workflow.md](room-benchmark-workflow.md), now supported by Cookbook, AI Lab, and Story Archive.
-- Continue treating pointer-led object effects as optional exploration unless any target begins carrying unique required information.
-- Build the remaining two room foundations one at a time:
-  - `Editorial Kitchen` / Level `06` / grey-blue floor.
-  - `Print Engine Room` / Level `07` / original blue floor.
-- Preserve the existing formal room order, wording, and rights constraints while planning it.
+- All eight desktop room foundations are now present.
+- Before adding detailed animation, review the project structure, component organization, CSS organization, asset map, handoff clarity, and protected source boundaries.
+- Confirm whether `src/styles.css` should remain as one large stylesheet for the next polish pass or be reorganized by room/scene before animation work.
+- Preserve the existing formal room order, wording, and rights constraints while reviewing.
 - Do not change `src/content.js` or `docs/mercury-content-source.md`.
 
 ### Priority 2: Interaction Upgrade Pass
 
 - The user explicitly noticed that Operation, Commerce, and Multimedia interactions are visually useful but still somewhat stiff.
-- Defer polish until all eight rooms have at least a background and basic interaction scaffold.
+- Editorial and Print are also intentionally basic at this stage.
+- Now that all eight rooms have at least a background and basic interaction scaffold, plan the interaction-polish pass room by room.
 - Later upgrade each room's interaction language according to its material identity rather than forcing one universal animation style.
-- Possible focus: make Commerce more tactile and design-sampling oriented, Multimedia more motion/prototype/test oriented, and Operation more coordination/control oriented.
+- Possible focus: make Commerce more tactile and design-sampling oriented, Multimedia more motion/prototype/test oriented, Operation more coordination/control oriented, Editorial more page-cycle/review oriented, and Print more physical proof/output oriented.
 
 ### Priority 3: Responsive Direction After Desktop Proof
 
@@ -170,14 +189,14 @@ Suggested opening request for a new window:
 
 ### Later Tasks
 
-- Consider a Mercury Lab handoff skill after the workflow has been used on a second room.
+- Consider a Mercury Lab handoff skill or project-specific checklist now that the eight-room foundation workflow has been repeated across the full set.
 - Harmonize downstream site sections only after the room illustration system and floor structure are stable.
 
 ## Verification Checklist For Next Session
 
-- Open the local preview and use the six illustrated rooms as visual comparisons when planning the next room.
+- Open the local preview and compare all eight illustrated rooms before changing interaction style.
 - If an accepted benchmark is changed, re-check its prop targets and return-to-idle behavior; for Story Archive specifically, verify the six-page/two-pass Review sequence.
-- For Operation, Commerce, and Multimedia, confirm the background loads and basic target labels still appear after any CSS edits.
+- For Operation, Commerce, Multimedia, Editorial, and Print, confirm the background loads and basic target labels still appear after any CSS edits.
 - Preserve the accepted eight dedicated desktop floors and alternating palette unless a later design review explicitly revises them.
 - Run `npm run build` after changes.
 - Before making any checkpoint, confirm formal content sources were not modified.
