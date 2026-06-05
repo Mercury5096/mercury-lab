@@ -88,6 +88,14 @@
 - **Interaction decision:** new room interactions are intentionally basic placeholders until all eight room foundations are present. The user noted they feel somewhat stiff; defer a dedicated interaction-polish pass until `Print Engine Room` and `Editorial Kitchen` are also scaffolded.
 - **Remaining room foundations:** `Editorial Kitchen` / Level `06` / grey-blue, and `Print Engine Room` / Level `07` / original blue.
 
+## 2026-06-05 CSS Maintenance Baseline
+
+- **Scope:** organize the completed `d1bd91f` eight-room foundation before beginning detailed animation polish.
+- **Decision:** do not hand-minify source CSS. Keep readable source files and let Vite produce optimized build output.
+- **Stylesheet split:** keep global site and shared panel rules in `src/styles.css`; move shared eight-level factory building rules to `src/styles/factory-cutaway.css`; move room-specific scene placement and animation keyframes to `src/styles/factory-scenes.css`.
+- **Cleanup:** remove obsolete compact blueprint / room-grid CSS selectors that were no longer referenced by the current React components.
+- **Content boundary:** `src/content.js` and `docs/mercury-content-source.md` remain protected and were not part of this maintenance pass.
+
 ## AI Workflow Lab Benchmark Selection
 
 - **Date:** 2026-05-26

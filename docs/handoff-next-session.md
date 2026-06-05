@@ -5,8 +5,8 @@
 Continue Mercury Lab from the completed eight-room desktop foundation state:
 
 - Read this file and `docs/mercury-content-source.md` first.
-- The latest committed checkpoint before this handoff is `e851bba` (`Create three room foundation scenes`).
-- Today's work adds first-pass desktop backgrounds and basic interaction scaffolds for `Editorial Kitchen` and `Print Engine Room`, completing illustrated foundations for all eight rooms.
+- The latest committed checkpoint before this maintenance pass is `d1bd91f` (`Complete eight room foundation scenes`).
+- The eight-room desktop foundation is complete; current work is project maintenance, CSS organization, handoff clarity, and preparation for a room-by-room interaction polish pass.
 - Treat Cookbook, AI Workflow Lab, and Story Archive as reviewed desktop benchmark rooms; treat Operation, Commerce, Multimedia, Editorial, and Print as accepted or near-accepted visual directions with intentionally basic interactions.
 - The desktop factory now uses eight full-width department floors with alternating blue and grey-blue floor treatment.
 - Next work should pause room creation and review the full project structure, handoff clarity, interaction upgrade plan, and responsive strategy before beginning the detailed animation pass.
@@ -19,15 +19,15 @@ Suggested opening request for a new window:
 ## Snapshot
 
 - **Date:** 2026-06-04
-- **Latest committed checkpoint before handoff update:** `e851bba` - `Create three room foundation scenes`
+- **Latest committed checkpoint before maintenance pass:** `d1bd91f` - `Complete eight room foundation scenes`
 - **Previous handoff checkpoint:** `f1085fd` - `Update handoff after AI workflow benchmark`
 - **AI Workflow Lab visual checkpoint:** `16ffd10` - `Create AI workflow lab visual benchmark`
 - **Cookbook visual baseline commit:** `251e13c` - `Create cookbook production floor visual benchmark`
 - **Previous v0.5 checkpoint:** `a14993d`
 - **Current focus:** all eight desktop room foundations are now present; next focus is project review, cleanup planning, and interaction refinement strategy.
 - **Source of truth:** [mercury-content-source.md](mercury-content-source.md)
-- **Uncommitted work before checkpoint:** Editorial and Print scene components, WebP backgrounds, CSS interaction scaffolds, and this handoff update.
-- **Verified in this working session:** `npm run build` passed after Editorial integration and again after Print integration; browser checks confirmed Editorial and Print backgrounds and key target layers load; formal content sources were not modified.
+- **Current maintenance direction:** keep formal content untouched, split source CSS by responsibility, remove obsolete compact blueprint CSS, and clarify next-session documentation before animation polish.
+- **Verified in the eight-room foundation session:** `npm run build` passed after Editorial integration and again after Print integration; browser checks confirmed Editorial and Print backgrounds and key target layers load; formal content sources were not modified.
 
 ## User Direction
 
@@ -94,7 +94,7 @@ Suggested opening request for a new window:
 - A blue mixed-media prototype-studio background is installed on Level `01`.
 - The room emphasizes storyboard/script materials, web and video screens, motion/animation timelines, 3D/prototype testing, game test/listening equipment, sketchbooks, storage, and physical media materials.
 - Four basic pointer-led targets are installed: `Storyboard`, `Edit`, `Prototype`, and `Test`.
-- The user approved the visual direction; the interaction layer remains intentionally simple until the remaining rooms are completed.
+- The user approved the visual direction; the interaction layer was intentionally kept simple until all eight room foundations were completed.
 
 `Editorial Kitchen` now has a first-pass desktop foundation:
 
@@ -133,7 +133,9 @@ Suggested opening request for a new window:
 - `src/components/factory/scenes/PrintEngineScene.jsx` - Print basic interaction scaffold.
 - `src/components/factory/RoomMotifs.jsx` - selects dedicated scenes for all eight rooms.
 - `src/components/factory/BlueprintFrame.jsx` - eight-level desktop frame and route guides.
-- `src/styles.css` - scene layering, prop placement, route/focus accents, and responsive simplification.
+- `src/styles.css` - global site shell, non-factory sections, shared panels, imports, and top-level responsive rules.
+- `src/styles/factory-cutaway.css` - current eight-level building layout, route rail, room shell, blueprint overlay, dossier placement, and factory layout keyframes.
+- `src/styles/factory-scenes.css` - room-specific scene layers, target placement, material cues, and room animation keyframes.
 - `src/components/ContentFactory.jsx` - overall factory navigation, selection state, and dossier behavior.
 
 ## Approved Visual Rules
@@ -151,7 +153,7 @@ Suggested opening request for a new window:
 
 - Complete and approve desktop room composition first, because prop placement depends on fixed architectural surfaces.
 - Preserve the accepted desktop architecture in which each visual floor presents one department/room, giving interactive objects sufficient readable scale.
-- Continue building remaining rooms gradually; six departments currently have illustrated scene treatments.
+- All eight departments now have illustrated desktop scene treatments.
 - Tablet/mobile strategy is now an open design question. A later compact experience may show one floor or one department at a time instead of squeezing the desktop cutaway and its precise prop hotspots.
 - Reuse shared assets when practical, but allow alternate crops or layouts only after the small-screen interaction model is chosen.
 
@@ -169,7 +171,7 @@ Suggested opening request for a new window:
 
 - All eight desktop room foundations are now present.
 - Before adding detailed animation, review the project structure, component organization, CSS organization, asset map, handoff clarity, and protected source boundaries.
-- Confirm whether `src/styles.css` should remain as one large stylesheet for the next polish pass or be reorganized by room/scene before animation work.
+- Preserve the split stylesheet structure: global rules in `src/styles.css`, building/frame rules in `src/styles/factory-cutaway.css`, and room-specific scene/animation rules in `src/styles/factory-scenes.css`.
 - Preserve the existing formal room order, wording, and rights constraints while reviewing.
 - Do not change `src/content.js` or `docs/mercury-content-source.md`.
 

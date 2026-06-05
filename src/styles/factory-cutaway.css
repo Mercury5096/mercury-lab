@@ -1,0 +1,882 @@
+/* Mercury Lab eight-floor factory cutaway and room scenes. */
+
+.factory-cutaway {
+  --blueprint-paper: #e8e8df;
+  --blueprint-floor: #dce3e1;
+  --blueprint-ink: #12365a;
+  --blueprint-faint: rgba(18, 54, 90, 0.16);
+  --blueprint-mid: rgba(18, 54, 90, 0.43);
+  --blueprint-room: rgba(32, 83, 126, 0.09);
+  min-height: calc(100vh - 72px);
+  padding: clamp(1rem, 2.2vw, 1.75rem) 0 clamp(4rem, 7vw, 6.5rem);
+  scroll-margin-top: 72px;
+  border-bottom: 1px solid var(--line);
+}
+
+.factory-masthead {
+  display: grid;
+  grid-template-columns: minmax(19rem, 1.02fr) minmax(18rem, 0.85fr) minmax(15rem, 0.5fr);
+  gap: clamp(1.4rem, 3vw, 3rem);
+  min-height: min(39vh, 405px);
+  padding: clamp(1.55rem, 3.5vw, 3.2rem);
+  border: 1px solid rgba(18, 54, 90, 0.23);
+  border-bottom: 0;
+  color: var(--blueprint-ink);
+  background:
+    radial-gradient(circle at 67% 56%, transparent 0 42px, rgba(18, 54, 90, 0.13) 43px 44px, transparent 45px 76px, rgba(18, 54, 90, 0.1) 77px 78px, transparent 79px),
+    linear-gradient(rgba(18, 54, 90, 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 54, 90, 0.065) 1px, transparent 1px),
+    var(--blueprint-paper);
+  background-size: auto, 112px 112px, 112px 112px, auto;
+}
+
+.factory-identity .eyebrow,
+.factory-intro .eyebrow {
+  color: var(--blueprint-ink);
+  opacity: 0.77;
+}
+
+.factory-identity h1 {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: #0b2747;
+  font-size: clamp(4.7rem, 8.7vw, 8.6rem);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.factory-identity h1 span {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--blueprint-ink);
+}
+
+.factory-intro {
+  align-self: end;
+  padding-bottom: clamp(0.2rem, 1.3vw, 1.1rem);
+}
+
+.factory-intro h2 {
+  max-width: 20rem;
+  margin: 0 0 1.1rem;
+  color: var(--blueprint-ink);
+  font-size: clamp(1.35rem, 2.15vw, 2.05rem);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.factory-intro .subtitle {
+  margin: 0 0 0.7rem;
+  color: var(--blueprint-ink);
+  font-size: clamp(0.95rem, 1.25vw, 1.12rem);
+}
+
+.factory-intro .positioning,
+.factory-intro .section-copy {
+  max-width: 27rem;
+  color: rgba(18, 54, 90, 0.75);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.factory-intro .section-copy {
+  padding-top: 0.72rem;
+  margin-top: 0.72rem;
+  border-top: 1px solid rgba(18, 54, 90, 0.17);
+}
+
+.factory-status {
+  align-self: start;
+  display: grid;
+  gap: 0.6rem;
+  padding: clamp(0.85rem, 1.7vw, 1.3rem);
+  border: 1px solid rgba(18, 54, 90, 0.3);
+  color: rgba(18, 54, 90, 0.72);
+  font-family: Consolas, monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.factory-status p {
+  margin: 0 0 0.15rem;
+  color: var(--blueprint-ink);
+}
+
+.factory-status strong {
+  padding: 0.65rem 0;
+  border-top: 1px solid rgba(18, 54, 90, 0.18);
+  border-bottom: 1px solid rgba(18, 54, 90, 0.18);
+  color: var(--blueprint-ink);
+  font-size: 0.63rem;
+  font-weight: 500;
+}
+
+.factory-status .barcode {
+  height: 27px;
+  margin: 0.35rem 0 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--blueprint-ink) 0 2px,
+    transparent 2px 4px,
+    var(--blueprint-ink) 4px 5px,
+    transparent 5px 8px
+  );
+}
+
+.cutaway-layout {
+  display: grid;
+  grid-template-columns: clamp(168px, 16.5vw, 208px) minmax(0, 1fr);
+  align-items: start;
+  background: var(--blueprint-paper);
+}
+
+.route-index {
+  position: sticky;
+  top: calc(72px + 1rem);
+  z-index: 5;
+  margin: clamp(1rem, 2vw, 1.55rem) 0 clamp(1rem, 2vw, 1.55rem) clamp(1rem, 2vw, 1.55rem);
+  color: rgba(237, 240, 229, 0.75);
+  background: #081c31;
+  font-family: Consolas, monospace;
+  text-transform: uppercase;
+}
+
+.route-index__head {
+  padding: 1.25rem 1.05rem 1.05rem;
+  border-bottom: 1px solid rgba(120, 198, 192, 0.2);
+}
+
+.route-index p {
+  margin: 0 0 0.55rem;
+  color: var(--text);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+}
+
+.route-index__head span {
+  color: var(--teal);
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+}
+
+.route-index__head strong {
+  display: block;
+  padding-top: 0.75rem;
+  margin-top: 0.85rem;
+  border-top: 1px solid rgba(120, 198, 192, 0.18);
+  color: var(--amber);
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.route-index ol {
+  position: relative;
+  display: grid;
+  gap: 0;
+  padding: 0.4rem 0;
+  margin: 0;
+  list-style: none;
+}
+
+.route-index ol::after {
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 1.08rem;
+  width: 1px;
+  background: rgba(228, 168, 60, 0.54);
+  content: "";
+}
+
+.route-index li {
+  position: relative;
+  z-index: 1;
+}
+
+.route-index li button {
+  display: grid;
+  gap: 0.24rem;
+  width: 100%;
+  padding: 0.72rem 0.72rem 0.72rem 1.95rem;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.route-index li button::before {
+  position: absolute;
+  top: 1rem;
+  left: 0.84rem;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--amber);
+  border-radius: 50%;
+  background: #081c31;
+  content: "";
+}
+
+.route-index li.active button,
+.route-index li button:hover,
+.route-index li button:focus-visible {
+  color: var(--text);
+  background: rgba(228, 168, 60, 0.09);
+}
+
+.route-index li.is-current-level:not(.active) button {
+  background: rgba(120, 198, 192, 0.075);
+}
+
+.route-index li.is-current-level:not(.active) button::before {
+  border-color: var(--teal);
+}
+
+.route-index li.active button::before {
+  background: var(--amber);
+  box-shadow: 0 0 10px rgba(228, 168, 60, 0.74);
+}
+
+.route-index li span {
+  color: var(--amber);
+  font-size: 0.65rem;
+}
+
+.route-index li strong {
+  color: var(--text);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+}
+
+.route-index li small {
+  color: rgba(164, 170, 160, 0.78);
+  font-size: 0.48rem;
+  line-height: 1.45;
+}
+
+.route-index__legend {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.05rem;
+  border-top: 1px solid rgba(120, 198, 192, 0.2);
+  color: var(--teal);
+  font-size: 0.51rem;
+  letter-spacing: 0.12em;
+}
+
+.building-column {
+  min-width: 0;
+  padding: clamp(1rem, 2vw, 1.55rem);
+}
+
+.factory-building {
+  position: relative;
+  min-height: 0;
+  padding: clamp(7.5rem, 12vw, 10rem) clamp(3.2rem, 7vw, 5.8rem) clamp(3.2rem, 6vw, 5.4rem);
+  overflow: hidden;
+  border: 1px solid rgba(18, 54, 90, 0.35);
+  color: var(--blueprint-ink);
+  background:
+    linear-gradient(90deg, transparent 0 90%, rgba(18, 54, 90, 0.035) 90%),
+    linear-gradient(rgba(18, 54, 90, 0.037) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 54, 90, 0.037) 1px, transparent 1px),
+    #eff0ea;
+  background-size: auto, 42px 42px, 42px 42px, auto;
+}
+
+.cutaway-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.section-grid-line {
+  fill: none;
+  stroke: rgba(18, 54, 90, 0.055);
+  stroke-width: 1;
+}
+
+.section-register path,
+.section-dimensions path,
+.section-level-lines path,
+.section-annotations path {
+  fill: none;
+  stroke: rgba(18, 54, 90, 0.4);
+  stroke-width: 1;
+}
+
+.section-level-lines path {
+  stroke: rgba(18, 54, 90, 0.3);
+  stroke-dasharray: 5 6;
+}
+
+.section-dimensions text,
+.section-level-lines text,
+.section-annotations text {
+  fill: rgba(18, 54, 90, 0.64);
+  font-family: Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.section-route path {
+  fill: none;
+  stroke: rgba(18, 54, 90, 0.25);
+  stroke-width: 2;
+  stroke-dasharray: 8 7;
+  transition: stroke 180ms ease, stroke-width 180ms ease;
+}
+
+.section-route circle {
+  fill: #eff0ea;
+  stroke: rgba(18, 54, 90, 0.42);
+  stroke-width: 2;
+}
+
+.section-route.is-active path {
+  stroke: rgba(204, 144, 39, 0.95);
+  stroke-width: 3;
+}
+
+.section-route.is-active circle {
+  fill: var(--amber);
+  stroke: #c18b2b;
+}
+
+.factory-roof {
+  position: absolute;
+  top: clamp(4rem, 7vw, 5.3rem);
+  left: clamp(5rem, 13vw, 10rem);
+  right: clamp(6rem, 18vw, 15rem);
+  z-index: 1;
+  height: clamp(50px, 7vw, 72px);
+  border: 3px solid rgba(18, 54, 90, 0.54);
+  border-bottom-width: 8px;
+  background: rgba(32, 83, 126, 0.08);
+}
+
+.factory-roof span {
+  position: absolute;
+  bottom: 100%;
+  display: block;
+  border: 2px solid rgba(18, 54, 90, 0.48);
+  border-bottom: 0;
+  background: rgba(32, 83, 126, 0.06);
+}
+
+.factory-roof span:nth-child(1) {
+  left: 16%;
+  width: 18%;
+  height: 38px;
+}
+
+.factory-roof span:nth-child(2) {
+  left: 37%;
+  width: 15%;
+  height: 56px;
+}
+
+.factory-roof span:nth-child(3) {
+  right: 10%;
+  width: 17%;
+  height: 28px;
+}
+
+.factory-shaft {
+  position: absolute;
+  top: clamp(9rem, 15vw, 11.6rem);
+  right: clamp(2.45rem, 4.3vw, 3.7rem);
+  bottom: clamp(3.2rem, 6vw, 5.4rem);
+  z-index: 1;
+  width: clamp(44px, 6vw, 66px);
+  border: 2px solid rgba(18, 54, 90, 0.4);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(18, 54, 90, 0.1) 14px 16px),
+    rgba(32, 83, 126, 0.05);
+}
+
+.factory-shaft span {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.25rem;
+  color: rgba(18, 54, 90, 0.6);
+  font-family: Consolas, monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+}
+
+.factory-shaft i {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.shaft-ladder {
+  top: 4rem;
+  right: 11px;
+  bottom: 1.2rem;
+  width: 21px;
+  border-right: 1px solid rgba(18, 54, 90, 0.4);
+  border-left: 1px solid rgba(18, 54, 90, 0.4);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 27px,
+    rgba(18, 54, 90, 0.36) 27px 28px
+  );
+}
+
+.shaft-pipe {
+  top: 5.5rem;
+  bottom: 1.6rem;
+  left: 10px;
+  width: 5px;
+  border: 1px solid rgba(18, 54, 90, 0.37);
+  border-radius: 5px;
+  background: rgba(18, 54, 90, 0.08);
+}
+
+.shaft-data {
+  top: 5.5rem;
+  bottom: 1.6rem;
+  left: 22px;
+  border-left: 2px dashed rgba(199, 139, 37, 0.47);
+}
+
+.factory-levels {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 0;
+  border: 3px solid rgba(18, 54, 90, 0.54);
+  background: rgba(18, 54, 90, 0.025);
+}
+
+.factory-level {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: clamp(650px, 84vh, 920px);
+  padding: 2.45rem clamp(3.8rem, 6.3vw, 5.4rem) 1.1rem 1.25rem;
+  border-bottom: 8px solid rgba(18, 54, 90, 0.48);
+  box-shadow: inset 0 -3px rgba(18, 54, 90, 0.16);
+  transition: background 180ms ease;
+}
+
+.factory-level.is-current {
+  background: rgba(32, 83, 126, 0.035);
+}
+
+.factory-level--06,
+.factory-level--04,
+.factory-level--02,
+.factory-level--00 {
+  --blueprint-floor: #d3dcdc;
+  background: rgba(44, 79, 105, 0.055);
+}
+
+.factory-level--06.is-current,
+.factory-level--04.is-current,
+.factory-level--02.is-current,
+.factory-level--00.is-current {
+  background: rgba(44, 79, 105, 0.085);
+}
+
+.factory-level--06 .factory-room,
+.factory-level--04 .factory-room,
+.factory-level--02 .factory-room,
+.factory-level--00 .factory-room {
+  border-color: rgba(29, 61, 87, 0.54);
+}
+
+.factory-level:last-child {
+  border-bottom: 0;
+}
+
+.level-label {
+  position: absolute;
+  top: 0.48rem;
+  left: 1.25rem;
+  right: clamp(3.8rem, 6.3vw, 5.4rem);
+  display: flex;
+  justify-content: space-between;
+  color: rgba(18, 54, 90, 0.64);
+  font-family: Consolas, monospace;
+  font-size: 0.51rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.level-rooms {
+  display: grid;
+  gap: clamp(0.75rem, 1.4vw, 1.2rem);
+  height: 100%;
+}
+
+.level-rooms--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.level-rooms--1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.room-bay {
+  min-width: 0;
+}
+
+.factory-room {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(18, 54, 90, 0.56);
+  color: var(--blueprint-ink);
+  background:
+    linear-gradient(0deg, rgba(32, 83, 126, 0.08), rgba(32, 83, 126, 0.08)),
+    var(--blueprint-floor);
+  text-align: left;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.factory-room:hover,
+.factory-room.active {
+  border-color: rgba(199, 139, 37, 0.98);
+  background:
+    linear-gradient(0deg, rgba(228, 168, 60, 0.13), rgba(228, 168, 60, 0.13)),
+    var(--blueprint-floor);
+  box-shadow: inset 0 0 0 2px rgba(199, 139, 37, 0.72);
+}
+
+.factory-room:focus-visible {
+  outline: 3px solid #0d6380;
+  outline-offset: 3px;
+}
+
+.room-structure {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.room-structure i {
+  position: absolute;
+  display: block;
+  border-color: rgba(18, 54, 90, 0.28);
+}
+
+.room-structure i:nth-child(1) {
+  top: 0;
+  right: 13%;
+  bottom: 0;
+  border-right: 1px solid rgba(18, 54, 90, 0.2);
+}
+
+.room-structure i:nth-child(2) {
+  right: 2.8%;
+  bottom: 15%;
+  left: 3%;
+  border-bottom: 1px dashed rgba(18, 54, 90, 0.16);
+}
+
+.room-structure i:nth-child(3) {
+  top: 8px;
+  right: 8px;
+  width: 15px;
+  height: 15px;
+  border-top: 1px solid rgba(18, 54, 90, 0.45);
+  border-right: 1px solid rgba(18, 54, 90, 0.45);
+}
+
+.room-interior {
+  position: absolute;
+  inset: clamp(3.85rem, 7vw, 5.25rem) 0 1.8rem;
+  z-index: 0;
+  display: block;
+  color: var(--blueprint-ink);
+  opacity: 0.24;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.room-interior svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  vector-effect: non-scaling-stroke;
+}
+
+.interior-grid {
+  opacity: 0.32;
+  stroke-width: 0.85;
+}
+
+.interior-floor {
+  opacity: 0.9;
+  stroke-width: 2;
+}
+
+.interior-equipment {
+  opacity: 0.82;
+  stroke-width: 2;
+}
+
+.interior-detail {
+  opacity: 0.76;
+  stroke-width: 1.5;
+}
+
+.factory-room:hover .room-interior,
+.factory-room.active .room-interior {
+  opacity: 0.58;
+}
+
+.room-interior--cookbook {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.factory-room:hover .room-interior--cookbook,
+.factory-room.active .room-interior--cookbook {
+  opacity: 1;
+}
+
+.room-interior--ai {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.factory-room:hover .room-interior--ai,
+.factory-room.active .room-interior--ai {
+  opacity: 1;
+}
+
+.room-interior--print {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.factory-room:hover .room-interior--print,
+.factory-room.active .room-interior--print {
+  opacity: 1;
+}
+
+.room-interior--story {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.factory-room:hover .room-interior--story,
+.factory-room.active .room-interior--story {
+  opacity: 1;
+}
+
+.room-interior--editorial {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.factory-room:hover .room-interior--editorial,
+.factory-room.active .room-interior--editorial {
+  opacity: 1;
+}
+
+.room-interior--operation {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.factory-room:hover .room-interior--operation,
+.factory-room.active .room-interior--operation {
+  opacity: 1;
+}
+
+.room-interior--commerce {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.factory-room:hover .room-interior--commerce,
+.factory-room.active .room-interior--commerce {
+  opacity: 1;
+}
+
+.room-interior--multimedia {
+  inset: clamp(4.4rem, 7vw, 5.45rem) 0 1.8rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.factory-room:hover .room-interior--multimedia,
+.factory-room.active .room-interior--multimedia {
+  opacity: 1;
+}
+
+.room-label {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.34rem;
+  width: min(76%, 330px);
+  margin: clamp(0.9rem, 1.8vw, 1.4rem);
+  padding: clamp(0.7rem, 1.25vw, 0.92rem);
+  color: var(--text);
+  background: #092038;
+}
+
+.room-label__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.45rem;
+  color: var(--amber);
+  font-family: Consolas, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+}
+
+.room-label__head small {
+  color: var(--teal);
+  font-size: 0.52rem;
+}
+
+.room-label strong {
+  font-size: clamp(0.8rem, 1.05vw, 1rem);
+  font-weight: 600;
+  line-height: 1.28;
+  text-transform: uppercase;
+}
+
+.room-function {
+  color: var(--teal);
+  font-family: Consolas, monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.room-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.52rem 0.7rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(18, 54, 90, 0.23);
+  color: rgba(18, 54, 90, 0.72);
+  font-family: Consolas, monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.room-footer span:last-child {
+  color: #ad701a;
+}
+
+.factory-console {
+  display: grid;
+  grid-template-columns: 1fr 0.75fr 1.25fr;
+  margin-top: 0;
+  color: rgba(237, 240, 229, 0.72);
+  background: #081c31;
+}
+
+.factory-console div {
+  min-height: 92px;
+  padding: 1.1rem 1.25rem;
+  border-right: 1px solid rgba(120, 198, 192, 0.15);
+}
+
+.factory-console p {
+  margin: 0 0 0.7rem;
+  color: var(--teal);
+  font-family: Consolas, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.factory-console span,
+.factory-console strong {
+  color: var(--text);
+  font-family: Consolas, monospace;
+  font-size: 0.61rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.factory-cutaway .dossier {
+  position: fixed;
+  top: max(88px, calc(50% - 290px));
+  right: clamp(1rem, 3vw, 2.7rem);
+  z-index: 42;
+  width: min(360px, calc(100vw - 2rem));
+  max-height: calc(100vh - 104px);
+  overflow-y: auto;
+  padding: 1.35rem;
+  border-color: rgba(120, 198, 192, 0.62);
+  color: var(--text);
+  box-shadow: -14px 16px 42px rgba(6, 11, 14, 0.54);
+}
+
+.factory-cutaway .dossier::before {
+  display: none;
+}
+
+.factory-cutaway .dossier-tabs {
+  margin: -1.35rem 2.7rem 1.15rem -1.35rem;
+}
+
+.dossier-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  padding: 0.36rem 0.48rem;
+  border: 1px solid var(--line-bright);
+  color: var(--muted);
+  background: transparent;
+  font-family: Consolas, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dossier-close:hover,
+.dossier-close:focus-visible {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+@keyframes blueprint-route {
+  to {
+    stroke-dashoffset: -120;
+  }
+}

@@ -17,6 +17,14 @@
 - `src/components/factory/RoomMotifs.jsx` - eight decorative room-interior SVG systems keyed by formal room id.
 - `ModuleDossier` - selected-room inspector, declared within `ContentFactory`.
 
+## Stylesheet Structure
+
+- `src/styles.css` - global site shell, typography, non-factory sections, shared panels, and top-level responsive rules.
+- `src/styles/factory-cutaway.css` - current eight-level building layout, route index, room shell, blueprint overlay, dossier placement, and factory layout keyframes.
+- `src/styles/factory-scenes.css` - room-specific illustrated scene layers, target placement, material cues, and scene animation keyframes.
+- Keep future room animation work in `factory-scenes.css` unless the change affects the shared building, route rail, room button frame, or dossier.
+- Do not minify source CSS by hand; Vite handles production output. Source readability is the maintenance priority.
+
 ## Data Sources
 
 - `src/content.js` - public display content and existing non-copy diagram metadata.
