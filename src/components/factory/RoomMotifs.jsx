@@ -183,11 +183,11 @@ const interiors = {
   "ai-workflow-lab": <AiInterior />,
 };
 
-export default function RoomInterior({ roomId }) {
+export default function RoomInterior({ locale, roomId }) {
   if (roomId === "print-engine-room") {
     return (
       <span className="room-interior room-interior--print" aria-hidden="true">
-        <PrintEngineScene />
+        <PrintEngineScene locale={locale} />
       </span>
     );
   }
@@ -195,7 +195,7 @@ export default function RoomInterior({ roomId }) {
   if (roomId === "cookbook-production-floor") {
     return (
       <span className="room-interior room-interior--cookbook" aria-hidden="true">
-        <CookbookProductionScene />
+        <CookbookProductionScene locale={locale} />
       </span>
     );
   }
@@ -203,7 +203,7 @@ export default function RoomInterior({ roomId }) {
   if (roomId === "ai-workflow-lab") {
     return (
       <span className="room-interior room-interior--ai" aria-hidden="true">
-        <AiWorkflowLabScene />
+        <AiWorkflowLabScene locale={locale} />
       </span>
     );
   }
@@ -211,7 +211,7 @@ export default function RoomInterior({ roomId }) {
   if (roomId === "story-archive-ip-office") {
     return (
       <span className="room-interior room-interior--story" aria-hidden="true">
-        <StoryArchiveScene />
+        <StoryArchiveScene locale={locale} />
       </span>
     );
   }
@@ -219,7 +219,7 @@ export default function RoomInterior({ roomId }) {
   if (roomId === "editorial-kitchen") {
     return (
       <span className="room-interior room-interior--editorial" aria-hidden="true">
-        <EditorialKitchenScene />
+        <EditorialKitchenScene locale={locale} />
       </span>
     );
   }
@@ -227,7 +227,7 @@ export default function RoomInterior({ roomId }) {
   if (roomId === "operation-control-room") {
     return (
       <span className="room-interior room-interior--operation" aria-hidden="true">
-        <OperationControlScene />
+        <OperationControlScene locale={locale} />
       </span>
     );
   }
@@ -235,7 +235,7 @@ export default function RoomInterior({ roomId }) {
   if (roomId === "commerce-visual-line") {
     return (
       <span className="room-interior room-interior--commerce" aria-hidden="true">
-        <CommerceVisualScene />
+        <CommerceVisualScene locale={locale} />
       </span>
     );
   }
@@ -243,7 +243,7 @@ export default function RoomInterior({ roomId }) {
   if (roomId === "multimedia-workshop") {
     return (
       <span className="room-interior room-interior--multimedia" aria-hidden="true">
-        <MultimediaWorkshopScene />
+        <MultimediaWorkshopScene locale={locale} />
       </span>
     );
   }

@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { assetPath } from "../../../assetPath";
+import { useEffect, useRef, useState } from "react";
 
 function WorkflowTarget({ children, className, effectKey, label, onTrigger }) {
   return (
@@ -13,48 +14,97 @@ function WorkflowTarget({ children, className, effectKey, label, onTrigger }) {
   );
 }
 
-export default function AiWorkflowLabScene() {
+export default function AiWorkflowLabScene({ locale }) {
   const [effects, setEffects] = useState({});
+  const [activeStage, setActiveStage] = useState("");
   const effectSequence = useRef({});
+  const activeStageTimer = useRef(null);
+  const workflowStages = ["research", "prompt", "generate", "review", "deliver"];
+  const isZh = locale === "zh";
+  const labels = {
+    research: isZh ? "研究" : "Research",
+    prompt: isZh ? "提示" : "Prompt",
+    generate: isZh ? "生成" : "Generate",
+    review: isZh ? "審核" : "Review",
+    deliver: isZh ? "交付" : "Deliver",
+    keySmall: isZh ? "人工審核回路" : "Human review loop",
+    keyStrong: isZh ? "金色 / 精選決策" : "Gold / selected decision",
+  };
+
+  useEffect(() => {
+    return () => {
+      if (activeStageTimer.current) {
+        window.clearTimeout(activeStageTimer.current);
+      }
+    };
+  }, []);
 
   function triggerEffect(event, stage) {
     event.preventDefault();
     event.stopPropagation();
+    setActiveStage(stage);
+    const stageIndex = workflowStages.indexOf(stage);
+    const triggeredStages = stageIndex >= 0 ? workflowStages.slice(0, stageIndex + 1) : [stage];
+    const activeDuration = stage === "deliver" ? 5200 : stage === "review" ? 4300 : stage === "generate" ? 3800 : 3200;
+
+    if (activeStageTimer.current) {
+      window.clearTimeout(activeStageTimer.current);
+    }
+
+    activeStageTimer.current = window.setTimeout(() => {
+      setActiveStage("");
+    }, activeDuration);
+
     const effectKey = (effectSequence.current[stage] ?? 0) + 1;
     effectSequence.current[stage] = effectKey;
-    setEffects((current) => ({
-      ...current,
-      [stage]: effectKey,
-    }));
+    const flowEffects = Object.fromEntries(triggeredStages.map((flowStage) => [flowStage, effectKey]));
+    setEffects((current) => ({ ...current, ...flowEffects }));
 
     window.setTimeout(() => {
       setEffects((current) => {
-        if (current[stage] !== effectKey) {
-          return current;
-        }
-
         const next = { ...current };
-        delete next[stage];
+        triggeredStages.forEach((flowStage) => {
+          if (next[flowStage] === effectKey) {
+            delete next[flowStage];
+          }
+        });
         return next;
       });
-    }, stage === "generate" ? 2100 : 1800);
+    }, activeDuration);
   }
 
   return (
-    <span className="ai-workflow-scene">
+    <span className={`ai-workflow-scene ${activeStage ? `is-${activeStage}-active is-ai-active` : ""}`}>
       <span className="ai-workflow-scene__picture">
         <img
-          src="/assets/factory/ai-workflow/background-desktop-v1.webp"
+          src={assetPath("/assets/factory/ai-workflow/background-desktop-v1.webp")}
           alt=""
           className="ai-workflow-scene__backdrop"
         />
       </span>
       <span className="ai-workflow-scene__wash" />
 
+      <span className="ai-iteration-loop" aria-hidden="true">
+        <i className="ai-iteration-loop__rail ai-iteration-loop__rail--forward" />
+        <i className="ai-iteration-loop__rail ai-iteration-loop__rail--review" />
+        <i className="ai-iteration-loop__rail ai-iteration-loop__rail--return" />
+        <i className="ai-iteration-loop__node ai-iteration-loop__node--brief" />
+        <i className="ai-iteration-loop__node ai-iteration-loop__node--prompt" />
+        <i className="ai-iteration-loop__node ai-iteration-loop__node--model" />
+        <i className="ai-iteration-loop__node ai-iteration-loop__node--review" />
+        <i className="ai-iteration-loop__node ai-iteration-loop__node--deliver" />
+        <i className="ai-iteration-loop__card ai-iteration-loop__card--brief" />
+        <i className="ai-iteration-loop__card ai-iteration-loop__card--prompt" />
+        <i className="ai-iteration-loop__card ai-iteration-loop__card--output" />
+        <i className="ai-iteration-loop__card ai-iteration-loop__card--revision" />
+        <i className="ai-iteration-loop__card ai-iteration-loop__card--final" />
+        <i className="ai-iteration-loop__pulse" />
+      </span>
+
       <WorkflowTarget
         className="ai-target--research"
         effectKey={effects.research}
-        label="Research"
+        label={labels.research}
         onTrigger={(event) => triggerEffect(event, "research")}
       >
         <i className="ai-source-card ai-source-card--one" />
@@ -65,7 +115,7 @@ export default function AiWorkflowLabScene() {
       <WorkflowTarget
         className="ai-target--prompt"
         effectKey={effects.prompt}
-        label="Prompt"
+        label={labels.prompt}
         onTrigger={(event) => triggerEffect(event, "prompt")}
       >
         <i className="ai-prompt-sheet ai-prompt-sheet--one" />
@@ -76,7 +126,7 @@ export default function AiWorkflowLabScene() {
       <WorkflowTarget
         className="ai-target--generate"
         effectKey={effects.generate}
-        label="Generate"
+        label={labels.generate}
         onTrigger={(event) => triggerEffect(event, "generate")}
       >
         <svg className="ai-pipeline" viewBox="0 0 180 96" preserveAspectRatio="none">
@@ -100,7 +150,7 @@ export default function AiWorkflowLabScene() {
       <WorkflowTarget
         className="ai-target--review"
         effectKey={effects.review}
-        label="Review"
+        label={labels.review}
         onTrigger={(event) => triggerEffect(event, "review")}
       >
         <i className="ai-review-note ai-review-note--one" />
@@ -112,7 +162,7 @@ export default function AiWorkflowLabScene() {
       <WorkflowTarget
         className="ai-target--deliver"
         effectKey={effects.deliver}
-        label="Deliver"
+        label={labels.deliver}
         onTrigger={(event) => triggerEffect(event, "deliver")}
       >
         <i className="ai-delivery-card" />
@@ -120,8 +170,8 @@ export default function AiWorkflowLabScene() {
       </WorkflowTarget>
 
       <span className="ai-workflow-scene__key">
-        <small>Human review loop</small>
-        <strong>Gold / selected decision</strong>
+        <small>{labels.keySmall}</small>
+        <strong>{labels.keyStrong}</strong>
       </span>
     </span>
   );

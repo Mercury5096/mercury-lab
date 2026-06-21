@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { assetPath } from "../../../assetPath";
+import { useEffect, useRef, useState } from "react";
 
 function ArchiveTarget({ children, className, effectKey, label, onTrigger }) {
   return (
@@ -13,48 +14,95 @@ function ArchiveTarget({ children, className, effectKey, label, onTrigger }) {
   );
 }
 
-export default function StoryArchiveScene() {
+export default function StoryArchiveScene({ locale }) {
   const [effects, setEffects] = useState({});
+  const [activeStage, setActiveStage] = useState("");
   const effectSequence = useRef({});
+  const activeStageTimer = useRef(null);
+  const archiveStages = ["archive", "develop", "review", "protect"];
+  const isZh = locale === "zh";
+  const labels = {
+    archive: isZh ? "歸檔" : "Archive",
+    develop: isZh ? "開發" : "Develop",
+    review: isZh ? "審稿" : "Review",
+    protect: isZh ? "保護" : "Protect",
+    keySmall: isZh ? "檔案處理" : "Archive handling",
+    keyStrong: isZh ? "金色 / 已審核層" : "Gold / reviewed layer",
+  };
+
+  useEffect(() => {
+    return () => {
+      if (activeStageTimer.current) {
+        window.clearTimeout(activeStageTimer.current);
+      }
+    };
+  }, []);
 
   function triggerEffect(event, stage) {
     event.preventDefault();
     event.stopPropagation();
+    setActiveStage(stage);
+    const stageIndex = archiveStages.indexOf(stage);
+    const triggeredStages = stageIndex >= 0 ? archiveStages.slice(0, stageIndex + 1) : [stage];
+    const activeDuration = stage === "protect" ? 5600 : stage === "review" ? 6200 : stage === "develop" ? 3900 : 3300;
+
+    if (activeStageTimer.current) {
+      window.clearTimeout(activeStageTimer.current);
+    }
+
+    activeStageTimer.current = window.setTimeout(() => {
+      setActiveStage("");
+    }, activeDuration);
+
     const effectKey = (effectSequence.current[stage] ?? 0) + 1;
     effectSequence.current[stage] = effectKey;
-    setEffects((current) => ({
-      ...current,
-      [stage]: effectKey,
-    }));
+    const flowEffects = Object.fromEntries(triggeredStages.map((flowStage) => [flowStage, effectKey]));
+    setEffects((current) => ({ ...current, ...flowEffects }));
 
     window.setTimeout(() => {
       setEffects((current) => {
-        if (current[stage] !== effectKey) {
-          return current;
-        }
-
         const next = { ...current };
-        delete next[stage];
+        triggeredStages.forEach((flowStage) => {
+          if (next[flowStage] === effectKey) {
+            delete next[flowStage];
+          }
+        });
         return next;
       });
-    }, stage === "review" ? 5200 : 1900);
+    }, activeDuration);
   }
 
   return (
-    <span className="story-archive-scene">
+    <span className={`story-archive-scene ${activeStage ? `is-${activeStage}-active is-story-active` : ""}`}>
       <span className="story-archive-scene__picture">
         <img
-          src="/assets/factory/story-archive/background-desktop-v1.webp"
+          src={assetPath("/assets/factory/story-archive/background-desktop-v1.webp")}
           alt=""
           className="story-archive-scene__backdrop"
         />
       </span>
       <span className="story-archive-scene__wash" />
 
+      <span className="story-rights-loop" aria-hidden="true">
+        <i className="story-rights-loop__rail story-rights-loop__rail--index" />
+        <i className="story-rights-loop__rail story-rights-loop__rail--review" />
+        <i className="story-rights-loop__rail story-rights-loop__rail--protect" />
+        <i className="story-rights-loop__node story-rights-loop__node--archive" />
+        <i className="story-rights-loop__node story-rights-loop__node--develop" />
+        <i className="story-rights-loop__node story-rights-loop__node--review" />
+        <i className="story-rights-loop__node story-rights-loop__node--protect" />
+        <i className="story-rights-loop__folder" />
+        <i className="story-rights-loop__manuscript" />
+        <i className="story-rights-loop__thread" />
+        <i className="story-rights-loop__review" />
+        <i className="story-rights-loop__rights" />
+        <i className="story-rights-loop__handoff" />
+      </span>
+
       <ArchiveTarget
         className="story-target--archive"
         effectKey={effects.archive}
-        label="Archive"
+        label={labels.archive}
         onTrigger={(event) => triggerEffect(event, "archive")}
       >
         <i className="story-tab story-tab--one" />
@@ -65,7 +113,7 @@ export default function StoryArchiveScene() {
       <ArchiveTarget
         className="story-target--develop"
         effectKey={effects.develop}
-        label="Develop"
+        label={labels.develop}
         onTrigger={(event) => triggerEffect(event, "develop")}
       >
         <i className="story-card story-card--one" />
@@ -77,22 +125,22 @@ export default function StoryArchiveScene() {
       <ArchiveTarget
         className="story-target--review"
         effectKey={effects.review}
-        label="Review"
+        label={labels.review}
         onTrigger={(event) => triggerEffect(event, "review")}
       >
-        <img className="story-page story-page--one" src="/assets/factory/story-archive/props/review-page-v1.webp" alt="" />
-        <img className="story-page story-page--two" src="/assets/factory/story-archive/props/review-page-v1.webp" alt="" />
-        <img className="story-page story-page--three" src="/assets/factory/story-archive/props/review-page-v1.webp" alt="" />
-        <img className="story-page story-page--four" src="/assets/factory/story-archive/props/review-page-v1.webp" alt="" />
-        <img className="story-page story-page--five" src="/assets/factory/story-archive/props/review-page-v1.webp" alt="" />
-        <img className="story-page story-page--six" src="/assets/factory/story-archive/props/review-page-v1.webp" alt="" />
+        <img className="story-page story-page--one" src={assetPath("/assets/factory/story-archive/props/review-page-v1.webp")} alt="" />
+        <img className="story-page story-page--two" src={assetPath("/assets/factory/story-archive/props/review-page-v1.webp")} alt="" />
+        <img className="story-page story-page--three" src={assetPath("/assets/factory/story-archive/props/review-page-v1.webp")} alt="" />
+        <img className="story-page story-page--four" src={assetPath("/assets/factory/story-archive/props/review-page-v1.webp")} alt="" />
+        <img className="story-page story-page--five" src={assetPath("/assets/factory/story-archive/props/review-page-v1.webp")} alt="" />
+        <img className="story-page story-page--six" src={assetPath("/assets/factory/story-archive/props/review-page-v1.webp")} alt="" />
         <i className="story-review-mark" />
       </ArchiveTarget>
 
       <ArchiveTarget
         className="story-target--protect"
         effectKey={effects.protect}
-        label="Protect"
+        label={labels.protect}
         onTrigger={(event) => triggerEffect(event, "protect")}
       >
         <i className="story-packet" />
@@ -100,8 +148,8 @@ export default function StoryArchiveScene() {
       </ArchiveTarget>
 
       <span className="story-archive-scene__key">
-        <small>Archive handling</small>
-        <strong>Gold / reviewed layer</strong>
+        <small>{labels.keySmall}</small>
+        <strong>{labels.keyStrong}</strong>
       </span>
     </span>
   );

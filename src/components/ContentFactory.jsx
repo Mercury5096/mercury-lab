@@ -1,62 +1,62 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { rooms } from "../content";
 import BlueprintFrame from "./factory/BlueprintFrame";
 import RoomShell from "./factory/RoomShell";
 
-const locale = "en";
-const read = (value) =>
+const readValue = (value, locale) =>
   typeof value === "string" ? value : value[locale] ?? value.en;
 
 const roomFunctions = {
-  "print-engine-room": "Print to System",
-  "editorial-kitchen": "Editorial Room",
-  "cookbook-production-floor": "Brief to Delivery",
-  "story-archive-ip-office": "Story to Interaction",
-  "operation-control-room": "Research Engine",
-  "commerce-visual-line": "Design Studio",
-  "multimedia-workshop": "Case Files",
-  "ai-workflow-lab": "Research to Output",
+  "print-engine-room": { en: "Print to System", zh: "印刷到系統" },
+  "editorial-kitchen": { en: "Editorial Room", zh: "編輯製作" },
+  "cookbook-production-floor": { en: "Brief to Delivery", zh: "企劃到交付" },
+  "story-archive-ip-office": { en: "Story to Interaction", zh: "故事到互動" },
+  "operation-control-room": { en: "Research Engine", zh: "協調引擎" },
+  "commerce-visual-line": { en: "Design Studio", zh: "商業視覺" },
+  "multimedia-workshop": { en: "Case Files", zh: "多媒體作品" },
+  "ai-workflow-lab": { en: "Research to Output", zh: "AI 到原型" },
 };
 
 const floors = [
   {
     id: "07",
-    label: "Print Foundation",
+    label: { en: "Print Foundation", zh: "印刷基礎" },
     rooms: ["print-engine-room"],
   },
   {
     id: "06",
-    label: "Editorial Production",
+    label: { en: "Editorial Production", zh: "編輯製作" },
     rooms: ["editorial-kitchen"],
   },
   {
     id: "05",
-    label: "Cookbook Production",
+    label: { en: "Cookbook Production", zh: "食譜出版" },
     rooms: ["cookbook-production-floor"],
   },
   {
     id: "04",
-    label: "Story Archive",
+    label: { en: "Story Archive", zh: "故事檔案" },
     rooms: ["story-archive-ip-office"],
   },
   {
     id: "03",
-    label: "Operations Control",
+    label: { en: "Operations Control", zh: "營運協調" },
     rooms: ["operation-control-room"],
   },
   {
     id: "02",
-    label: "Commerce Visuals",
+    label: { en: "Commerce Visuals", zh: "電商視覺" },
     rooms: ["commerce-visual-line"],
   },
   {
     id: "01",
-    label: "Multimedia Practice",
+    label: { en: "Multimedia Practice", zh: "多媒體實作" },
     rooms: ["multimedia-workshop"],
   },
   {
     id: "00",
-    label: "Assisted Research Lab",
+    label: { en: "Assisted Research Lab", zh: "AI 輔助研究" },
     rooms: ["ai-workflow-lab"],
   },
 ];
@@ -65,7 +65,20 @@ const floorByRoom = Object.fromEntries(
   floors.flatMap((floor) => floor.rooms.map((roomId) => [roomId, floor.id])),
 );
 
-function ModuleDossier({ room, onClose }) {
+function ModuleDossier({ locale, room, onClose }) {
+  const proof = room.proof;
+  const read = (value) => readValue(value, locale);
+  const isZh = locale === "zh";
+  const t = {
+    close: isZh ? "關閉" : "Close",
+    module: isZh ? "模組" : "Module",
+    evidence: isZh ? "證據" : "Evidence",
+    file: isZh ? "檔案" : "FILE",
+    manual: isZh ? "模組說明" : "Module Manual",
+    activePeriod: isZh ? "活躍時期" : "Active period",
+    productionScope: isZh ? "製作範圍" : "Production scope",
+  };
+
   return (
     <article
       className="manual-panel dossier"
@@ -80,45 +93,77 @@ function ModuleDossier({ room, onClose }) {
       }}
     >
       <button className="dossier-close" type="button" onClick={onClose}>
-        Close
+        {t.close}
       </button>
       <div className="dossier-tabs" aria-hidden="true">
-        <span className="active">Module</span>
-        <span>Evidence</span>
-        <span>Display</span>
+        <span className="active">{t.module}</span>
+        <span>{t.evidence}</span>
       </div>
       <div className="dossier-index">
-        <span>FILE / MCL-{room.code}</span>
-        <span>{room.diagram.zone}</span>
+        <span>{t.file} / MCL-{room.code}</span>
+        <span>{read(room.diagram.zone)}</span>
       </div>
       <div className="manual-panel__top">
         <div>
-          <p className="eyebrow">Module Manual / {room.code}</p>
+          <p className="eyebrow">{t.manual} / {room.code}</p>
           <h3>{read(room.title)}</h3>
         </div>
         <span className={`status ${room.displayLevel === "abstract" ? "restricted" : ""}`}>
           {read(room.status)}
         </span>
       </div>
+      {proof && (
+        <section
+          className={`dossier-proof dossier-proof--${proof.layout ?? "wide"}`}
+          aria-label={`${read(room.title)} evidence`}
+        >
+          <div className="dossier-proof__head">
+            <span>{t.evidence}</span>
+            <strong>{read(proof.label)}</strong>
+          </div>
+          {proof.assets?.length > 0 && (
+            <div className="dossier-proof__gallery">
+              {proof.assets.map((asset) => (
+                <img key={asset.src} src={asset.src} alt={asset.alt} />
+              ))}
+            </div>
+          )}
+          {proof.videos?.length > 0 && (
+            <div className="dossier-proof__videos">
+              {proof.videos.map((video) => (
+                <a
+                  className="dossier-proof__video"
+                  href={video.url}
+                  key={video.url}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span>{read(video.type)}</span>
+                  <strong>{read(video.title)}</strong>
+                  <small>{read(video.role)}</small>
+                </a>
+              ))}
+            </div>
+          )}
+          <p>{read(proof.outcome)}</p>
+          <ul>
+            {proof.roles.map((role) => (
+              <li key={read(role)}>{read(role)}</li>
+            ))}
+          </ul>
+        </section>
+      )}
       <p className="manual-summary">{read(room.summary)}</p>
       <dl className="manual-spec">
         <div>
-          <dt>Active period</dt>
+          <dt>{t.activePeriod}</dt>
           <dd>{room.period}</dd>
         </div>
         <div>
-          <dt>Production scope</dt>
+          <dt>{t.productionScope}</dt>
           <dd>{read(room.discipline)}</dd>
         </div>
-        <div>
-          <dt>Evidence basis</dt>
-          <dd>{read(room.evidence)}</dd>
-        </div>
       </dl>
-      <aside className="archival-note">
-        <span>Archival note / Display rule</span>
-        <p>{read(room.display)}</p>
-      </aside>
     </article>
   );
 }
@@ -130,9 +175,34 @@ export default function ContentFactory({
   eyebrow,
   title,
   description,
+  locale,
 }) {
+  const read = (value) => readValue(value, locale);
+  const isZh = locale === "zh";
   const [activeRoom, setActiveRoom] = useState(null);
   const [activeFloor, setActiveFloor] = useState(floors[0].id);
+  const t = {
+    status: isZh ? "內容工廠 / A 剖面" : "Content Factory / Section A",
+    operational: isZh ? "狀態 / 運作中" : "Status / Operational",
+    drawing: isZh ? "圖面 / CUT-04" : "Drawing / CUT-04",
+    language: isZh ? "語言 / 中文" : "Language / EN",
+    controlled: isZh ? "證據受控 / 人工負責" : "Evidence controlled / Human responsible",
+    factoryRoute: isZh ? "工廠路線" : "Factory Route",
+    explore: isZh ? "探索 / Level 07-00" : "Explore / Level 07-00",
+    viewing: isZh ? `目前 / Level ${activeFloor}` : `Viewing / Level ${activeFloor}`,
+    legend: isZh ? "系統圖例" : "System Legend",
+    peopleFlow: isZh ? "人員流程" : "People flow",
+    evidenceGate: isZh ? "證據關口" : "Evidence gate",
+    publicRelease: isZh ? "公開發布" : "Public release",
+    verticalRoute: isZh ? "垂直路線" : "Vertical route",
+    level: isZh ? "樓層" : "Level",
+    principles: isZh ? "系統原則" : "System Principles",
+    principlesText: isZh ? "可追溯來源 / 權利意識 / 人工審核" : "Traceable source / Rights aware / Human reviewed",
+    machineStatus: isZh ? "機器狀態" : "Machine Status",
+    allOperational: isZh ? "所有系統運作中" : "All systems operational",
+    activeFeed: isZh ? "目前檢視" : "Active Feed",
+    selectRoom: isZh ? "選擇一個房間查看模組記錄" : "Select a room to inspect its module record",
+  };
   const roomRefs = useRef([]);
   const floorRefs = useRef({});
   const floorVisibility = useRef({});
@@ -222,21 +292,21 @@ export default function ContentFactory({
           <p className="section-copy">{description}</p>
         </div>
         <aside className="factory-status" aria-label="Factory drawing status">
-          <p>Content Factory / Section A</p>
-          <strong>Status / Operational</strong>
-          <span>Drawing / CUT-04</span>
-          <span>Language / EN</span>
+          <p>{t.status}</p>
+          <strong>{t.operational}</strong>
+          <span>{t.drawing}</span>
+          <span>{t.language}</span>
           <div className="barcode" aria-hidden="true" />
-          <small>Evidence controlled / Human responsible</small>
+          <small>{t.controlled}</small>
         </aside>
       </header>
 
       <div className="cutaway-layout">
         <nav className="route-index" aria-label="Factory route index">
           <div className="route-index__head">
-            <p>Factory Route</p>
-            <span>Explore / 01-08</span>
-            <strong>Viewing / Level {activeFloor}</strong>
+            <p>{t.factoryRoute}</p>
+            <span>{t.explore}</span>
+            <strong>{t.viewing}</strong>
           </div>
           <ol>
             {rooms.map((room) => (
@@ -247,18 +317,18 @@ export default function ContentFactory({
                 }`}
               >
                 <button type="button" onClick={() => activateFromIndex(room.id)}>
-                  <span>{room.code}</span>
-                  <strong>{roomFunctions[room.id]}</strong>
-                  <small>{read(room.title)}</small>
+                  <span>LV-{floorByRoom[room.id]}</span>
+                  <strong>{read(roomFunctions[room.id])}</strong>
+                  <small>MCL-{room.code} / {read(room.title)}</small>
                 </button>
               </li>
             ))}
           </ol>
           <div className="route-index__legend">
-            <p>System Legend</p>
-            <span>People flow</span>
-            <span>Evidence gate</span>
-            <span>Public release</span>
+            <p>{t.legend}</p>
+            <span>{t.peopleFlow}</span>
+            <span>{t.evidenceGate}</span>
+            <span>{t.publicRelease}</span>
           </div>
         </nav>
 
@@ -271,7 +341,7 @@ export default function ContentFactory({
               <span />
             </div>
             <div className="factory-shaft" aria-hidden="true">
-              <span>Vertical route</span>
+              <span>{t.verticalRoute}</span>
               <i className="shaft-ladder" />
               <i className="shaft-pipe" />
               <i className="shaft-data" />
@@ -289,8 +359,8 @@ export default function ContentFactory({
                   }}
                 >
                   <header className="level-label" aria-hidden="true">
-                    <span>Level / {floor.id}</span>
-                    <strong>{floor.label}</strong>
+                    <span>{t.level} / {floor.id}</span>
+                    <strong>{read(floor.label)}</strong>
                   </header>
                   <div className={`level-rooms level-rooms--${floor.rooms.length}`}>
                     {floor.rooms.map((roomId) => {
@@ -302,16 +372,20 @@ export default function ContentFactory({
                           <RoomShell
                             active={isActive}
                             focusable={!activeRoom && index === 0}
-                            functionLabel={roomFunctions[room.id]}
+                            floorId={floor.id}
+                            functionLabel={read(roomFunctions[room.id])}
                             index={index}
+                            locale={locale}
                             room={room}
                             roomRefs={roomRefs}
                             onActivate={setActiveRoom}
                             onNavigate={moveFocus}
                           />
-                          {isActive && (
-                            <ModuleDossier room={room} onClose={closeDossier} />
-                          )}
+                          {isActive &&
+                            createPortal(
+                              <ModuleDossier locale={locale} room={room} onClose={closeDossier} />,
+                              document.body,
+                            )}
                         </div>
                       );
                     })}
@@ -323,16 +397,16 @@ export default function ContentFactory({
 
           <footer className="factory-console" aria-hidden="true">
             <div>
-              <p>System Principles</p>
-              <span>Traceable source / Rights aware / Human reviewed</span>
+              <p>{t.principles}</p>
+              <span>{t.principlesText}</span>
             </div>
             <div>
-              <p>Machine Status</p>
-              <strong>All systems operational</strong>
+              <p>{t.machineStatus}</p>
+              <strong>{t.allOperational}</strong>
             </div>
             <div>
-              <p>Active Feed</p>
-              <span>{selectedRoom ? read(selectedRoom.title) : "Select a room to inspect its module record"}</span>
+              <p>{t.activeFeed}</p>
+              <span>{selectedRoom ? read(selectedRoom.title) : t.selectRoom}</span>
             </div>
           </footer>
         </div>

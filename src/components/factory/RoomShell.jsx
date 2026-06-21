@@ -1,19 +1,22 @@
 import RoomInterior from "./RoomMotifs";
 
-const locale = "en";
-const read = (value) =>
+const read = (value, locale) =>
   typeof value === "string" ? value : value[locale] ?? value.en;
 
 export default function RoomShell({
   active,
   focusable,
+  floorId,
   functionLabel,
   index,
+  locale,
   room,
   roomRefs,
   onActivate,
   onNavigate,
 }) {
+  const isZh = locale === "zh";
+
   return (
     <button
       className={`factory-room room--${room.diagram.area} ${active ? "active" : ""}`}
@@ -35,16 +38,16 @@ export default function RoomShell({
       </span>
       <span className="room-label">
         <span className="room-label__head">
-          <span>RM-{room.code}</span>
+          <span>LV-{floorId}</span>
           <small>{room.period}</small>
         </span>
-        <strong>{read(room.title)}</strong>
+        <strong>{read(room.title, locale)}</strong>
         <span className="room-function">{functionLabel}</span>
       </span>
-      <RoomInterior roomId={room.id} />
+      <RoomInterior locale={locale} roomId={room.id} />
       <span className="room-footer">
-        <span>{room.diagram.callout}</span>
-        <span>Open dossier</span>
+        <span>{read(room.diagram.callout, locale)}</span>
+        <span>{isZh ? "打開檔案" : "Open dossier"}</span>
       </span>
     </button>
   );

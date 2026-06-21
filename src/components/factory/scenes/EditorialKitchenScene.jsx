@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { assetPath } from "../../../assetPath";
+import { useEffect, useRef, useState } from "react";
 
 function EditorialTarget({ children, className, effectKey, label, onTrigger }) {
   return (
@@ -13,19 +14,40 @@ function EditorialTarget({ children, className, effectKey, label, onTrigger }) {
   );
 }
 
-export default function EditorialKitchenScene() {
+export default function EditorialKitchenScene({ locale }) {
   const [effects, setEffects] = useState({});
+  const [activeStage, setActiveStage] = useState(null);
   const effectSequence = useRef({});
+  const activeStageTimer = useRef(null);
+  const isZh = locale === "zh";
+  const labels = {
+    draft: isZh ? "草稿" : "Draft",
+    layout: isZh ? "排版" : "Layout",
+    edit: isZh ? "編輯" : "Edit",
+    release: isZh ? "發布" : "Release",
+    keySmall: isZh ? "編輯循環" : "Editorial cycle",
+    keyStrong: isZh ? "金色 / 核准流程" : "Gold / approved pass",
+  };
+
+  useEffect(() => () => {
+    window.clearTimeout(activeStageTimer.current);
+  }, []);
 
   function triggerEffect(event, stage) {
     event.preventDefault();
     event.stopPropagation();
     const effectKey = (effectSequence.current[stage] ?? 0) + 1;
     effectSequence.current[stage] = effectKey;
+    window.clearTimeout(activeStageTimer.current);
+    setActiveStage(stage);
     setEffects((current) => ({
       ...current,
       [stage]: effectKey,
     }));
+
+    activeStageTimer.current = window.setTimeout(() => {
+      setActiveStage(null);
+    }, 2800);
 
     window.setTimeout(() => {
       setEffects((current) => {
@@ -41,20 +63,29 @@ export default function EditorialKitchenScene() {
   }
 
   return (
-    <span className="editorial-kitchen-scene">
+    <span className={`editorial-kitchen-scene ${activeStage ? `is-${activeStage}-active is-editorial-active` : ""}`}>
       <span className="editorial-kitchen-scene__picture">
         <img
-          src="/assets/factory/editorial/background-desktop-v1.webp"
+          src={assetPath("/assets/factory/editorial/background-desktop-v1.webp")}
           alt=""
           className="editorial-kitchen-scene__backdrop"
         />
       </span>
       <span className="editorial-kitchen-scene__wash" />
+      <span className="editorial-page-cycle" aria-hidden="true">
+        <i className="editorial-page-cycle__rail editorial-page-cycle__rail--draft" />
+        <i className="editorial-page-cycle__rail editorial-page-cycle__rail--layout" />
+        <i className="editorial-page-cycle__rail editorial-page-cycle__rail--release" />
+        <i className="editorial-page-cycle__sheet editorial-page-cycle__sheet--draft" />
+        <i className="editorial-page-cycle__sheet editorial-page-cycle__sheet--layout" />
+        <i className="editorial-page-cycle__mark" />
+        <i className="editorial-page-cycle__release" />
+      </span>
 
       <EditorialTarget
         className="editorial-target--draft"
         effectKey={effects.draft}
-        label="Draft"
+        label={labels.draft}
         onTrigger={(event) => triggerEffect(event, "draft")}
       >
         <i className="editorial-note editorial-note--one" />
@@ -65,7 +96,7 @@ export default function EditorialKitchenScene() {
       <EditorialTarget
         className="editorial-target--layout"
         effectKey={effects.layout}
-        label="Layout"
+        label={labels.layout}
         onTrigger={(event) => triggerEffect(event, "layout")}
       >
         <i className="editorial-spread" />
@@ -77,7 +108,7 @@ export default function EditorialKitchenScene() {
       <EditorialTarget
         className="editorial-target--edit"
         effectKey={effects.edit}
-        label="Edit"
+        label={labels.edit}
         onTrigger={(event) => triggerEffect(event, "edit")}
       >
         <i className="editorial-pencil" />
@@ -88,7 +119,7 @@ export default function EditorialKitchenScene() {
       <EditorialTarget
         className="editorial-target--release"
         effectKey={effects.release}
-        label="Release"
+        label={labels.release}
         onTrigger={(event) => triggerEffect(event, "release")}
       >
         <i className="editorial-stack" />
@@ -96,8 +127,8 @@ export default function EditorialKitchenScene() {
       </EditorialTarget>
 
       <span className="editorial-kitchen-scene__key">
-        <small>Editorial cycle</small>
-        <strong>Gold / approved pass</strong>
+        <small>{labels.keySmall}</small>
+        <strong>{labels.keyStrong}</strong>
       </span>
     </span>
   );

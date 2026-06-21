@@ -1,4 +1,7 @@
-import { useRef, useState } from "react";
+import { assetPath } from "../../../assetPath";
+import { useEffect, useRef, useState } from "react";
+
+const commerceStages = ["sample", "compose", "adapt", "export"];
 
 function CommerceTarget({ children, className, effectKey, label, onTrigger }) {
   return (
@@ -13,49 +16,94 @@ function CommerceTarget({ children, className, effectKey, label, onTrigger }) {
   );
 }
 
-export default function CommerceVisualScene() {
+export default function CommerceVisualScene({ locale }) {
   const [effects, setEffects] = useState({});
+  const [activeStage, setActiveStage] = useState(null);
+  const [loopKey, setLoopKey] = useState(0);
   const effectSequence = useRef({});
+  const loopTimers = useRef([]);
+  const isZh = locale === "zh";
+  const labels = {
+    sample: isZh ? "取樣" : "Sample",
+    compose: isZh ? "編排" : "Compose",
+    adapt: isZh ? "適配" : "Adapt",
+    export: isZh ? "輸出" : "Export",
+    keySmall: isZh ? "視覺適配" : "Visual adaptation",
+    keyStrong: isZh ? "金色 / 已核准樣本" : "Gold / approved sample",
+  };
 
-  function triggerEffect(event, stage) {
+  function clearLoopTimers() {
+    loopTimers.current.forEach((timer) => window.clearTimeout(timer));
+    loopTimers.current = [];
+  }
+
+  useEffect(() => clearLoopTimers, []);
+
+  function triggerEffect(event) {
     event.preventDefault();
     event.stopPropagation();
-    const effectKey = (effectSequence.current[stage] ?? 0) + 1;
-    effectSequence.current[stage] = effectKey;
-    setEffects((current) => ({
-      ...current,
-      [stage]: effectKey,
-    }));
+    clearLoopTimers();
+    setEffects({});
+    setActiveStage(null);
+    setLoopKey((current) => current + 1);
 
-    window.setTimeout(() => {
-      setEffects((current) => {
-        if (current[stage] !== effectKey) {
-          return current;
-        }
+    commerceStages.forEach((stage, index) => {
+      const stageTimer = window.setTimeout(() => {
+        const effectKey = (effectSequence.current[stage] ?? 0) + 1;
+        effectSequence.current[stage] = effectKey;
+        setActiveStage(stage);
+        setEffects((current) => ({
+          ...current,
+          [stage]: effectKey,
+        }));
 
-        const next = { ...current };
-        delete next[stage];
-        return next;
-      });
-    }, stage === "adapt" ? 2200 : 1800);
+        const clearStageTimer = window.setTimeout(() => {
+          setEffects((current) => {
+            if (current[stage] !== effectKey) {
+              return current;
+            }
+
+            const next = { ...current };
+            delete next[stage];
+            return next;
+          });
+        }, 1900);
+        loopTimers.current.push(clearStageTimer);
+      }, index * 920);
+      loopTimers.current.push(stageTimer);
+    });
+
+    const finishTimer = window.setTimeout(() => {
+      setActiveStage(null);
+    }, commerceStages.length * 920 + 1100);
+    loopTimers.current.push(finishTimer);
   }
 
   return (
-    <span className="commerce-visual-scene">
+    <span className={`commerce-visual-scene ${activeStage ? `is-${activeStage}-active is-commerce-active` : ""}`}>
       <span className="commerce-visual-scene__picture">
         <img
-          src="/assets/factory/commerce/background-desktop-v1.webp"
+          src={assetPath("/assets/factory/commerce/background-desktop-v1.webp")}
           alt=""
           className="commerce-visual-scene__backdrop"
         />
       </span>
       <span className="commerce-visual-scene__wash" />
+      <span className="commerce-material-flow" aria-hidden="true" key={loopKey}>
+        <i className="commerce-material-flow__rail commerce-material-flow__rail--sample" />
+        <i className="commerce-material-flow__rail commerce-material-flow__rail--compose" />
+        <i className="commerce-material-flow__rail commerce-material-flow__rail--adapt" />
+        <i className="commerce-material-flow__card commerce-material-flow__card--swatch" />
+        <i className="commerce-material-flow__card commerce-material-flow__card--poster" />
+        <i className="commerce-material-flow__card commerce-material-flow__card--format" />
+        <i className="commerce-material-flow__packet" />
+      </span>
 
       <CommerceTarget
         className="commerce-target--sample"
         effectKey={effects.sample}
-        label="Sample"
-        onTrigger={(event) => triggerEffect(event, "sample")}
+        label={labels.sample}
+        onTrigger={triggerEffect}
       >
         <i className="commerce-swatch commerce-swatch--one" />
         <i className="commerce-swatch commerce-swatch--two" />
@@ -65,8 +113,8 @@ export default function CommerceVisualScene() {
       <CommerceTarget
         className="commerce-target--compose"
         effectKey={effects.compose}
-        label="Compose"
-        onTrigger={(event) => triggerEffect(event, "compose")}
+        label={labels.compose}
+        onTrigger={triggerEffect}
       >
         <i className="commerce-poster commerce-poster--one" />
         <i className="commerce-poster commerce-poster--two" />
@@ -76,8 +124,8 @@ export default function CommerceVisualScene() {
       <CommerceTarget
         className="commerce-target--adapt"
         effectKey={effects.adapt}
-        label="Adapt"
-        onTrigger={(event) => triggerEffect(event, "adapt")}
+        label={labels.adapt}
+        onTrigger={triggerEffect}
       >
         <i className="commerce-frame commerce-frame--wide" />
         <i className="commerce-frame commerce-frame--square" />
@@ -87,16 +135,16 @@ export default function CommerceVisualScene() {
       <CommerceTarget
         className="commerce-target--export"
         effectKey={effects.export}
-        label="Export"
-        onTrigger={(event) => triggerEffect(event, "export")}
+        label={labels.export}
+        onTrigger={triggerEffect}
       >
         <i className="commerce-box" />
         <i className="commerce-export-line" />
       </CommerceTarget>
 
       <span className="commerce-visual-scene__key">
-        <small>Visual adaptation</small>
-        <strong>Gold / approved sample</strong>
+        <small>{labels.keySmall}</small>
+        <strong>{labels.keyStrong}</strong>
       </span>
     </span>
   );

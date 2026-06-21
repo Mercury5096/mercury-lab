@@ -1,3 +1,4 @@
+import { assetPath } from "../../../assetPath";
 import { useRef, useState } from "react";
 
 function VisualProp({ children, className, effectKey, label, onTrigger, src }) {
@@ -14,9 +15,18 @@ function VisualProp({ children, className, effectKey, label, onTrigger, src }) {
   );
 }
 
-export default function CookbookProductionScene() {
+export default function CookbookProductionScene({ locale }) {
   const [effects, setEffects] = useState({});
   const effectSequence = useRef({});
+  const isZh = locale === "zh";
+  const labels = {
+    plan: isZh ? "企劃" : "Plan",
+    cook: isZh ? "烹調" : "Cook",
+    style: isZh ? "造型" : "Style",
+    capture: isZh ? "拍攝" : "Capture",
+    keySmall: isZh ? "可互動物件" : "Movable props",
+    keyStrong: isZh ? "金色 / 啟動層" : "Gold / active layer",
+  };
 
   function triggerEffect(event, prop) {
     event.preventDefault();
@@ -52,7 +62,7 @@ export default function CookbookProductionScene() {
     <span className="cookbook-scene">
       <span className="cookbook-scene__picture">
         <img
-          src="/assets/factory/cookbook/background-desktop-v1.webp"
+          src={assetPath("/assets/factory/cookbook/background-desktop-v1.webp")}
           alt=""
           className="cookbook-scene__backdrop"
         />
@@ -73,9 +83,9 @@ export default function CookbookProductionScene() {
       <VisualProp
         className="cookbook-prop--plan"
         effectKey={effects.plan}
-        label="Plan"
+        label={labels.plan}
         onTrigger={(event) => triggerEffect(event, "plan")}
-        src="/assets/factory/cookbook/props/recipe-proofs-v1.webp"
+        src={assetPath("/assets/factory/cookbook/props/recipe-proofs-v1.webp")}
       >
         <i className="cookbook-proof-mark cookbook-proof-mark--one" />
         <i className="cookbook-proof-mark cookbook-proof-mark--two" />
@@ -85,9 +95,9 @@ export default function CookbookProductionScene() {
       <VisualProp
         className="cookbook-prop--cook"
         effectKey={effects.cook}
-        label="Cook"
+        label={labels.cook}
         onTrigger={(event) => triggerEffect(event, "cook")}
-        src="/assets/factory/cookbook/props/pot-v1.webp"
+        src={assetPath("/assets/factory/cookbook/props/pot-v1.webp")}
       >
         <i className="cookbook-heat-ring" />
         <i className="cookbook-steam" />
@@ -96,9 +106,9 @@ export default function CookbookProductionScene() {
       <VisualProp
         className="cookbook-prop--style"
         effectKey={effects.style}
-        label="Style"
+        label={labels.style}
         onTrigger={(event) => triggerEffect(event, "style")}
-        src="/assets/factory/cookbook/props/plated-dish-v1.webp"
+        src={assetPath("/assets/factory/cookbook/props/plated-dish-v1.webp")}
       >
         <i className="cookbook-plating-glint cookbook-plating-glint--one" />
         <i className="cookbook-plating-glint cookbook-plating-glint--two" />
@@ -108,17 +118,17 @@ export default function CookbookProductionScene() {
       <VisualProp
         className="cookbook-prop--capture"
         effectKey={effects.capture}
-        label="Capture"
+        label={labels.capture}
         onTrigger={(event) => triggerEffect(event, "capture")}
-        src="/assets/factory/cookbook/props/camera-tripod-v1.webp"
+        src={assetPath("/assets/factory/cookbook/props/camera-tripod-v1.webp")}
       >
         <i className="cookbook-flash" />
         <i className="cookbook-focus" />
       </VisualProp>
 
       <span className="cookbook-scene__key">
-        <small>Movable props</small>
-        <strong>Gold / active layer</strong>
+        <small>{labels.keySmall}</small>
+        <strong>{labels.keyStrong}</strong>
       </span>
     </span>
   );
