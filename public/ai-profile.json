@@ -1,0 +1,755 @@
+{
+  "name": "Mercury Ooi",
+  "siteName": "Mercury Lab",
+  "siteUrl": "https://mercury5096.github.io/mercury-lab/",
+  "linkedinUrl": "https://www.linkedin.com/in/mercury-ooi-9a653067/",
+  "email": "merrcuy5096@gmail.com",
+  "positioning": {
+    "en": "I turn complex creative needs into clear content structures, practical workflows, and deliverable outcomes. My experience spans publishing, editorial production, cookbook projects, e-commerce visuals, multimedia design, and AI-assisted interactive storytelling.",
+    "zh": "我擅長把複雜需求整理成清楚的內容架構、製作流程與可執行成果。經驗橫跨出版、編輯、食譜書製作、電商視覺、多媒體設計與 AI 輔助互動敘事。"
+  },
+  "openTo": [
+    "freelance work",
+    "part-time roles",
+    "full-time opportunities",
+    "project-based collaboration",
+    "consulting-style support"
+  ],
+  "collaborationStatement": {
+    "en": "I am open to freelance work, part-time roles, full-time opportunities, and project-based collaboration. Across several roles, my work has often sat in a PM-style position: clarifying needs, coordinating people and materials, organizing production steps, and helping projects move toward delivery.",
+    "zh": "我開放外包接案、兼職、全職職缺與專案型合作。在多段工作經驗中，我經常站在 PM 式的位置：釐清需求、協調人員與素材、整理製作流程，並推動專案往交付前進。"
+  },
+  "capabilities": [
+    {
+      "en": "Content production PM / Creative project coordination.",
+      "zh": "內容製作 PM / 創意專案協調。"
+    },
+    {
+      "en": "Editorial planning, publishing workflow, copywriting, layout coordination, and delivery support.",
+      "zh": "編輯企劃、出版流程、文案撰寫、排版協調與交付支援。"
+    },
+    {
+      "en": "E-commerce, campaign, and brand visual production across platform-ready assets.",
+      "zh": "電商、活動與品牌視覺製作，支援平台上架素材。"
+    },
+    {
+      "en": "Multimedia production coordination across concept, script, storyboard, filming, editing, motion, and web presentation.",
+      "zh": "多媒體製作協調，涵蓋概念、腳本、分鏡、拍攝、剪輯、動態與網頁呈現。"
+    },
+    {
+      "en": "AI-assisted content and workflow prototyping with human review and practical delivery awareness.",
+      "zh": "AI 輔助內容與工作流程原型，保留人工審核與實際交付意識。"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "print-engine-room",
+      "code": "01",
+      "title": {
+        "en": "Print Engine Room",
+        "zh": "印刷引擎室"
+      },
+      "period": "2002–2003",
+      "zone": {
+        "en": "Publishing Foundation",
+        "zh": "出版基礎區"
+      },
+      "scope": {
+        "en": "Comic layout and print prepress",
+        "zh": "漫畫排版與印刷前製"
+      },
+      "summary": {
+        "en": "My production path began with comic layout and print prepress, where precision, text fitting, file handling, and delivery discipline were learned through actual publication work.",
+        "zh": "我的製作路徑從漫畫排版與印刷前製開始，透過實際出版工作學習版面精度、文字嵌排、檔案處理與交付紀律。"
+      },
+      "evidence": {
+        "en": "LinkedIn record; selected print layout materials",
+        "zh": "LinkedIn 記錄；精選印刷排版材料"
+      },
+      "outcome": {
+        "en": "Early print-production work across comic layout adaptation, translated text fitting, leaflet and brochure formatting, dense information layout, and prepress delivery support.",
+        "zh": "早期印刷出版工作，涵蓋漫畫版面調整、翻譯文字嵌排、宣傳單與手冊編排、密集資訊版面處理與印前交付支援。"
+      },
+      "roles": [
+        {
+          "en": "Comic layout adaptation",
+          "zh": "漫畫版面調整"
+        },
+        {
+          "en": "Translated text fitting",
+          "zh": "翻譯文字嵌排"
+        },
+        {
+          "en": "Leaflet layout",
+          "zh": "宣傳單排版"
+        },
+        {
+          "en": "Brochure formatting",
+          "zh": "手冊版面編排"
+        },
+        {
+          "en": "Prepress delivery support",
+          "zh": "印刷前製支援"
+        }
+      ],
+      "publicLinks": []
+    },
+    {
+      "id": "editorial-kitchen",
+      "code": "02",
+      "title": {
+        "en": "Editorial Kitchen",
+        "zh": "編輯廚房"
+      },
+      "period": "2003–2004",
+      "zone": {
+        "en": "Publishing Foundation",
+        "zh": "出版基礎區"
+      },
+      "scope": {
+        "en": "Magazine, cookbook, food content, and writing",
+        "zh": "雜誌、食譜、美食內容與寫作"
+      },
+      "summary": {
+        "en": "Completed layout work for 24 food and lifestyle magazine issues, building an editorial rhythm that connected writing, visual organization, recurring deadlines, and print delivery.",
+        "zh": "完成 24 期美食生活雜誌排版工作，累積將寫作、視覺組織、固定截稿與印刷交付串連起來的編輯節奏。"
+      },
+      "evidence": {
+        "en": "LinkedIn record; selected food editorial, copywriting, and layout materials",
+        "zh": "LinkedIn 記錄；精選美食編輯、文案與排版材料"
+      },
+      "outcome": {
+        "en": "Food and lifestyle editorial work across writing, interview-style copy, page layout, cover/page design, and print-oriented delivery under recurring publication schedules.",
+        "zh": "美食與生活內容編輯工作，涵蓋寫稿、採訪式文案、版面編排、封面/頁面設計，以及在固定出版週期下完成印刷導向交付。"
+      },
+      "roles": [
+        {
+          "en": "Food writing",
+          "zh": "美食寫作"
+        },
+        {
+          "en": "Interview-style copywriting",
+          "zh": "採訪式文案"
+        },
+        {
+          "en": "Editorial layout",
+          "zh": "編輯排版"
+        },
+        {
+          "en": "Cover and page design",
+          "zh": "封面與頁面設計"
+        },
+        {
+          "en": "Print-oriented delivery",
+          "zh": "印刷導向交付"
+        }
+      ],
+      "publicLinks": []
+    },
+    {
+      "id": "cookbook-production-floor",
+      "code": "03",
+      "title": {
+        "en": "Cookbook Production Floor",
+        "zh": "食譜出版製作樓層"
+      },
+      "period": "2010–2014",
+      "zone": {
+        "en": "Publishing Foundation",
+        "zh": "出版基礎區"
+      },
+      "scope": {
+        "en": "50+ cookbook-related publishing projects",
+        "zh": "50+ 本食譜出版相關流程"
+      },
+      "summary": {
+        "en": "Participated in and coordinated 50+ cookbook-related publishing projects, turning recipes, clients, chefs, photography, layout, and print requirements into repeatable publication delivery.",
+        "zh": "參與並協調 50+ 本食譜出版相關流程，將食譜、客戶、廚師、攝影、排版與印刷需求整合成可反覆交付的出版製作流程。"
+      },
+      "evidence": {
+        "en": "LinkedIn record; selected published covers",
+        "zh": "LinkedIn 記錄；精選出版封面"
+      },
+      "outcome": {
+        "en": "Repeat cookbook and food-publication delivery across content planning, layout coordination, food photography support, client/team communication, and print production.",
+        "zh": "反覆完成食譜與美食出版交付，涵蓋內容企劃、排版協調、美食攝影支援、客戶/團隊溝通與印刷製作。"
+      },
+      "roles": [
+        {
+          "en": "Content planning",
+          "zh": "內容企劃"
+        },
+        {
+          "en": "Layout coordination",
+          "zh": "排版協調"
+        },
+        {
+          "en": "Food photography coordination",
+          "zh": "美食攝影協調"
+        },
+        {
+          "en": "Client and team communication",
+          "zh": "客戶與團隊溝通"
+        },
+        {
+          "en": "Print production support",
+          "zh": "印刷製作支援"
+        }
+      ],
+      "publicLinks": []
+    },
+    {
+      "id": "story-archive-ip-office",
+      "code": "04",
+      "title": {
+        "en": "Story Archive & IP Office",
+        "zh": "故事檔案與 IP 辦公室"
+      },
+      "period": "2015–2016",
+      "zone": {
+        "en": "Narrative Research Wing",
+        "zh": "敘事研究翼"
+      },
+      "scope": {
+        "en": "Fiction, publications, and creator collaboration",
+        "zh": "小說、出版品與創作者協作"
+      },
+      "summary": {
+        "en": "Worked across fiction writing and illustrator coordination, connecting story development, visual presentation, creator needs, publishing partners, and reader-facing materials.",
+        "zh": "參與小說創作與繪師協作，串接故事開發、視覺呈現、創作者需求、出版合作方與面向讀者的作品素材。"
+      },
+      "evidence": {
+        "en": "LinkedIn record; selected publication and creator-collaboration materials",
+        "zh": "LinkedIn 記錄；精選出版與創作者協作材料"
+      },
+      "outcome": {
+        "en": "Published fiction work and illustrator coordination across story development, visual presentation, publishing communication, creator materials, and reader-facing delivery.",
+        "zh": "小說出版與繪師協作經驗，涵蓋故事開發、視覺呈現、出版溝通、創作者資料整理與讀者端交付。"
+      },
+      "roles": [
+        {
+          "en": "Fiction writing",
+          "zh": "小說寫作"
+        },
+        {
+          "en": "Illustrator coordination",
+          "zh": "繪師協調"
+        },
+        {
+          "en": "Publishing communication",
+          "zh": "出版溝通"
+        },
+        {
+          "en": "Creator material curation",
+          "zh": "創作者資料整理"
+        },
+        {
+          "en": "Reader-facing presentation",
+          "zh": "面向讀者的呈現"
+        }
+      ],
+      "publicLinks": []
+    },
+    {
+      "id": "operation-control-room",
+      "code": "05",
+      "title": {
+        "en": "Operation Control Room",
+        "zh": "營運控制室"
+      },
+      "period": "2016–2018",
+      "zone": {
+        "en": "Delivery Control Level",
+        "zh": "交付控制層"
+      },
+      "scope": {
+        "en": "Creative workflow development",
+        "zh": "創意製作流程建立"
+      },
+      "summary": {
+        "en": "Helped an early-stage media advertising company establish practical creative-production workflows, turning scattered tasks, vendors, materials, and delivery needs into a more organized operating rhythm.",
+        "zh": "協助早期媒體廣告公司建立可執行的創意製作流程，將零散任務、外包、素材與交付需求整理成更有秩序的運作節奏。"
+      },
+      "evidence": {
+        "en": "LinkedIn record; selected event and coordination materials",
+        "zh": "LinkedIn 記錄；精選活動與協調材料"
+      },
+      "outcome": {
+        "en": "Coordination work across community pages, activity materials, workshop records, people flow, public communication, and practical handoff between planning and delivery.",
+        "zh": "協調工作涵蓋社群頁面、活動素材、工作坊紀錄、人員動線、公開溝通，以及企劃到交付之間的實際交接。"
+      },
+      "roles": [
+        {
+          "en": "Workflow coordination",
+          "zh": "流程協調"
+        },
+        {
+          "en": "Community page operation",
+          "zh": "社群頁面經營"
+        },
+        {
+          "en": "Activity material preparation",
+          "zh": "活動素材準備"
+        },
+        {
+          "en": "On-site communication",
+          "zh": "現場溝通"
+        },
+        {
+          "en": "Workshop documentation",
+          "zh": "工作坊記錄"
+        }
+      ],
+      "publicLinks": []
+    },
+    {
+      "id": "commerce-visual-line",
+      "code": "06",
+      "title": {
+        "en": "Commerce Visual Line",
+        "zh": "電商視覺產線"
+      },
+      "period": "2018–2020",
+      "zone": {
+        "en": "Delivery Control Level",
+        "zh": "交付控制層"
+      },
+      "scope": {
+        "en": "GSK e-commerce visuals and promotional assets",
+        "zh": "GSK 電商視覺與促銷素材"
+      },
+      "summary": {
+        "en": "Produced e-commerce visuals, promotional materials, product-image adaptations, and marketplace-ready assets for GSK brands under platform and brand constraints.",
+        "zh": "在平台規格與品牌限制之下，為 GSK 品牌製作電商視覺、促銷素材、商品圖調整與平台上架用視覺素材。"
+      },
+      "evidence": {
+        "en": "LinkedIn record; selected e-commerce visual materials",
+        "zh": "LinkedIn 記錄；精選電商視覺材料"
+      },
+      "outcome": {
+        "en": "Platform-ready campaign visuals across marketplace banners, promotional frames, product groupings, flash-sale formats, and brand asset handling.",
+        "zh": "平台上架用活動視覺，涵蓋商城橫幅、促銷框、商品組合、限時活動格式與品牌素材處理。"
+      },
+      "roles": [
+        {
+          "en": "Marketplace banner adaptation",
+          "zh": "平台橫幅適配"
+        },
+        {
+          "en": "Promotional visual production",
+          "zh": "促銷視覺製作"
+        },
+        {
+          "en": "Product-image layout",
+          "zh": "商品圖排版"
+        },
+        {
+          "en": "Platform size formatting",
+          "zh": "平台尺寸格式化"
+        },
+        {
+          "en": "Brand asset handling",
+          "zh": "品牌素材處理"
+        }
+      ],
+      "publicLinks": []
+    },
+    {
+      "id": "multimedia-workshop",
+      "code": "07",
+      "title": {
+        "en": "Multimedia Workshop",
+        "zh": "多媒體工作坊"
+      },
+      "period": "2020–Present",
+      "zone": {
+        "en": "Narrative Research Wing",
+        "zh": "敘事研究翼"
+      },
+      "scope": {
+        "en": "Web, video, 3D, games, and e-book practice",
+        "zh": "網頁、影片、3D、遊戲與電子書實作"
+      },
+      "summary": {
+        "en": "Expanded publishing and content-production experience into web, video, 3D, games, e-books, and team-based multimedia practice through study, competitions, and public project records.",
+        "zh": "將出版與內容製作經驗延伸到網頁、影片、3D、遊戲、電子書與團隊型多媒體實作，透過求學、競賽與公開作品逐步累積。"
+      },
+      "evidence": {
+        "en": "LinkedIn record; selected YouTube video records",
+        "zh": "LinkedIn 記錄；精選 YouTube 影片記錄"
+      },
+      "outcome": {
+        "en": "Student and competition multimedia work across concept planning, scripts, storyboards, filming direction, editing, motion production, web presentation, and team coordination.",
+        "zh": "求學與競賽期間的多媒體作品，涵蓋概念企劃、腳本、分鏡、導演、拍攝、剪輯、動態製作、網頁展示與團隊協作。"
+      },
+      "roles": [
+        {
+          "en": "Concept planning",
+          "zh": "概念企劃"
+        },
+        {
+          "en": "Script and storyboard",
+          "zh": "腳本與分鏡"
+        },
+        {
+          "en": "Filming and directing",
+          "zh": "拍攝與導演"
+        },
+        {
+          "en": "Video editing",
+          "zh": "影片剪輯"
+        },
+        {
+          "en": "Motion production",
+          "zh": "動態製作"
+        },
+        {
+          "en": "Web presentation",
+          "zh": "網頁呈現"
+        },
+        {
+          "en": "Team coordination",
+          "zh": "團隊協作"
+        }
+      ],
+      "publicLinks": [
+        {
+          "title": {
+            "en": "Malaysia night market video record",
+            "zh": "馬來西亞夜市介紹影片"
+          },
+          "type": {
+            "en": "University web project",
+            "zh": "大學網頁作品"
+          },
+          "role": {
+            "en": "Planning, filming, and editing for a night-market web introduction",
+            "zh": "負責夜市介紹單元的企劃、拍攝與剪輯"
+          },
+          "url": "https://youtu.be/sYee0fa5XUc"
+        },
+        {
+          "title": {
+            "en": "Malaysia 3D interactive food web teaser",
+            "zh": "馬來西亞 3D 互動美食網頁預告"
+          },
+          "type": {
+            "en": "Graduation production trailer",
+            "zh": "畢業製作預告片"
+          },
+          "role": {
+            "en": "Planning, filming, and editing",
+            "zh": "負責企劃、拍攝與剪輯"
+          },
+          "url": "https://youtu.be/4G7ggJX6pRA"
+        },
+        {
+          "title": {
+            "en": "MSI competition video record 01",
+            "zh": "MSI 競賽影片記錄"
+          },
+          "type": {
+            "en": "Team competition project",
+            "zh": "團隊競賽作品"
+          },
+          "role": {
+            "en": "Planning, scriptwriting, acting, and editing",
+            "zh": "負責企劃、腳本、演出與剪輯"
+          },
+          "url": "https://www.youtube.com/watch?v=q8-P55Ru7yc"
+        },
+        {
+          "title": {
+            "en": "Yongqing real estate advertising entry",
+            "zh": "永慶地產廣告競賽作品"
+          },
+          "type": {
+            "en": "Golden Calf Awards shortlisted work",
+            "zh": "金犢獎入圍作品"
+          },
+          "role": {
+            "en": "Planning, scriptwriting, filming, and editing",
+            "zh": "負責企劃、腳本、拍攝與剪輯"
+          },
+          "url": "https://www.youtube.com/watch?v=_jsGUr5JuvQ"
+        },
+        {
+          "title": {
+            "en": "Animation advertising competition work",
+            "zh": "動畫廣告競賽作品"
+          },
+          "type": {
+            "en": "Yulon Design Award competition project",
+            "zh": "育秀盃競賽作品"
+          },
+          "role": {
+            "en": "Planning, storyboard, motion production, collaborative editing, and logo design",
+            "zh": "負責企劃、分鏡、動態製作、協作剪輯與 Logo 設計"
+          },
+          "url": "https://youtu.be/HBepI2XGdSw"
+        },
+        {
+          "title": {
+            "en": "Brilliant Black Gold cultural heritage project",
+            "zh": "璀璨黑金文化資產專案"
+          },
+          "type": {
+            "en": "A+ Cultural Heritage Award shortlisted work",
+            "zh": "A+ 文化資產獎入圍作品"
+          },
+          "role": {
+            "en": "Directing, coordination, planning, filming support, and interview support",
+            "zh": "負責導演、統籌、企劃，並協助拍攝與採訪"
+          },
+          "url": "https://www.youtube.com/watch?v=wbs1WmgCrkQ"
+        },
+        {
+          "title": {
+            "en": "Graduation project teaser",
+            "zh": "畢業製作預告片"
+          },
+          "type": {
+            "en": "Graduation production trailer",
+            "zh": "畢業製作預告片"
+          },
+          "role": {
+            "en": "Planning, storyboard, editing, and motion production",
+            "zh": "負責企劃、分鏡、剪輯與動態製作"
+          },
+          "url": "https://www.youtube.com/watch?v=D4RJV1sL-jo&list=PLZNLIiYCImObNGqNu6k0n_V6W1OCRf7Ua&index=6"
+        }
+      ]
+    },
+    {
+      "id": "ai-workflow-lab",
+      "code": "08",
+      "title": {
+        "en": "AI Workflow Lab",
+        "zh": "AI 工作流實驗室"
+      },
+      "period": "2020–Present",
+      "zone": {
+        "en": "Narrative Research Wing",
+        "zh": "敘事研究翼"
+      },
+      "scope": {
+        "en": "AI-assisted interactive storytelling research",
+        "zh": "AI 輔助互動敘事研究"
+      },
+      "summary": {
+        "en": "Currently explores AI-assisted interactive comics and web-based narrative prototypes through human-in-the-loop workflows that keep creative direction, review, and responsibility in human hands.",
+        "zh": "目前以人機協作流程探索 AI 輔助互動漫畫與網頁敘事原型，並將創意方向、審核判斷與責任保留在人類手中。"
+      },
+      "evidence": {
+        "en": "LinkedIn record; selected AI-assisted project records",
+        "zh": "LinkedIn 記錄；精選 AI 輔助作品記錄"
+      },
+      "outcome": {
+        "en": "AI-assisted practice across marketing video production, interactive comic research, visual novel prototyping, and workflow-tool experimentation with human review and creative direction.",
+        "zh": "AI 輔助實作涵蓋行銷影片製作、互動式漫畫研究、視覺小說遊戲原型與工作流程工具實驗，並保留人工審核與創意判斷。"
+      },
+      "roles": [
+        {
+          "en": "AI-assisted concept development",
+          "zh": "AI 輔助概念發展"
+        },
+        {
+          "en": "Prompt and content direction",
+          "zh": "提示詞與內容方向"
+        },
+        {
+          "en": "Interactive narrative prototyping",
+          "zh": "互動敘事原型"
+        },
+        {
+          "en": "Marketing video planning",
+          "zh": "行銷影片企劃"
+        },
+        {
+          "en": "Human review workflow",
+          "zh": "人工審核流程"
+        },
+        {
+          "en": "Web prototype publishing",
+          "zh": "網頁原型發布"
+        }
+      ],
+      "publicLinks": [
+        {
+          "title": {
+            "en": "AI marketing competition video record 01",
+            "zh": "AI 行銷競賽影片記錄"
+          },
+          "type": {
+            "en": "AI application marketing competition",
+            "zh": "AI 應用行銷競賽"
+          },
+          "role": {
+            "en": "Selected work from the 10th TYC Marketing Awards AI application category",
+            "zh": "第十屆崇越行銷大賞 AI 應用行銷競賽佳作"
+          },
+          "url": "https://youtu.be/0DdGG5R_bqI"
+        },
+        {
+          "title": {
+            "en": "Hongbao interactive comic",
+            "zh": "《紅包》互動式漫畫"
+          },
+          "type": {
+            "en": "Master's AI-assisted interactive comic research",
+            "zh": "碩士班 AI 輔助互動漫畫研究"
+          },
+          "role": {
+            "en": "AI-assisted interactive narrative research and web prototype",
+            "zh": "AI 輔助互動敘事研究與網頁原型"
+          },
+          "url": "https://mercury5096.github.io/interactive-comic-hongbao/index.html"
+        },
+        {
+          "title": {
+            "en": "Before the Rain Stops",
+            "zh": "《雨停之前》"
+          },
+          "type": {
+            "en": "AI-assisted visual novel game prototype",
+            "zh": "AI 輔助視覺小說遊戲原型"
+          },
+          "role": {
+            "en": "Interactive story, visual novel prototype, and web publishing",
+            "zh": "互動故事、視覺小說原型與網頁發布"
+          },
+          "url": "https://mercury5096.github.io/dating-sim-prototype/"
+        },
+        {
+          "title": {
+            "en": "AI-assisted book printing quote prototype",
+            "zh": "AI 輔助書籍印製報價原型"
+          },
+          "type": {
+            "en": "Workflow tool prototype",
+            "zh": "工作流程工具原型"
+          },
+          "role": {
+            "en": "Book printing quote workflow prototype, pending vendor specification finalization",
+            "zh": "書籍印製報價流程原型，等待商家規格書定案"
+          },
+          "url": "https://mercury5096.github.io/printing-quote-prototype/"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "title": {
+        "en": "From Comic Prepress to Content Systems",
+        "zh": "從漫畫印前到內容系統"
+      },
+      "status": {
+        "en": "Selected evidence available",
+        "zh": "已有精選證據"
+      },
+      "note": {
+        "en": "Early print-production evidence showing comic layout adaptation, translated text fitting, leaflet layout, brochure formatting, and prepress delivery support.",
+        "zh": "早期印刷製作證據，涵蓋漫畫版面調整、翻譯文字嵌排、宣傳單排版、手冊版面編排與印刷前製支援。"
+      }
+    },
+    {
+      "title": {
+        "en": "24 Issues on an Editorial Clock",
+        "zh": "24 期編輯節奏"
+      },
+      "status": {
+        "en": "Selected evidence available",
+        "zh": "已有精選證據"
+      },
+      "note": {
+        "en": "Magazine and food-content records connecting recurring deadlines, editorial layout, food writing, interview-style copy, and print-oriented delivery.",
+        "zh": "雜誌與美食內容記錄，串起固定截稿節奏、編輯排版、美食寫作、採訪式文案與印刷導向交付。"
+      }
+    },
+    {
+      "title": {
+        "en": "50+ Cookbook-related Publishing Projects",
+        "zh": "50+ 本食譜出版相關流程"
+      },
+      "status": {
+        "en": "Selected evidence available",
+        "zh": "已有精選證據"
+      },
+      "note": {
+        "en": "Selected published covers showing repeat cookbook and food-publication delivery across planning, layout coordination, photography support, client communication, and print production.",
+        "zh": "精選出版封面呈現食譜與美食出版的反覆交付經驗，涵蓋企劃、排版協調、拍攝支援、客戶溝通與印刷製作。"
+      }
+    },
+    {
+      "title": {
+        "en": "Story and Illustrator Bridgework",
+        "zh": "故事與繪師協作橋梁"
+      },
+      "status": {
+        "en": "Selected evidence available",
+        "zh": "已有精選證據"
+      },
+      "note": {
+        "en": "Publication and creator-collaboration records connecting fiction writing, illustrator coordination, publishing communication, visual presentation, and reader-facing materials.",
+        "zh": "出版與創作者協作記錄，串起小說寫作、繪師協調、出版溝通、視覺呈現與面向讀者的素材整理。"
+      }
+    },
+    {
+      "title": {
+        "en": "Creative Operations for an Early Media Startup",
+        "zh": "早期媒體公司的創意營運"
+      },
+      "status": {
+        "en": "Selected evidence available",
+        "zh": "已有精選證據"
+      },
+      "note": {
+        "en": "Event and coordination records showing how planning, activity materials, community pages, workshop documentation, and on-site communication supported public-facing delivery.",
+        "zh": "活動與協調記錄呈現企劃、活動素材、社群頁面、工作坊紀錄與現場溝通如何支援對外執行與交付。"
+      }
+    },
+    {
+      "title": {
+        "en": "E-commerce Visual Production for GSK",
+        "zh": "GSK 電商視覺製作"
+      },
+      "status": {
+        "en": "Selected evidence available",
+        "zh": "已有精選證據"
+      },
+      "note": {
+        "en": "Selected e-commerce visuals showing platform-ready campaign assets across marketplace banner adaptation, promotional layout, product-image formatting, and brand asset handling.",
+        "zh": "精選電商視覺呈現可上架的平台活動素材，涵蓋商城橫幅適配、促銷版面、商品圖格式化與品牌素材處理。"
+      }
+    },
+    {
+      "title": {
+        "en": "Digital Media Transformation",
+        "zh": "數位媒體轉換"
+      },
+      "status": {
+        "en": "Selected evidence available",
+        "zh": "已有精選證據"
+      },
+      "note": {
+        "en": "Selected multimedia records showing the shift from print-based production into web presentation, filming, editing, motion production, competition work, and team coordination.",
+        "zh": "精選多媒體記錄呈現從印刷與內容製作延伸到網頁展示、拍攝、剪輯、動態製作、競賽作品與團隊協作的轉換過程。"
+      }
+    },
+    {
+      "title": {
+        "en": "AI-assisted Interactive Comic Research",
+        "zh": "AI 輔助互動漫畫研究"
+      },
+      "status": {
+        "en": "Selected evidence available",
+        "zh": "已有精選證據"
+      },
+      "note": {
+        "en": "AI-assisted project records showing marketing video production, interactive comic research, visual novel prototyping, and workflow-tool experimentation with human review.",
+        "zh": "AI 輔助作品記錄呈現行銷影片製作、互動漫畫研究、視覺小說原型與工作流程工具實驗，並保留人工審核與創意判斷。"
+      }
+    }
+  ]
+}

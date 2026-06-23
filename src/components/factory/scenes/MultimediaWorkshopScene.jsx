@@ -28,7 +28,7 @@ export default function MultimediaWorkshopScene({ locale }) {
     edit: isZh ? "剪輯" : "Edit",
     prototype: isZh ? "原型" : "Prototype",
     test: isZh ? "測試" : "Test",
-    keySmall: isZh ? "混合媒體原型" : "Mixed media prototype",
+    keySmall: isZh ? "混合媒體原型" : "Mixed-media prototype",
     keyStrong: isZh ? "金色 / 測試層" : "Gold / live test layer",
   };
 

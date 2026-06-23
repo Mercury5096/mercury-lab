@@ -1,71 +1,27 @@
-import { assetPath } from "./assetPath";
+import { assetPath } from "./assetPath.js";
 
 const copy = (en, zh = null) => ({ en, zh });
 const displayStatus = {
-  descriptive: copy("Can describe, image pending", "可描述，影像待補"),
+  descriptive: copy("Can describe, image pending", "可描述，影像待審"),
   evidence: copy("Selected evidence available", "已有精選證據"),
   abstract: copy("Abstract only", "僅抽象描述"),
 };
 
-export const brand = {
-  name: "Mercury Lab",
-  subtitle: copy(
-    "A Content Production Experiment from Print to AI",
-    "從印刷到 AI 的內容製作實驗",
-  ),
-  positioning: copy(
-    "A practice spanning print publishing, content workflows, multimedia design, and AI-assisted interactive storytelling.",
-    "跨越印刷出版、內容流程、多媒體設計與 AI 輔助互動敘事的實踐。",
-  ),
-};
+export const brand = { name: "Mercury Lab", subtitle: copy("From Print Publishing to AI-assisted Workflows", "從印刷出版到 AI 工作流的跨媒體製作方法"), positioning: copy("I turn complex creative needs into clear content structures, practical workflows, and deliverable outcomes. My experience spans publishing, editorial production, cookbook projects, e-commerce visuals, multimedia design, and AI-assisted interactive storytelling.", "我擅長把複雜需求整理成清楚的內容架構、製作流程與可執行成果。經驗橫跨出版、編輯、食譜書製作、電商視覺、多媒體設計與 AI 輔助互動敘事。") };
 
 export const sectionContent = {
-  hero: {
-    eyebrow: copy("Content Production Experiment / 2002 - Present", "內容製作實驗 / 2002 至今"),
-  },
-  factory: {
-    eyebrow: copy("Content Factory Cutaway", "內容工廠剖面圖"),
-    title: copy("Eight rooms. One accumulated method.", "八個房間，一套累積出來的方法。"),
-    description: copy(
-      "Select a production room to open its module manual. Every public display decision is routed through evidence and rights review.",
-      "選擇一個製作房間，打開它的模組說明。所有公開展示都以證據、角色邊界與權利意識為前提。",
-    ),
-  },
-  usage: {
-    eyebrow: copy("How to Read Mercury", "如何閱讀 Mercury"),
-    title: copy("Start with the work, then follow the method.", "先看作品，再看方法。"),
-    description: copy(
-      "This portfolio is organized for people who need to understand capability quickly: selected proof first, then the production logic behind it.",
-      "這個作品集是為需要快速判斷能力的人整理的：先看精選證據，再看背後的製作邏輯。",
-    ),
-  },
-  modes: {
-    eyebrow: copy("Processing Modes", "製作路徑"),
-    title: copy("Choose a route through the factory.", "選擇一條穿過工廠的閱讀路線。"),
-  },
-  cases: {
-    eyebrow: copy("Selected Work Evidence", "精選作品證據"),
-    title: copy("Proof you can open, scan, and verify.", "可以打開、瀏覽、確認的作品證據。"),
-    description: copy(
-      "These case files collect the clearest public samples from each stage. Open the evidence label to view larger images or linked project records.",
-      "這裡整理每個階段最清楚、適合公開瀏覽的作品樣本。點開證據標籤，可以查看較大的圖片或外部作品連結。",
-    ),
-  },
-  protocol: {
-    eyebrow: copy("Collaboration Opportunities", "可合作方向"),
-    title: copy("Work I can support", "我可以支援的工作"),
-    statement: copy(
-      "I am open to full-time roles, project-based collaboration, and consulting-style support where cross-media production, content judgment, and AI-assisted prototyping need to connect into a practical workflow.",
-      "我適合全職職缺、專案合作或顧問式支援，尤其是需要把跨媒體製作、內容判斷與 AI 輔助原型整合成實際流程的工作。",
-    ),
-    rules: [
-      copy("Content planning, editorial production, copywriting, layout coordination, and publication-oriented delivery.", "內容企劃、編輯製作、文案撰寫、排版協調與出版導向交付。"),
-      copy("E-commerce and campaign visual production, including marketplace banners, product-image formatting, and promotion assets.", "電商與活動視覺製作，包含平台橫幅、商品圖格式化與促銷素材。"),
-      copy("Multimedia projects from concept, script, storyboard, filming direction, editing, motion production, and web presentation.", "多媒體專案，包含概念企劃、腳本、分鏡、拍攝導向、剪輯、動態製作與網頁呈現。"),
-      copy("AI-assisted interactive narrative, marketing video, game/story prototype, and workflow-tool prototyping with human review.", "AI 輔助互動敘事、行銷影片、遊戲/故事原型與工作流程工具原型，並保留人工審核。"),
-      copy("Cross-functional coordination for projects that need communication between creative, technical, vendor, and business sides.", "跨部門協調，適合需要串接創意、技術、外包/供應商與商業需求的專案。"),
-    ],
-  },
+  hero: { eyebrow: copy("Content Production Experiment / 2002–Present", "內容製作實驗 / 2002 至今") },
+  factory: { eyebrow: copy("Content Factory Cutaway", "內容工廠剖面圖"), title: copy("Turning content, design, workflow, and AI into deliverable production systems.", "把內容、設計、流程與 AI，整合成可交付的工作方法。"), description: copy("Explore the eight production rooms to see selected evidence, my role in each project, and how these experiences connect into content production and workflow integration today.", "這座內容工廠整理了我從 2002 年至今的代表作品與實作經驗。你可以從八個製作房間中查看作品證據、我負責的角色，以及這些經驗如何轉化為今日的內容生產與工作流整合能力。") },
+  usage: { eyebrow: copy("How to Read Mercury", "如何閱讀 Mercury"), title: copy("Start with the evidence, then follow the capability.", "先看證據，再看能力如何形成。"), description: copy("This site is built for people who need to understand capability quickly. It begins with visible proof, then opens the production logic behind each stage: what was made, what I handled, and how the work connects across media.", "這份展示是為需要快速判斷能力的人整理的。你會先看到可確認的作品證據，再進一步查看每個階段背後的製作邏輯：完成了什麼、我負責什麼，以及這些經驗如何跨媒體串連。") },
+  modes: { eyebrow: copy("Reading Routes", "閱讀路線"), title: copy("Three ways to understand the production path.", "用三條路線理解我的製作脈絡。") },
+  cases: { eyebrow: copy("Selected Work Evidence", "精選工作證據"), title: copy("Evidence you can open, scan, and connect to role.", "可以打開、瀏覽並對應角色的工作證據。"), description: copy("These case files collect selected public samples from each career stage. Open the evidence label to view larger images or linked project records.", "這些案例整理每個職涯階段中適合公開瀏覽的精選樣本。點開證據標籤，可以查看較大的圖片或外部作品連結。") },
+  protocol: { eyebrow: copy("Role Fit & Collaboration", "適合職務與合作方向"), title: copy("Best fit: content production PM, editorial production, multimedia coordination, and AI-assisted content workflow.", "適合職務：內容製作 PM、編輯製作、多媒體協調與 AI 輔助內容流程。"), statement: copy("I am open to freelance work, part-time roles, full-time opportunities, and project-based collaboration. Across several roles, my work has often sat in a PM-style position: clarifying needs, coordinating people and materials, organizing production steps, and helping projects move toward delivery.", "我開放外包接案、兼職、全職職缺與專案型合作。在多段工作經驗中，我經常站在 PM 式的位置：釐清需求、協調人員與素材、整理製作流程，並推動專案往交付前進。"), rules: [
+    copy("Content production PM / Creative project coordination.", "內容製作 PM / 創意專案協調。"),
+    copy("Editorial planning, publishing workflow, copywriting, layout coordination, and delivery support.", "編輯企劃、出版流程、文案撰寫、排版協調與交付支援。"),
+    copy("E-commerce, campaign, and brand visual production across platform-ready assets.", "電商、活動與品牌視覺製作，支援平台上架素材。"),
+    copy("Multimedia production coordination across concept, script, storyboard, filming, editing, motion, and web presentation.", "多媒體製作協調，涵蓋概念、腳本、分鏡、拍攝、剪輯、動態與網頁呈現。"),
+    copy("AI-assisted content and workflow prototyping with human review and practical delivery awareness.", "AI 輔助內容與工作流程原型，保留人工審核與實際交付意識。"),
+  ] },
 };
 
 export const rooms = [
@@ -79,23 +35,17 @@ export const rooms = [
       callout: copy("Prepress / Input", "印前 / 輸入"),
     },
     title: copy("Print Engine Room", "印刷引擎室"),
-    period: "2002-2003",
+    period: "2002–2003",
     discipline: copy("Comic layout and print prepress", "漫畫排版與印刷前製"),
-    summary: copy(
-      "Began in comic layout and print production, building hands-on understanding of prepress detail and publication delivery.",
-      "從漫畫排版與印刷製作起步，累積印刷前製細節與出版交付的實務理解。",
-    ),
+    summary: copy("My production path began with comic layout and print prepress, where precision, text fitting, file handling, and delivery discipline were learned through actual publication work.", "我的製作路徑從漫畫排版與印刷前製開始，透過實際出版工作學習版面精度、文字嵌排、檔案處理與交付紀律。"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
     evidence: copy("LinkedIn record; selected print layout materials", "LinkedIn 記錄；精選印刷排版材料"),
-    display: copy("Selected print and promotional layout materials.", "展示精選印刷與宣傳版面材料。"),
+    display: copy("Selected print, leaflet, brochure, and promotional layout materials from early production work.", "展示早期印刷製作中的精選印刷、宣傳單、手冊與宣傳版面材料。"),
     proof: {
       label: copy("Selected print layout materials", "精選印刷排版材料"),
       layout: "print",
-      outcome: copy(
-        "Early print-production work across comic layout adaptation, leaflet and brochure layout, dense information formatting, and prepress delivery.",
-        "早期印刷出版工作，涵蓋漫畫排版調整、宣傳單與手冊版面、密集資訊編排與印前交付。",
-      ),
+      outcome: copy("Early print-production work across comic layout adaptation, translated text fitting, leaflet and brochure formatting, dense information layout, and prepress delivery support.", "早期印刷出版工作，涵蓋漫畫版面調整、翻譯文字嵌排、宣傳單與手冊編排、密集資訊版面處理與印前交付支援。"),
       roles: [
         copy("Comic layout adaptation", "漫畫版面調整"),
         copy("Translated text fitting", "翻譯文字嵌排"),
@@ -129,23 +79,17 @@ export const rooms = [
       callout: copy("Editorial / Repeat Cycle", "編輯 / 週期交付"),
     },
     title: copy("Editorial Kitchen", "編輯廚房"),
-    period: "2003-2004",
+    period: "2003–2004",
     discipline: copy("Magazine, cookbook, food content, and writing", "雜誌、食譜、美食內容與寫作"),
-    summary: copy(
-      "Completed layout work for 24 food and lifestyle magazine issues, combining editorial rhythm, visual organization, and print deadlines.",
-      "完成 24 期美食生活雜誌排版工作，累積編輯節奏、視覺組織與印刷截稿經驗。",
-    ),
+    summary: copy("Completed layout work for 24 food and lifestyle magazine issues, building an editorial rhythm that connected writing, visual organization, recurring deadlines, and print delivery.", "完成 24 期美食生活雜誌排版工作，累積將寫作、視覺組織、固定截稿與印刷交付串連起來的編輯節奏。"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
     evidence: copy("LinkedIn record; selected food editorial, copywriting, and layout materials", "LinkedIn 記錄；精選美食編輯、文案與排版材料"),
-    display: copy("Selected food editorial, copywriting, and layout materials.", "展示精選美食編輯、文案與版面材料。"),
+    display: copy("Selected food editorial, copywriting, cover, and layout materials.", "展示精選美食編輯、文案、封面與版面材料。"),
     proof: {
       label: copy("Selected magazine and editorial production materials", "精選雜誌與編輯製作材料"),
       layout: "editorial",
-      outcome: copy(
-        "Food and lifestyle editorial work across writing, interview-style copy, page layout, cover/page design, and print-oriented delivery.",
-        "美食與生活內容編輯工作，涵蓋寫稿、採訪式文案、版面編排、封面/頁面設計與印刷導向交付。",
-      ),
+      outcome: copy("Food and lifestyle editorial work across writing, interview-style copy, page layout, cover/page design, and print-oriented delivery under recurring publication schedules.", "美食與生活內容編輯工作，涵蓋寫稿、採訪式文案、版面編排、封面/頁面設計，以及在固定出版週期下完成印刷導向交付。"),
       roles: [
         copy("Food writing", "美食寫作"),
         copy("Interview-style copywriting", "採訪式文案"),
@@ -183,25 +127,16 @@ export const rooms = [
       callout: copy("Production Floor / 50+", "製作樓層 / 50+"),
     },
     title: copy("Cookbook Production Floor", "食譜出版製作樓層"),
-    period: "2010-2014",
-    discipline: copy(
-      "50+ cookbook-related publishing projects",
-      "50+ 本食譜出版相關流程",
-    ),
-    summary: copy(
-      "Participated in and coordinated 50+ cookbook-related publishing projects, covering content planning, layout design, photography coordination, client communication, and print production support.",
-      "參與並協調 50+ 本食譜出版相關流程，涵蓋內容規劃、排版設計、拍攝協調、客戶溝通與印刷製作支援。",
-    ),
+    period: "2010–2014",
+    discipline: copy("50+ cookbook-related publishing projects", "50+ 本食譜出版相關流程"),
+    summary: copy("Participated in and coordinated 50+ cookbook-related publishing projects, turning recipes, clients, chefs, photography, layout, and print requirements into repeatable publication delivery.", "參與並協調 50+ 本食譜出版相關流程，將食譜、客戶、廚師、攝影、排版與印刷需求整合成可反覆交付的出版製作流程。"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
     evidence: copy("LinkedIn record; selected published covers", "LinkedIn 記錄；精選出版封面"),
     display: copy("Selected published cookbook and food-content covers.", "展示精選已出版食譜與美食內容封面。"),
     proof: {
       label: copy("Selected published covers", "精選出版封面"),
-      outcome: copy(
-        "Repeat cookbook and food-publication delivery across planning, coordination, layout, photography support, communication, and print production.",
-        "反覆完成食譜與美食出版交付，涵蓋企劃、協調、排版、拍攝支援、溝通與印刷製作。",
-      ),
+      outcome: copy("Repeat cookbook and food-publication delivery across content planning, layout coordination, food photography support, client/team communication, and print production.", "反覆完成食譜與美食出版交付，涵蓋內容企劃、排版協調、美食攝影支援、客戶/團隊溝通與印刷製作。"),
       roles: [
         copy("Content planning", "內容企劃"),
         copy("Layout coordination", "排版協調"),
@@ -231,12 +166,9 @@ export const rooms = [
       callout: copy("Story / Rights Check", "故事 / 權利檢查"),
     },
     title: copy("Story Archive & IP Office", "故事檔案與 IP 辦公室"),
-    period: "2015-2016",
+    period: "2015–2016",
     discipline: copy("Fiction, publications, and creator collaboration", "小說、出版品與創作者協作"),
-    summary: copy(
-      "Worked across fiction writing and illustrator coordination, supporting communication between creators and publishing partners.",
-      "參與小說創作與繪師協作，協助創作者與出版合作方之間的溝通與交付。",
-    ),
+    summary: copy("Worked across fiction writing and illustrator coordination, connecting story development, visual presentation, creator needs, publishing partners, and reader-facing materials.", "參與小說創作與繪師協作，串接故事開發、視覺呈現、創作者需求、出版合作方與面向讀者的作品素材。"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
     evidence: copy("LinkedIn record; selected publication and creator-collaboration materials", "LinkedIn 記錄；精選出版與創作者協作材料"),
@@ -244,10 +176,7 @@ export const rooms = [
     proof: {
       label: copy("Selected story and creator-collaboration records", "精選故事與創作者協作記錄"),
       layout: "grid",
-      outcome: copy(
-        "Published fiction work and illustrator coordination across story development, visual presentation, publishing partners, and reader-facing materials.",
-        "小說出版與繪師協作經驗，涵蓋故事開發、視覺呈現、出版合作與讀者端素材。",
-      ),
+      outcome: copy("Published fiction work and illustrator coordination across story development, visual presentation, publishing communication, creator materials, and reader-facing delivery.", "小說出版與繪師協作經驗，涵蓋故事開發、視覺呈現、出版溝通、創作者資料整理與讀者端交付。"),
       roles: [
         copy("Fiction writing", "小說寫作"),
         copy("Illustrator coordination", "繪師協調"),
@@ -270,7 +199,7 @@ export const rooms = [
         },
         {
           src: assetPath("/assets/factory/story-archive/selected-story-04.jpg"),
-          alt: "Selected illustrator portfolio and agency coordination materials.",
+          alt: "Selected illustrator and agency coordination materials.",
         },
       ],
     },
@@ -285,25 +214,19 @@ export const rooms = [
       callout: copy("Workflow Control", "流程控制"),
     },
     title: copy("Operation Control Room", "營運控制室"),
-    period: "2016-2018",
+    period: "2016–2018",
     discipline: copy("Creative workflow development", "創意製作流程建立"),
-    summary: copy(
-      "Helped an early-stage media advertising company establish practical creative-production and delivery workflows.",
-      "協助早期媒體廣告公司建立可執行的創意製作與交付流程。",
-    ),
+    summary: copy("Helped an early-stage media advertising company establish practical creative-production workflows, turning scattered tasks, vendors, materials, and delivery needs into a more organized operating rhythm.", "協助早期媒體廣告公司建立可執行的創意製作流程，將零散任務、外包、素材與交付需求整理成更有秩序的運作節奏。"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
     evidence: copy("LinkedIn record; selected event and coordination materials", "LinkedIn 記錄；精選活動與協調材料"),
-    display: copy("Selected event and coordination materials.", "展示精選活動與協調材料。"),
+    display: copy("Selected event, workshop, community, and coordination materials.", "展示精選活動、工作坊、社群與協調材料。"),
     proof: {
       label: copy("Selected event and coordination records", "精選活動與協調記錄"),
       layout: "mixed",
-      outcome: copy(
-        "Event-facing coordination work across community pages, activity materials, workshop records, people flow, and public communication.",
-        "活動端協調工作，涵蓋社群頁面、活動素材、工作坊紀錄、人員動線與公開溝通。",
-      ),
+      outcome: copy("Coordination work across community pages, activity materials, workshop records, people flow, public communication, and practical handoff between planning and delivery.", "協調工作涵蓋社群頁面、活動素材、工作坊紀錄、人員動線、公開溝通，以及企劃到交付之間的實際交接。"),
       roles: [
-        copy("Event coordination", "活動協調"),
+        copy("Workflow coordination", "流程協調"),
         copy("Community page operation", "社群頁面經營"),
         copy("Activity material preparation", "活動素材準備"),
         copy("On-site communication", "現場溝通"),
@@ -339,12 +262,9 @@ export const rooms = [
       callout: copy("Restricted Visual Assets", "受限視覺素材"),
     },
     title: copy("Commerce Visual Line", "電商視覺產線"),
-    period: "2018-2020",
+    period: "2018–2020",
     discipline: copy("GSK e-commerce visuals and promotional assets", "GSK 電商視覺與促銷素材"),
-    summary: copy(
-      "Produced e-commerce visuals, promotional materials, product-image adaptations, and platform assets for GSK brands.",
-      "為 GSK 品牌製作電商視覺、促銷素材、商品圖調整與平台使用素材。",
-    ),
+    summary: copy("Produced e-commerce visuals, promotional materials, product-image adaptations, and marketplace-ready assets for GSK brands under platform and brand constraints.", "在平台規格與品牌限制之下，為 GSK 品牌製作電商視覺、促銷素材、商品圖調整與平台上架用視覺素材。"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
     evidence: copy("LinkedIn record; selected e-commerce visual materials", "LinkedIn 記錄；精選電商視覺材料"),
@@ -352,10 +272,7 @@ export const rooms = [
     proof: {
       label: copy("Selected e-commerce visual materials", "精選電商視覺材料"),
       layout: "commerce",
-      outcome: copy(
-        "Platform-ready campaign visuals across marketplace banners, promotional frames, product groupings, and flash-sale formats.",
-        "平台上架用活動視覺，涵蓋商城橫幅、促銷框、商品組合與限時活動格式。",
-      ),
+      outcome: copy("Platform-ready campaign visuals across marketplace banners, promotional frames, product groupings, flash-sale formats, and brand asset handling.", "平台上架用活動視覺，涵蓋商城橫幅、促銷框、商品組合、限時活動格式與品牌素材處理。"),
       roles: [
         copy("Marketplace banner adaptation", "平台橫幅適配"),
         copy("Promotional visual production", "促銷視覺製作"),
@@ -393,23 +310,17 @@ export const rooms = [
       callout: copy("Media Extension", "媒體延伸"),
     },
     title: copy("Multimedia Workshop", "多媒體工作坊"),
-    period: "2020-present",
+    period: "2020–Present",
     discipline: copy("Web, video, 3D, games, and e-book practice", "網頁、影片、3D、遊戲與電子書實作"),
-    summary: copy(
-      "Publishing experience expands into web, video, 3D, games, and e-book learning and practice.",
-      "出版與內容製作經驗延伸到網頁、影片、3D、遊戲與電子書等多媒體學習與實作。",
-    ),
+    summary: copy("Expanded publishing and content-production experience into web, video, 3D, games, e-books, and team-based multimedia practice through study, competitions, and public project records.", "將出版與內容製作經驗延伸到網頁、影片、3D、遊戲、電子書與團隊型多媒體實作，透過求學、競賽與公開作品逐步累積。"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
     evidence: copy("LinkedIn record; selected YouTube video records", "LinkedIn 記錄；精選 YouTube 影片記錄"),
-    display: copy("Selected video and web-project records link to public YouTube pages.", "精選影片與網頁作品記錄連到公開 YouTube 頁面。"),
+    display: copy("Selected video and web-project records linking to public YouTube pages.", "精選影片與網頁作品記錄連到公開 YouTube 頁面。"),
     proof: {
       label: copy("Selected multimedia project records", "精選多媒體作品記錄"),
       layout: "multimedia",
-      outcome: copy(
-        "Student and competition multimedia work across concept planning, scriptwriting, directing, filming, editing, motion production, web presentation, and team coordination.",
-        "求學與競賽期間的多媒體作品，涵蓋企劃、腳本、導演、拍攝、剪輯、動態製作、網頁展示與團隊協作。",
-      ),
+      outcome: copy("Student and competition multimedia work across concept planning, scripts, storyboards, filming direction, editing, motion production, web presentation, and team coordination.", "求學與競賽期間的多媒體作品，涵蓋概念企劃、腳本、分鏡、導演、拍攝、剪輯、動態製作、網頁展示與團隊協作。"),
       roles: [
         copy("Concept planning", "概念企劃"),
         copy("Script and storyboard", "腳本與分鏡"),
@@ -422,11 +333,11 @@ export const rooms = [
       assets: [
         {
           src: assetPath("/assets/factory/multimedia/selected-multimedia-card-01.jpg"),
-          alt: "Selected A+ Cultural Heritage Award shortlisted video project portfolio page.",
+          alt: "Selected A+ Cultural Heritage Award shortlisted video project record page.",
         },
         {
           src: assetPath("/assets/factory/multimedia/selected-multimedia-card-02.jpg"),
-          alt: "Selected responsive web design graduation project portfolio page.",
+          alt: "Selected responsive web design graduation project record page.",
         },
         {
           src: assetPath("/assets/factory/multimedia/selected-multimedia-card-03.jpg"),
@@ -434,7 +345,7 @@ export const rooms = [
         },
         {
           src: assetPath("/assets/factory/multimedia/selected-multimedia-card-04.jpg"),
-          alt: "Selected Yongqing real estate advertising competition video project portfolio page.",
+          alt: "Selected Yongqing real estate advertising competition video project record page.",
         },
       ],
       videos: [
@@ -493,12 +404,9 @@ export const rooms = [
       callout: copy("Assisted Research / HITL", "輔助研究 / 人工回路"),
     },
     title: copy("AI Workflow Lab", "AI 工作流實驗室"),
-    period: "2020-present",
+    period: "2020–Present",
     discipline: copy("AI-assisted interactive storytelling research", "AI 輔助互動敘事研究"),
-    summary: copy(
-      "Currently explores AI-assisted interactive comics and web-based narrative prototypes through human-in-the-loop creative workflows.",
-      "目前以人機協作流程探索 AI 輔助互動漫畫與網頁敘事原型。",
-    ),
+    summary: copy("Currently explores AI-assisted interactive comics and web-based narrative prototypes through human-in-the-loop workflows that keep creative direction, review, and responsibility in human hands.", "目前以人機協作流程探索 AI 輔助互動漫畫與網頁敘事原型，並將創意方向、審核判斷與責任保留在人類手中。"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
     evidence: copy("LinkedIn record; selected AI-assisted project records", "LinkedIn 記錄；精選 AI 輔助作品記錄"),
@@ -506,10 +414,7 @@ export const rooms = [
     proof: {
       label: copy("Selected AI-assisted project records", "精選 AI 輔助作品記錄"),
       layout: "ai",
-      outcome: copy(
-        "AI-assisted practice across marketing video production, interactive comic research, visual novel prototyping, and workflow-tool experimentation with human review and creative direction.",
-        "AI 輔助實作涵蓋行銷影片製作、互動式漫畫研究、視覺小說遊戲原型與工作流程工具實驗，並保留人工審稿與創意判斷。",
-      ),
+      outcome: copy("AI-assisted practice across marketing video production, interactive comic research, visual novel prototyping, and workflow-tool experimentation with human review and creative direction.", "AI 輔助實作涵蓋行銷影片製作、互動式漫畫研究、視覺小說遊戲原型與工作流程工具實驗，並保留人工審核與創意判斷。"),
       roles: [
         copy("AI-assisted concept development", "AI 輔助概念發展"),
         copy("Prompt and content direction", "提示詞與內容方向"),
@@ -563,64 +468,19 @@ export const rooms = [
         },
       ],
     },
-  },
+  }
 ];
 
 export const usageSteps = [
-  {
-    number: "01",
-    title: copy("Scan the proof", "先瀏覽證據"),
-    body: copy(
-      "Each room starts with selected visual records, publication traces, video links, or working prototypes.",
-      "每個房間都先放上精選視覺記錄、出版痕跡、影片連結或可操作原型。",
-    ),
-  },
-  {
-    number: "02",
-    title: copy("Read the role", "看清楚角色"),
-    body: copy(
-      "The notes focus on what I handled: planning, writing, layout, coordination, editing, prototyping, or review.",
-      "說明重點放在我實際負責的部分：企劃、寫作、排版、協調、剪輯、原型或審核。",
-    ),
-  },
-  {
-    number: "03",
-    title: copy("Judge the fit", "判斷合作契合度"),
-    body: copy(
-      "Use the evidence chain to evaluate where my cross-media production experience can support your team or project.",
-      "你可以用這條證據鏈判斷，我的跨媒體製作經驗能如何支援你的團隊或專案。",
-    ),
-  },
+  { number: "01", title: copy("Scan the proof", "先瀏覽證據"), body: copy("Each room begins with selected visual records, publication traces, video links, or working prototypes, so the work can be checked before the explanation begins.", "每個房間都先放上精選視覺記錄、出版痕跡、影片連結或可操作原型，讓作品本身先說話，再進入說明。") },
+  { number: "02", title: copy("Read the role", "看清楚角色"), body: copy("The notes clarify what I actually handled, including planning, writing, layout, coordination, editing, prototyping, review, or delivery support.", "說明會聚焦在我實際負責的部分，包括企劃、寫作、排版、協調、剪輯、原型製作、審核或交付支援。") },
+  { number: "03", title: copy("Judge the fit", "判斷合作契合度"), body: copy("Use the evidence chain to see where my cross-media production experience can support a team, project, or workflow that needs structure and delivery.", "你可以透過這條證據鏈判斷，我的跨媒體製作經驗能如何支援需要結構、協作與交付能力的團隊或專案。") }
 ];
 
 export const processingModes = [
-  {
-    id: "print-to-system",
-    label: copy("Print to System", "從印刷到系統"),
-    description: copy(
-      "Track how prepress precision and recurring editorial delivery become repeatable content operations.",
-      "追蹤印刷前製的細節感與週期性編輯交付，如何累積成可重複的內容營運能力。",
-    ),
-    route: copy("Print Engine Room -> Editorial Kitchen -> Operation Control Room", "印刷引擎室 -> 編輯廚房 -> 營運控制室"),
-  },
-  {
-    id: "story-to-interaction",
-    label: copy("Story to Interaction", "從故事到互動"),
-    description: copy(
-      "Follow narrative collaboration into multimedia and AI-assisted interactive prototype research.",
-      "從敘事與創作者協作，延伸到多媒體與 AI 輔助互動原型研究。",
-    ),
-    route: copy("Story Archive & IP Office -> Multimedia Workshop -> AI Workflow Lab", "故事檔案與 IP 辦公室 -> 多媒體工作坊 -> AI 工作流實驗室"),
-  },
-  {
-    id: "brief-to-delivery",
-    label: copy("Brief to Delivery", "從需求到交付"),
-    description: copy(
-      "See planning, coordination, visual production, and review as a connected workflow.",
-      "把企劃、協調、視覺製作與審核看成一條連續的交付流程。",
-    ),
-    route: copy("Editorial Kitchen -> Cookbook Production Floor -> Commerce Visual Line", "編輯廚房 -> 食譜出版樓層 -> 電商視覺產線"),
-  },
+  { id: "print-to-system", label: copy("Print to System", "從印刷到系統"), description: copy("Follow how prepress precision, layout discipline, and recurring editorial deadlines became the foundation for repeatable content operations.", "從印刷前製的細節感、版面紀律與週期性編輯交付開始，觀看它們如何累積成可重複的內容營運能力。"), route: copy("Print Engine Room → Editorial Kitchen → Operation Control Room", "印刷引擎室 → 編輯廚房 → 營運控制室") },
+  { id: "story-to-interaction", label: copy("Story to Interaction", "從故事到互動"), description: copy("Follow the path from fiction writing and creator collaboration to multimedia practice and AI-assisted interactive narrative research.", "從小說創作與創作者協作出發，延伸到多媒體實作與 AI 輔助互動敘事研究。"), route: copy("Story Archive & IP Office → Multimedia Workshop → AI Workflow Lab", "故事檔案與 IP 辦公室 → 多媒體工作坊 → AI 工作流實驗室") },
+  { id: "brief-to-delivery", label: copy("Brief to Delivery", "從需求到交付"), description: copy("See how planning, coordination, visual production, review, and delivery connect into a practical workflow.", "把企劃、協調、視覺製作、審核與交付看成一條實際運作的內容生產流程。"), route: copy("Editorial Kitchen → Cookbook Production Floor → Commerce Visual Line", "編輯廚房 → 食譜出版製作樓層 → 電商視覺產線") }
 ];
 
 export const caseFiles = [
@@ -628,48 +488,48 @@ export const caseFiles = [
     title: copy("From Comic Prepress to Content Systems", "從漫畫印前到內容系統"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
-    note: copy("Early print proof across comic layout adaptation, translated text fitting, leaflet layout, and prepress delivery.", "早期印刷證據涵蓋漫畫版面調整、翻譯文字嵌排、宣傳單排版與印前交付。"),
+    note: copy("Early print-production evidence showing comic layout adaptation, translated text fitting, leaflet layout, brochure formatting, and prepress delivery support.", "早期印刷製作證據，涵蓋漫畫版面調整、翻譯文字嵌排、宣傳單排版、手冊版面編排與印刷前製支援。"),
   },
   {
     title: copy("24 Issues on an Editorial Clock", "24 期編輯節奏"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
-    note: copy("Magazine and food-content evidence connecting writing, layout, cover/page design, and recurring deadlines.", "雜誌與美食內容證據串起寫稿、排版、封面/頁面設計與固定截稿節奏。"),
+    note: copy("Magazine and food-content records connecting recurring deadlines, editorial layout, food writing, interview-style copy, and print-oriented delivery.", "雜誌與美食內容記錄，串起固定截稿節奏、編輯排版、美食寫作、採訪式文案與印刷導向交付。"),
   },
   {
     title: copy("50+ Cookbook-related Publishing Projects", "50+ 本食譜出版相關流程"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
-    note: copy("Selected published covers show repeat cookbook and food-publication delivery across planning, layout, coordination, and print support.", "精選出版封面呈現食譜與美食出版在企劃、排版、協調與印刷支援上的反覆交付能力。"),
+    note: copy("Selected published covers showing repeat cookbook and food-publication delivery across planning, layout coordination, photography support, client communication, and print production.", "精選出版封面呈現食譜與美食出版的反覆交付經驗，涵蓋企劃、排版協調、拍攝支援、客戶溝通與印刷製作。"),
   },
   {
     title: copy("Story and Illustrator Bridgework", "故事與繪師協作橋梁"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
-    note: copy("Publication and creator-collaboration records connect fiction writing, illustrator coordination, and publishing communication.", "出版與創作者協作記錄串起小說寫作、繪師協調與出版溝通。"),
+    note: copy("Publication and creator-collaboration records connecting fiction writing, illustrator coordination, publishing communication, visual presentation, and reader-facing materials.", "出版與創作者協作記錄，串起小說寫作、繪師協調、出版溝通、視覺呈現與面向讀者的素材整理。"),
   },
   {
     title: copy("Creative Operations for an Early Media Startup", "早期媒體公司的創意營運"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
-    note: copy("Event and workshop records show coordination, activity material preparation, community operation, and on-site communication.", "活動與工作坊記錄呈現協調、活動素材準備、社群經營與現場溝通。"),
+    note: copy("Event and coordination records showing how planning, activity materials, community pages, workshop documentation, and on-site communication supported public-facing delivery.", "活動與協調記錄呈現企劃、活動素材、社群頁面、工作坊紀錄與現場溝通如何支援對外執行與交付。"),
   },
   {
     title: copy("E-commerce Visual Production for GSK", "GSK 電商視覺製作"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
-    note: copy("Selected e-commerce visuals show marketplace banner adaptation, promotional layout, product-image formatting, and brand asset handling.", "精選電商視覺呈現平台橫幅適配、促銷版面、商品圖格式化與品牌素材處理。"),
+    note: copy("Selected e-commerce visuals showing platform-ready campaign assets across marketplace banner adaptation, promotional layout, product-image formatting, and brand asset handling.", "精選電商視覺呈現可上架的平台活動素材，涵蓋商城橫幅適配、促銷版面、商品圖格式化與品牌素材處理。"),
   },
   {
     title: copy("Digital Media Transformation", "數位媒體轉換"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
-    note: copy("Selected multimedia records show web presentation, filming, editing, motion production, competition work, and team coordination.", "精選多媒體記錄呈現網頁展示、拍攝、剪輯、動態製作、競賽作品與團隊協作。"),
+    note: copy("Selected multimedia records showing the shift from print-based production into web presentation, filming, editing, motion production, competition work, and team coordination.", "精選多媒體記錄呈現從印刷與內容製作延伸到網頁展示、拍攝、剪輯、動態製作、競賽作品與團隊協作的轉換過程。"),
   },
   {
     title: copy("AI-assisted Interactive Comic Research", "AI 輔助互動漫畫研究"),
     displayLevel: "descriptive",
     status: displayStatus.evidence,
-    note: copy("AI-assisted records show marketing video work, interactive comic research, visual novel prototyping, and workflow-tool experimentation.", "AI 輔助記錄呈現行銷影片、互動漫畫研究、視覺小說原型與流程工具實驗。"),
-  },
+    note: copy("AI-assisted project records showing marketing video production, interactive comic research, visual novel prototyping, and workflow-tool experimentation with human review.", "AI 輔助作品記錄呈現行銷影片製作、互動漫畫研究、視覺小說原型與工作流程工具實驗，並保留人工審核與創意判斷。"),
+  }
 ];

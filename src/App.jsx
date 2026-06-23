@@ -26,25 +26,27 @@ function App() {
   const [locale, setLocale] = useState("en");
   const [activeCaseIndex, setActiveCaseIndex] = useState(null);
   const [activeAssetIndex, setActiveAssetIndex] = useState(0);
+  const [emailCopied, setEmailCopied] = useState(false);
   const isZh = locale === "zh";
+  const contactEmail = "merrcuy5096@gmail.com";
   const t = {
     factory: isZh ? "工廠" : "Factory",
-    modes: isZh ? "路徑" : "Modes",
-    cases: isZh ? "案例" : "Cases",
-    protocol: isZh ? "協作" : "Protocol",
+    modes: isZh ? "路線" : "Routes",
+    cases: isZh ? "證據" : "Evidence",
+    protocol: isZh ? "合作" : "Collaborate",
     edition: isZh ? "v0.5 / 中文" : "v0.5 / EN",
     switchLabel: isZh ? "EN" : "中文",
-    switchAria: isZh ? "Switch to English" : "切換到中文",
-    contactPending: isZh ? "聯絡 / LinkedIn 待補" : "Contact / LinkedIn pending",
-    openEvidence: isZh ? "查看相冊" : "Open gallery",
+    switchAria: isZh ? "切換到英文" : "Switch to Chinese",
+    contactLinkedIn: isZh ? "LinkedIn 聯繫" : "Contact on LinkedIn",
+    contactEmail: isZh ? "複製 Email" : "Copy email",
+    contactEmailCopied: isZh ? "Email 已複製" : "Email copied",
+    openEvidence: isZh ? "查看證據" : "Open evidence",
     closeGallery: isZh ? "關閉相冊" : "Close gallery",
     selectedEvidence: isZh ? "精選證據相冊" : "Selected Evidence Gallery",
-    noImages: isZh ? "這個案例目前以外部連結為主。" : "This case currently uses external links.",
-    projectLinks: isZh ? "作品連結" : "Project links",
+    noImages: isZh ? "這個案例目前以外部作品連結為主。" : "This case currently uses external project links.",
+    projectLinks: isZh ? "作品連結" : "Project Links",
     footerLeft: isZh ? "Mercury Lab / 原型 v0.5" : "Mercury Lab / Prototype v0.5",
-    footerRight: isZh
-      ? "中英切換 / 權利邊界 / 證據導向"
-      : "Bilingual / Rights-aware / Evidence-controlled",
+    footerRight: isZh ? "中英切換 / 權利意識 / 證據導向" : "Bilingual / Rights-aware / Evidence-led",
   };
   const activeCase = activeCaseIndex === null ? null : caseFiles[activeCaseIndex];
   const activeRoom = activeCaseIndex === null ? null : rooms[activeCaseIndex];
@@ -135,7 +137,7 @@ function App() {
           <div className="mode-list">
             {processingModes.map((mode) => (
               <article key={mode.id}>
-                <p className="mode-tag">{isZh ? "路徑" : "Mode"}</p>
+                <p className="mode-tag">{isZh ? "路線" : "Route"}</p>
                 <h3>{read(mode.label, locale)}</h3>
                 <p>{read(mode.description, locale)}</p>
                 <code>{read(mode.route, locale)}</code>
@@ -240,9 +242,21 @@ function App() {
           <div className="protocol-grid">
             <div className="protocol-statement">
               <p>{read(sectionContent.protocol.statement, locale)}</p>
-              <button type="button" disabled>
-                {t.contactPending}
-              </button>
+              <div className="contact-actions" aria-label={isZh ? "合作聯絡方式" : "Collaboration contact options"}>
+                <a href="https://www.linkedin.com/in/mercury-ooi-9a653067/" rel="noreferrer" target="_blank">
+                  {t.contactLinkedIn}
+                </a>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    await navigator.clipboard.writeText(contactEmail);
+                    setEmailCopied(true);
+                    window.setTimeout(() => setEmailCopied(false), 1800);
+                  }}
+                >
+                  {emailCopied ? t.contactEmailCopied : t.contactEmail}
+                </button>
+              </div>
             </div>
             <ul className="protocol-rules">
               {sectionContent.protocol.rules.map((rule) => (

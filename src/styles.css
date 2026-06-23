@@ -459,7 +459,8 @@ button {
   justify-content: space-between;
   gap: 0.5rem;
   padding-bottom: 0.86rem;
-  margin-bottom: 1.25rem;
+  padding-right: 4rem;
+  margin-bottom: 1.05rem;
   border-bottom: 1px dashed var(--line-bright);
   color: var(--teal);
   font-family: Consolas, monospace;
@@ -482,6 +483,7 @@ button {
 
 .dossier .manual-panel__top {
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .manual-panel h3 {
@@ -536,10 +538,30 @@ button {
   line-height: 1.7;
 }
 
+.dossier-achievement {
+  min-height: auto;
+  padding: 0.95rem;
+  border: 1px solid rgba(228, 168, 60, 0.28);
+  border-left: 3px solid var(--amber);
+  margin-bottom: 1.05rem;
+  background: rgba(228, 168, 60, 0.045);
+  color: var(--text);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
 .manual-spec {
   display: grid;
   gap: 0.8rem;
   margin: 0;
+}
+
+.dossier-spec {
+  gap: 0.65rem;
+}
+
+.dossier-spec div {
+  padding-top: 0.72rem;
 }
 
 .manual-spec div {
@@ -565,7 +587,7 @@ button {
 .dossier-proof {
   display: grid;
   gap: 0.85rem;
-  margin-top: 1.15rem;
+  margin-top: 1.05rem;
   padding-top: 1.1rem;
   border-top: 1px solid var(--line);
 }
@@ -1065,15 +1087,40 @@ button {
   line-height: 1.8;
 }
 
-.protocol-statement button {
+.contact-actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-actions a,
+.contact-actions button {
   width: 100%;
   padding: 1rem;
-  border: 1px dashed var(--line-bright);
-  color: var(--muted);
-  background: transparent;
+  border: 1px solid rgba(120, 198, 192, 0.38);
+  color: var(--teal);
+  background: rgba(120, 198, 192, 0.045);
+  cursor: pointer;
+  font-family: inherit;
   font-size: 0.74rem;
   letter-spacing: 0.16em;
+  text-align: center;
   text-transform: uppercase;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.contact-actions a:hover,
+.contact-actions a:focus-visible,
+.contact-actions button:hover,
+.contact-actions button:focus-visible {
+  border-color: rgba(228, 168, 60, 0.68);
+  color: var(--amber);
+  background: rgba(228, 168, 60, 0.08);
+  outline: none;
+  transform: translateY(-1px);
 }
 
 .protocol-rules {
@@ -1179,7 +1226,11 @@ button {
   }
 
   .cutaway-layout {
-    grid-template-columns: 172px minmax(0, 1fr);
+    grid-template-columns: 1fr;
+  }
+
+  .route-index {
+    display: none;
   }
 
   .factory-building {
@@ -1209,34 +1260,38 @@ button {
   }
 
   .cookbook-prop--cook {
-    top: 70.2%;
+    top: 61.5%;
     left: 30%;
   }
 
   .cookbook-prop--style {
-    top: 68.6%;
+    top: 60.8%;
     left: 53%;
   }
 
   .cookbook-prop--capture {
-    top: 72%;
+    top: 63%;
     bottom: auto;
     left: 70%;
     transform: translate(-50%, -50%);
   }
 
+  .cookbook-prop--capture:hover {
+    transform: translate(-50%, -50%);
+  }
+
   .cookbook-surface--cook {
-    top: 75%;
+    top: 66%;
     left: 30%;
   }
 
   .cookbook-surface--style {
-    top: 72.5%;
+    top: 64.5%;
     left: 53%;
   }
 
   .cookbook-surface--capture {
-    top: 86%;
+    top: 76%;
     left: 70%;
   }
 }
@@ -1480,26 +1535,32 @@ button {
   }
 
   .cookbook-prop--cook {
+    top: 60.5%;
     left: 33%;
   }
 
   .cookbook-prop--style {
+    top: 60%;
     left: 54%;
   }
 
   .cookbook-prop--capture {
+    top: 62.5%;
     left: 69%;
   }
 
   .cookbook-surface--cook {
+    top: 65%;
     left: 33%;
   }
 
   .cookbook-surface--style {
+    top: 64%;
     left: 54%;
   }
 
   .cookbook-surface--capture {
+    top: 75%;
     left: 69%;
   }
 
@@ -1764,35 +1825,35 @@ button {
   }
 
   .cookbook-prop--cook {
-    top: 70%;
+    top: 59.5%;
     left: 30%;
     width: 3.1rem;
   }
 
   .cookbook-prop--style {
-    top: 68%;
+    top: 59%;
     left: 53%;
     width: 3.6rem;
   }
 
   .cookbook-prop--capture {
-    top: 72%;
+    top: 62%;
     left: 70%;
     width: 3.2rem;
   }
 
   .cookbook-surface--cook {
-    top: 75%;
+    top: 64%;
     left: 30%;
   }
 
   .cookbook-surface--style {
-    top: 72%;
+    top: 63%;
     left: 53%;
   }
 
   .cookbook-surface--capture {
-    top: 86%;
+    top: 74%;
     left: 70%;
   }
 

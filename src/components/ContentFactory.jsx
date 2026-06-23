@@ -7,56 +7,58 @@ import RoomShell from "./factory/RoomShell";
 const readValue = (value, locale) =>
   typeof value === "string" ? value : value[locale] ?? value.en;
 
+const copy = (en, zh = null) => ({ en, zh });
+
 const roomFunctions = {
-  "print-engine-room": { en: "Print to System", zh: "印刷到系統" },
-  "editorial-kitchen": { en: "Editorial Room", zh: "編輯製作" },
-  "cookbook-production-floor": { en: "Brief to Delivery", zh: "企劃到交付" },
-  "story-archive-ip-office": { en: "Story to Interaction", zh: "故事到互動" },
-  "operation-control-room": { en: "Research Engine", zh: "協調引擎" },
-  "commerce-visual-line": { en: "Design Studio", zh: "商業視覺" },
-  "multimedia-workshop": { en: "Case Files", zh: "多媒體作品" },
-  "ai-workflow-lab": { en: "Research to Output", zh: "AI 到原型" },
+  "print-engine-room": copy("Print to System", "從印刷到系統"),
+  "editorial-kitchen": copy("Editorial Room", "編輯製作"),
+  "cookbook-production-floor": copy("Brief to Delivery", "從企劃到交付"),
+  "story-archive-ip-office": copy("Story to Interaction", "從故事到互動"),
+  "operation-control-room": copy("Coordination Engine", "協調引擎"),
+  "commerce-visual-line": copy("Commercial Visuals", "商業視覺"),
+  "multimedia-workshop": copy("Case Files", "多媒體作品"),
+  "ai-workflow-lab": copy("Research to Output", "從研究到原型"),
 };
 
 const floors = [
   {
     id: "07",
-    label: { en: "Print Foundation", zh: "印刷基礎" },
+    label: copy("Print Foundation", "印刷基礎"),
     rooms: ["print-engine-room"],
   },
   {
     id: "06",
-    label: { en: "Editorial Production", zh: "編輯製作" },
+    label: copy("Editorial Production", "編輯製作"),
     rooms: ["editorial-kitchen"],
   },
   {
     id: "05",
-    label: { en: "Cookbook Production", zh: "食譜出版" },
+    label: copy("Cookbook Production", "食譜出版"),
     rooms: ["cookbook-production-floor"],
   },
   {
     id: "04",
-    label: { en: "Story Archive", zh: "故事檔案" },
+    label: copy("Story Archive", "故事檔案"),
     rooms: ["story-archive-ip-office"],
   },
   {
     id: "03",
-    label: { en: "Operations Control", zh: "營運協調" },
+    label: copy("Operations Control", "營運協調"),
     rooms: ["operation-control-room"],
   },
   {
     id: "02",
-    label: { en: "Commerce Visuals", zh: "電商視覺" },
+    label: copy("Commerce Visuals", "電商視覺"),
     rooms: ["commerce-visual-line"],
   },
   {
     id: "01",
-    label: { en: "Multimedia Practice", zh: "多媒體實作" },
+    label: copy("Multimedia Practice", "多媒體實作"),
     rooms: ["multimedia-workshop"],
   },
   {
     id: "00",
-    label: { en: "Assisted Research Lab", zh: "AI 輔助研究" },
+    label: copy("Assisted Research Lab", "AI 輔助研究"),
     rooms: ["ai-workflow-lab"],
   },
 ];
@@ -95,32 +97,42 @@ function ModuleDossier({ locale, room, onClose }) {
       <button className="dossier-close" type="button" onClick={onClose}>
         {t.close}
       </button>
-      <div className="dossier-tabs" aria-hidden="true">
-        <span className="active">{t.module}</span>
-        <span>{t.evidence}</span>
-      </div>
       <div className="dossier-index">
-        <span>{t.file} / MCL-{room.code}</span>
+        <span>{room.period}</span>
         <span>{read(room.diagram.zone)}</span>
       </div>
       <div className="manual-panel__top">
         <div>
-          <p className="eyebrow">{t.manual} / {room.code}</p>
+          <p className="eyebrow">{read(room.discipline)}</p>
           <h3>{read(room.title)}</h3>
         </div>
-        <span className={`status ${room.displayLevel === "abstract" ? "restricted" : ""}`}>
-          {read(room.status)}
-        </span>
       </div>
+      <p className="manual-summary dossier-achievement">{read(room.summary)}</p>
+      <dl className="manual-spec dossier-spec">
+        <div>
+          <dt>{t.activePeriod}</dt>
+          <dd>{room.period}</dd>
+        </div>
+        <div>
+          <dt>{t.productionScope}</dt>
+          <dd>{read(room.discipline)}</dd>
+        </div>
+      </dl>
       {proof && (
         <section
           className={`dossier-proof dossier-proof--${proof.layout ?? "wide"}`}
           aria-label={`${read(room.title)} evidence`}
         >
           <div className="dossier-proof__head">
-            <span>{t.evidence}</span>
+            <span>{isZh ? "證據摘要" : "Evidence Summary"}</span>
             <strong>{read(proof.label)}</strong>
           </div>
+          <p>{read(proof.outcome)}</p>
+          <ul>
+            {proof.roles.map((role) => (
+              <li key={read(role)}>{read(role)}</li>
+            ))}
+          </ul>
           {proof.assets?.length > 0 && (
             <div className="dossier-proof__gallery">
               {proof.assets.map((asset) => (
@@ -145,25 +157,8 @@ function ModuleDossier({ locale, room, onClose }) {
               ))}
             </div>
           )}
-          <p>{read(proof.outcome)}</p>
-          <ul>
-            {proof.roles.map((role) => (
-              <li key={read(role)}>{read(role)}</li>
-            ))}
-          </ul>
         </section>
       )}
-      <p className="manual-summary">{read(room.summary)}</p>
-      <dl className="manual-spec">
-        <div>
-          <dt>{t.activePeriod}</dt>
-          <dd>{room.period}</dd>
-        </div>
-        <div>
-          <dt>{t.productionScope}</dt>
-          <dd>{read(room.discipline)}</dd>
-        </div>
-      </dl>
     </article>
   );
 }
@@ -183,10 +178,10 @@ export default function ContentFactory({
   const [activeFloor, setActiveFloor] = useState(floors[0].id);
   const t = {
     status: isZh ? "內容工廠 / A 剖面" : "Content Factory / Section A",
-    operational: isZh ? "狀態 / 運作中" : "Status / Operational",
+    operational: isZh ? "狀態 / 開放檢視" : "Status / Open for review",
     drawing: isZh ? "圖面 / CUT-04" : "Drawing / CUT-04",
     language: isZh ? "語言 / 中文" : "Language / EN",
-    controlled: isZh ? "證據受控 / 人工負責" : "Evidence controlled / Human responsible",
+    controlled: isZh ? "證據精選 / 人工審核" : "Evidence curated / Human reviewed",
     factoryRoute: isZh ? "工廠路線" : "Factory Route",
     explore: isZh ? "探索 / Level 07-00" : "Explore / Level 07-00",
     viewing: isZh ? `目前 / Level ${activeFloor}` : `Viewing / Level ${activeFloor}`,

@@ -1,3 +1,4 @@
 export function assetPath(path) {
-  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+  const baseUrl = import.meta.env?.BASE_URL ?? "/mercury-lab/";
+  return `${baseUrl}${path.replace(/^\/+/, "")}`;
 }

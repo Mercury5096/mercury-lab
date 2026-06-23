@@ -2,10 +2,13 @@
 
 ## Start Here
 
-Continue Mercury Lab from the completed eight-room desktop foundation state:
+Continue Mercury Lab from the completed public-deploy / copy-refinement state:
 
 - Read this file and `docs/mercury-content-source.md` first.
-- The latest committed checkpoint before this maintenance pass is `d1bd91f` (`Complete eight room foundation scenes`).
+- The latest committed checkpoint is `9764c35` (`Use npm install for Pages workflow`).
+- GitHub repository: `https://github.com/Mercury5096/mercury-lab`
+- Public GitHub Pages URL: `https://mercury5096.github.io/mercury-lab/`
+- Deployment status: GitHub Pages is enabled with `build_type=workflow`; the latest `Deploy to GitHub Pages` workflow rerun completed successfully, and the public URL returned HTTP `200`.
 - The eight-room desktop foundation is complete; current work is room-by-room interaction polish, with desktop composition still prioritized.
 - Treat all eight desktop rooms as having a first-pass reviewed/polished interaction treatment: Print, Editorial, Cookbook, Story Archive, Operation, Commerce, Multimedia, and AI Workflow Lab.
 - The full eight-room desktop QA pass is complete at 1280px desktop width; all room backgrounds loaded, all desktop targets were visible and returned to idle, staged loops worked, dossiers opened, browser console had no warnings/errors, and horizontal overflow stayed `0`.
@@ -14,25 +17,30 @@ Continue Mercury Lab from the completed eight-room desktop foundation state:
 - Dossier metadata has been simplified for recruiter readability: the repeated evidence-basis and display-rule blocks were removed from all room dossiers. The bottom protocol section has been reframed as collaboration/work opportunities instead of claim-boundary rules.
 - Case-file status labels now act as selected-evidence gallery triggers. The gallery uses the matching room proof assets by case order, shows larger images, and keeps Multimedia/AI video or prototype links available as project-link cards. This is intended to compensate for small Dossier thumbnails without making each dossier visually heavy.
 - The desktop factory now uses eight full-width department floors with alternating blue and grey-blue floor treatment.
-- Next work should review the Chinese copy in-browser for recruiter readability, then refine wording, compact/responsive behavior, or a separate gallery/selected-works area as needed.
+- Next work should prioritize public-facing copy refinement in both Chinese and English. The user feels some current wording is too forceful or sounds like internal planning notes; soften it into recruiter/employer-facing language and keep claims confident but not commanding.
+- Compact/responsive behavior and a deeper selected-works/gallery area can be considered later, but the immediate next stage is text polishing.
 - `docs/mercury-content-source.md` remains the formal source of truth. `src/content.js` now intentionally contains selected public-facing proof metadata and may be extended cautiously when the user supplies approved evidence.
 
 Suggested opening request for a new window:
 
-> Please read `docs/handoff-next-session.md`, `docs/mercury-content-source.md`, and `docs/room-benchmark-workflow.md`, then continue Mercury Lab from the completed eight-room desktop foundation state. Preserve the accepted eight-floor desktop structure, keep formal source claims conservative, and review/refine the completed selected evidence chain now established across all eight rooms.
+> Please read `docs/handoff-next-session.md`, `docs/mercury-content-source.md`, and `docs/room-benchmark-workflow.md`, then continue Mercury Lab from the deployed bilingual portfolio state. The site is live at `https://mercury5096.github.io/mercury-lab/`. Preserve the accepted eight-floor desktop structure and selected-evidence system, keep formal source claims conservative, and focus next on softening/refining the Chinese and English public-facing copy for recruiters, employers, and potential collaborators.
 
 ## Snapshot
 
-- **Date:** 2026-06-14
+- **Date:** 2026-06-21
+- **Latest committed checkpoint:** `9764c35` - `Use npm install for Pages workflow`
+- **Public deployment:** `https://mercury5096.github.io/mercury-lab/`
+- **Repository:** `https://github.com/Mercury5096/mercury-lab`
+- **Deployment verification:** `npm run build` passed locally; GitHub Pages workflow completed successfully; public URL returned HTTP `200`.
 - **Latest committed checkpoint before maintenance pass:** `d1bd91f` - `Complete eight room foundation scenes`
 - **Previous handoff checkpoint:** `f1085fd` - `Update handoff after AI workflow benchmark`
 - **AI Workflow Lab visual checkpoint:** `16ffd10` - `Create AI workflow lab visual benchmark`
 - **Cookbook visual baseline commit:** `251e13c` - `Create cookbook production floor visual benchmark`
 - **Previous v0.5 checkpoint:** `a14993d`
-- **Current focus:** all eight desktop room foundations are present; all eight rooms have completed first-pass interaction polish; full eight-room desktop QA passed; selected evidence enrichment is in place; and a first bilingual EN/ZH interface pass is now implemented for recruiter/employer readability.
+- **Current focus:** the site is deployed and shareable; all eight desktop room foundations are present; all eight rooms have completed first-pass interaction polish; full eight-room desktop QA passed; selected evidence enrichment is in place; and a first bilingual EN/ZH interface pass is implemented. Next work is bilingual copy refinement for recruiter/employer/collaboration readability.
 - **Source of truth:** [mercury-content-source.md](mercury-content-source.md)
 - **Current maintenance direction:** preserve the split stylesheet structure, keep formal source claims conservative, enrich one room at a time with selected evidence, and avoid turning Mercury Lab into a complete archive.
-- **Verified in the latest refinement session:** `npm run build` passed after the selected evidence additions and again after the bilingual UI pass. Earlier in-app browser QA confirmed selected evidence images or video cards load for all eight rooms, status labels update to `Selected evidence available`, and horizontal overflow remains `0`. Formal source document `docs/mercury-content-source.md` was not modified.
+- **Verified in the latest refinement session:** `npm run build` passed after the selected evidence additions, again after the bilingual UI pass, and again before GitHub Pages deployment. Earlier in-app browser QA confirmed selected evidence images or video cards load for all eight rooms, status labels update to `Selected evidence available`, and horizontal overflow remains `0`. Formal source document `docs/mercury-content-source.md` was not modified.
 
 ## User Direction
 
@@ -235,6 +243,24 @@ Suggested opening request for a new window:
 - Do not publish the supplied visual reference image as a product asset.
 
 ## Next Tasks
+
+### Latest Public Deployment And Copy-Refinement Note
+
+- 2026-06-21 published the project to GitHub as `Mercury5096/mercury-lab` and enabled GitHub Pages through the Actions workflow deployment path.
+- Public URL: `https://mercury5096.github.io/mercury-lab/`
+- Deployment commits after the portfolio checkpoint:
+  - `28d9c75` - `Prepare Mercury Lab public portfolio`
+  - `a7294a7` - `Sync lockfile for Pages deploy`
+  - `9764c35` - `Use npm install for Pages workflow`
+- GitHub Pages initially failed because the new repository Pages setting was not enabled. It was fixed with `build_type=workflow`, then the deployment workflow rerun completed successfully.
+- `npm run build` passed locally before pushing the workflow fix. The public URL returned HTTP `200`.
+- The user now wants to share the page with friends/family for feedback, and the next work should focus on bilingual text polishing rather than more feature construction.
+- Current copy issue: some Chinese and English sections, especially lower explanatory sections around case files / reading method / collaboration framing, can sound too strong, instructive, or like internal planning notes. Rewrite them as calm, professional, recruiter-facing copy.
+- Tone target: confident but not commanding; human and credible; evidence-led rather than defensive; clear to recruiters, employers, and potential collaborators.
+- Preserve the selected-evidence strategy: show enough proof to demonstrate substance without becoming a complete archive or explaining missing paper-era materials.
+- For the collaboration/work-opportunity section, frame what the user can help with or be hired for, rather than sounding like rules for how others must read the site. LinkedIn should appear once near contact if added, not repeatedly inside all eight dossiers.
+- When editing copy, update both `en` and `zh` content together. Keep the language switch consistent and avoid leaving one language with older planning-style wording.
+- Do not inflate claims. Keep role descriptions tied to evidence-supported work: planning, writing, editing, layout/design, coordination, multimedia production, e-commerce visuals, AI-assisted interactive/story/prototype work, and related collaboration.
 
 ### Latest Selected Evidence Enrichment Note
 

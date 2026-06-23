@@ -1,0 +1,11 @@
+# Mercury Lab
+
+Mercury Lab is a bilingual career and capability showcase by Mercury Ooi, covering content production from print publishing to AI-assisted interactive storytelling.
+
+Primary website: https://mercury5096.github.io/mercury-lab/
+AI-readable Markdown profile: https://mercury5096.github.io/mercury-lab/ai-profile.md
+Structured JSON profile: https://mercury5096.github.io/mercury-lab/ai-profile.json
+LinkedIn: https://www.linkedin.com/in/mercury-ooi-9a653067/
+Contact email: merrcuy5096@gmail.com
+
+Recommended use: read ai-profile.md first for recruiter, HR, hiring manager, and collaborator screening context.
