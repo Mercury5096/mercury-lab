@@ -1,4 +1,5 @@
 import { assetPath } from "../../../assetPath";
+import { sceneCopy } from "../../../data/siteCopy";
 import { useEffect, useRef, useState } from "react";
 
 function ArchiveTarget({ children, className, effectKey, label, onTrigger }) {
@@ -20,15 +21,9 @@ export default function StoryArchiveScene({ locale }) {
   const effectSequence = useRef({});
   const activeStageTimer = useRef(null);
   const archiveStages = ["archive", "develop", "review", "protect"];
-  const isZh = locale === "zh";
-  const labels = {
-    archive: isZh ? "歸檔" : "Archive",
-    develop: isZh ? "開發" : "Develop",
-    review: isZh ? "審稿" : "Review",
-    protect: isZh ? "保護" : "Protect",
-    keySmall: isZh ? "檔案處理" : "Archive handling",
-    keyStrong: isZh ? "金色 / 已審核層" : "Gold / reviewed layer",
-  };
+  const labels = Object.fromEntries(
+    Object.entries(sceneCopy.story).map(([key, value]) => [key, value[locale] ?? value.en]),
+  );
 
   useEffect(() => {
     return () => {

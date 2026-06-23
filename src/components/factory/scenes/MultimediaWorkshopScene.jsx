@@ -1,4 +1,5 @@
 import { assetPath } from "../../../assetPath";
+import { sceneCopy } from "../../../data/siteCopy";
 import { useEffect, useRef, useState } from "react";
 
 const multimediaStages = ["storyboard", "edit", "prototype", "test"];
@@ -22,15 +23,9 @@ export default function MultimediaWorkshopScene({ locale }) {
   const [loopKey, setLoopKey] = useState(0);
   const effectSequence = useRef({});
   const loopTimers = useRef([]);
-  const isZh = locale === "zh";
-  const labels = {
-    storyboard: isZh ? "分鏡" : "Storyboard",
-    edit: isZh ? "剪輯" : "Edit",
-    prototype: isZh ? "原型" : "Prototype",
-    test: isZh ? "測試" : "Test",
-    keySmall: isZh ? "混合媒體原型" : "Mixed-media prototype",
-    keyStrong: isZh ? "金色 / 測試層" : "Gold / live test layer",
-  };
+  const labels = Object.fromEntries(
+    Object.entries(sceneCopy.multimedia).map(([key, value]) => [key, value[locale] ?? value.en]),
+  );
 
   function clearLoopTimers() {
     loopTimers.current.forEach((timer) => window.clearTimeout(timer));

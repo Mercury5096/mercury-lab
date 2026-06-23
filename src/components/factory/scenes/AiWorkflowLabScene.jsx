@@ -1,4 +1,5 @@
 import { assetPath } from "../../../assetPath";
+import { sceneCopy } from "../../../data/siteCopy";
 import { useEffect, useRef, useState } from "react";
 
 function WorkflowTarget({ children, className, effectKey, label, onTrigger }) {
@@ -20,16 +21,9 @@ export default function AiWorkflowLabScene({ locale }) {
   const effectSequence = useRef({});
   const activeStageTimer = useRef(null);
   const workflowStages = ["research", "prompt", "generate", "review", "deliver"];
-  const isZh = locale === "zh";
-  const labels = {
-    research: isZh ? "研究" : "Research",
-    prompt: isZh ? "提示" : "Prompt",
-    generate: isZh ? "生成" : "Generate",
-    review: isZh ? "審核" : "Review",
-    deliver: isZh ? "交付" : "Deliver",
-    keySmall: isZh ? "人工審核回路" : "Human review loop",
-    keyStrong: isZh ? "金色 / 精選決策" : "Gold / selected decision",
-  };
+  const labels = Object.fromEntries(
+    Object.entries(sceneCopy.ai).map(([key, value]) => [key, value[locale] ?? value.en]),
+  );
 
   useEffect(() => {
     return () => {

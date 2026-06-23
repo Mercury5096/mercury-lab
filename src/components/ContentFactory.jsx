@@ -1,67 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { rooms } from "../content";
+import { brand, factoryCopy, rooms } from "../data/siteCopy";
 import BlueprintFrame from "./factory/BlueprintFrame";
 import RoomShell from "./factory/RoomShell";
 
 const readValue = (value, locale) =>
   typeof value === "string" ? value : value[locale] ?? value.en;
 
-const copy = (en, zh = null) => ({ en, zh });
-
-const roomFunctions = {
-  "print-engine-room": copy("Print to System", "從印刷到系統"),
-  "editorial-kitchen": copy("Editorial Room", "編輯製作"),
-  "cookbook-production-floor": copy("Brief to Delivery", "從企劃到交付"),
-  "story-archive-ip-office": copy("Story to Interaction", "從故事到互動"),
-  "operation-control-room": copy("Coordination Engine", "協調引擎"),
-  "commerce-visual-line": copy("Commercial Visuals", "商業視覺"),
-  "multimedia-workshop": copy("Case Files", "多媒體作品"),
-  "ai-workflow-lab": copy("Research to Output", "從研究到原型"),
-};
-
-const floors = [
-  {
-    id: "07",
-    label: copy("Print Foundation", "印刷基礎"),
-    rooms: ["print-engine-room"],
-  },
-  {
-    id: "06",
-    label: copy("Editorial Production", "編輯製作"),
-    rooms: ["editorial-kitchen"],
-  },
-  {
-    id: "05",
-    label: copy("Cookbook Production", "食譜出版"),
-    rooms: ["cookbook-production-floor"],
-  },
-  {
-    id: "04",
-    label: copy("Story Archive", "故事檔案"),
-    rooms: ["story-archive-ip-office"],
-  },
-  {
-    id: "03",
-    label: copy("Operations Control", "營運協調"),
-    rooms: ["operation-control-room"],
-  },
-  {
-    id: "02",
-    label: copy("Commerce Visuals", "電商視覺"),
-    rooms: ["commerce-visual-line"],
-  },
-  {
-    id: "01",
-    label: copy("Multimedia Practice", "多媒體實作"),
-    rooms: ["multimedia-workshop"],
-  },
-  {
-    id: "00",
-    label: copy("Assisted Research Lab", "AI 輔助研究"),
-    rooms: ["ai-workflow-lab"],
-  },
-];
+const { floors, roomFunctions } = factoryCopy;
 
 const floorByRoom = Object.fromEntries(
   floors.flatMap((floor) => floor.rooms.map((roomId) => [roomId, floor.id])),
@@ -70,16 +16,7 @@ const floorByRoom = Object.fromEntries(
 function ModuleDossier({ locale, room, onClose }) {
   const proof = room.proof;
   const read = (value) => readValue(value, locale);
-  const isZh = locale === "zh";
-  const t = {
-    close: isZh ? "關閉" : "Close",
-    module: isZh ? "模組" : "Module",
-    evidence: isZh ? "證據" : "Evidence",
-    file: isZh ? "檔案" : "FILE",
-    manual: isZh ? "模組說明" : "Module Manual",
-    activePeriod: isZh ? "活躍時期" : "Active period",
-    productionScope: isZh ? "製作範圍" : "Production scope",
-  };
+  const t = factoryCopy.dossier;
 
   return (
     <article
@@ -95,7 +32,7 @@ function ModuleDossier({ locale, room, onClose }) {
       }}
     >
       <button className="dossier-close" type="button" onClick={onClose}>
-        {t.close}
+        {read(t.close)}
       </button>
       <div className="dossier-index">
         <span>{room.period}</span>
@@ -110,11 +47,11 @@ function ModuleDossier({ locale, room, onClose }) {
       <p className="manual-summary dossier-achievement">{read(room.summary)}</p>
       <dl className="manual-spec dossier-spec">
         <div>
-          <dt>{t.activePeriod}</dt>
+          <dt>{read(t.activePeriod)}</dt>
           <dd>{room.period}</dd>
         </div>
         <div>
-          <dt>{t.productionScope}</dt>
+          <dt>{read(t.productionScope)}</dt>
           <dd>{read(room.discipline)}</dd>
         </div>
       </dl>
@@ -124,7 +61,7 @@ function ModuleDossier({ locale, room, onClose }) {
           aria-label={`${read(room.title)} evidence`}
         >
           <div className="dossier-proof__head">
-            <span>{isZh ? "證據摘要" : "Evidence Summary"}</span>
+            <span>{read(t.evidenceSummary)}</span>
             <strong>{read(proof.label)}</strong>
           </div>
           <p>{read(proof.outcome)}</p>
@@ -173,31 +110,10 @@ export default function ContentFactory({
   locale,
 }) {
   const read = (value) => readValue(value, locale);
-  const isZh = locale === "zh";
+  const [brandFirst, brandSecond] = brand.name.split(" ");
   const [activeRoom, setActiveRoom] = useState(null);
   const [activeFloor, setActiveFloor] = useState(floors[0].id);
-  const t = {
-    status: isZh ? "內容工廠 / A 剖面" : "Content Factory / Section A",
-    operational: isZh ? "狀態 / 開放檢視" : "Status / Open for review",
-    drawing: isZh ? "圖面 / CUT-04" : "Drawing / CUT-04",
-    language: isZh ? "語言 / 中文" : "Language / EN",
-    controlled: isZh ? "證據精選 / 人工審核" : "Evidence curated / Human reviewed",
-    factoryRoute: isZh ? "工廠路線" : "Factory Route",
-    explore: isZh ? "探索 / Level 07-00" : "Explore / Level 07-00",
-    viewing: isZh ? `目前 / Level ${activeFloor}` : `Viewing / Level ${activeFloor}`,
-    legend: isZh ? "系統圖例" : "System Legend",
-    peopleFlow: isZh ? "人員流程" : "People flow",
-    evidenceGate: isZh ? "證據關口" : "Evidence gate",
-    publicRelease: isZh ? "公開發布" : "Public release",
-    verticalRoute: isZh ? "垂直路線" : "Vertical route",
-    level: isZh ? "樓層" : "Level",
-    principles: isZh ? "系統原則" : "System Principles",
-    principlesText: isZh ? "可追溯來源 / 權利意識 / 人工審核" : "Traceable source / Rights aware / Human reviewed",
-    machineStatus: isZh ? "機器狀態" : "Machine Status",
-    allOperational: isZh ? "所有系統運作中" : "All systems operational",
-    activeFeed: isZh ? "目前檢視" : "Active Feed",
-    selectRoom: isZh ? "選擇一個房間查看模組記錄" : "Select a room to inspect its module record",
-  };
+  const t = factoryCopy.status;
   const roomRefs = useRef([]);
   const floorRefs = useRef({});
   const floorVisibility = useRef({});
@@ -275,8 +191,8 @@ export default function ContentFactory({
         <div className="factory-identity">
           <p className="eyebrow">{heroEyebrow}</p>
           <h1>
-            Mercury
-            <span>Lab</span>
+            {brandFirst}
+            <span>{brandSecond}</span>
           </h1>
         </div>
         <div className="factory-intro">
@@ -286,22 +202,24 @@ export default function ContentFactory({
           <p className="positioning">{positioning}</p>
           <p className="section-copy">{description}</p>
         </div>
-        <aside className="factory-status" aria-label="Factory drawing status">
-          <p>{t.status}</p>
-          <strong>{t.operational}</strong>
-          <span>{t.drawing}</span>
-          <span>{t.language}</span>
+        <aside className="factory-status" aria-label={t.drawingStatusAria}>
+          <p>{read(t.status)}</p>
+          <strong>{read(t.operational)}</strong>
+          <span>{read(t.drawing)}</span>
+          <span>{read(t.language)}</span>
           <div className="barcode" aria-hidden="true" />
-          <small>{t.controlled}</small>
+          <small>{read(t.controlled)}</small>
         </aside>
       </header>
 
       <div className="cutaway-layout">
-        <nav className="route-index" aria-label="Factory route index">
+        <nav className="route-index" aria-label={t.routeIndexAria}>
           <div className="route-index__head">
-            <p>{t.factoryRoute}</p>
-            <span>{t.explore}</span>
-            <strong>{t.viewing}</strong>
+            <p>{read(t.factoryRoute)}</p>
+            <span>{read(t.explore)}</span>
+            <strong>
+              {read(t.viewingPrefix)} {activeFloor}
+            </strong>
           </div>
           <ol>
             {rooms.map((room) => (
@@ -320,10 +238,10 @@ export default function ContentFactory({
             ))}
           </ol>
           <div className="route-index__legend">
-            <p>{t.legend}</p>
-            <span>{t.peopleFlow}</span>
-            <span>{t.evidenceGate}</span>
-            <span>{t.publicRelease}</span>
+            <p>{read(t.legend)}</p>
+            <span>{read(t.peopleFlow)}</span>
+            <span>{read(t.evidenceGate)}</span>
+            <span>{read(t.publicRelease)}</span>
           </div>
         </nav>
 
@@ -336,12 +254,12 @@ export default function ContentFactory({
               <span />
             </div>
             <div className="factory-shaft" aria-hidden="true">
-              <span>{t.verticalRoute}</span>
+              <span>{read(t.verticalRoute)}</span>
               <i className="shaft-ladder" />
               <i className="shaft-pipe" />
               <i className="shaft-data" />
             </div>
-            <div className="factory-levels" aria-label="Mercury Lab production rooms">
+            <div className="factory-levels" aria-label={t.productionRoomsAria}>
               {floors.map((floor) => (
                 <section
                   className={`factory-level factory-level--${floor.id} ${
@@ -354,7 +272,7 @@ export default function ContentFactory({
                   }}
                 >
                   <header className="level-label" aria-hidden="true">
-                    <span>{t.level} / {floor.id}</span>
+                    <span>{read(t.level)} / {floor.id}</span>
                     <strong>{read(floor.label)}</strong>
                   </header>
                   <div className={`level-rooms level-rooms--${floor.rooms.length}`}>
@@ -392,16 +310,16 @@ export default function ContentFactory({
 
           <footer className="factory-console" aria-hidden="true">
             <div>
-              <p>{t.principles}</p>
-              <span>{t.principlesText}</span>
+              <p>{read(t.principles)}</p>
+              <span>{read(t.principlesText)}</span>
             </div>
             <div>
-              <p>{t.machineStatus}</p>
-              <strong>{t.allOperational}</strong>
+              <p>{read(t.machineStatus)}</p>
+              <strong>{read(t.allOperational)}</strong>
             </div>
             <div>
-              <p>{t.activeFeed}</p>
-              <span>{selectedRoom ? read(selectedRoom.title) : t.selectRoom}</span>
+              <p>{read(t.activeFeed)}</p>
+              <span>{selectedRoom ? read(selectedRoom.title) : read(t.selectRoom)}</span>
             </div>
           </footer>
         </div>

@@ -1,4 +1,5 @@
 import { assetPath } from "../../../assetPath";
+import { sceneCopy } from "../../../data/siteCopy";
 import { useRef, useState } from "react";
 
 function VisualProp({ children, className, effectKey, label, onTrigger, src }) {
@@ -18,15 +19,9 @@ function VisualProp({ children, className, effectKey, label, onTrigger, src }) {
 export default function CookbookProductionScene({ locale }) {
   const [effects, setEffects] = useState({});
   const effectSequence = useRef({});
-  const isZh = locale === "zh";
-  const labels = {
-    plan: isZh ? "企劃" : "Plan",
-    cook: isZh ? "烹調" : "Cook",
-    style: isZh ? "造型" : "Style",
-    capture: isZh ? "拍攝" : "Capture",
-    keySmall: isZh ? "可互動物件" : "Movable props",
-    keyStrong: isZh ? "金色 / 啟動層" : "Gold / active layer",
-  };
+  const labels = Object.fromEntries(
+    Object.entries(sceneCopy.cookbook).map(([key, value]) => [key, value[locale] ?? value.en]),
+  );
 
   function triggerEffect(event, prop) {
     event.preventDefault();

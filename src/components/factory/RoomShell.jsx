@@ -1,4 +1,5 @@
 import RoomInterior from "./RoomMotifs";
+import { factoryCopy } from "../../data/siteCopy";
 
 const read = (value, locale) =>
   typeof value === "string" ? value : value[locale] ?? value.en;
@@ -15,7 +16,7 @@ export default function RoomShell({
   onActivate,
   onNavigate,
 }) {
-  const isZh = locale === "zh";
+  const readCopy = (value) => read(value, locale);
 
   return (
     <button
@@ -47,7 +48,7 @@ export default function RoomShell({
       <RoomInterior locale={locale} roomId={room.id} />
       <span className="room-footer">
         <span>{read(room.diagram.callout, locale)}</span>
-        <span>{isZh ? "打開檔案" : "Open dossier"}</span>
+        <span>{readCopy(factoryCopy.roomShell.openDossier)}</span>
       </span>
     </button>
   );

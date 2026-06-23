@@ -1,4 +1,5 @@
 import { assetPath } from "../../../assetPath";
+import { sceneCopy } from "../../../data/siteCopy";
 import { useEffect, useRef, useState } from "react";
 
 const operationStages = ["intake", "assign", "track", "deliver"];
@@ -22,15 +23,9 @@ export default function OperationControlScene({ locale }) {
   const [loopKey, setLoopKey] = useState(0);
   const effectSequence = useRef({});
   const loopTimers = useRef([]);
-  const isZh = locale === "zh";
-  const labels = {
-    intake: isZh ? "接收" : "Intake",
-    assign: isZh ? "分派" : "Assign",
-    track: isZh ? "追蹤" : "Track",
-    deliver: isZh ? "交付" : "Deliver",
-    keySmall: isZh ? "協調循環" : "Coordination loop",
-    keyStrong: isZh ? "金色 / 交接中" : "Gold / active handoff",
-  };
+  const labels = Object.fromEntries(
+    Object.entries(sceneCopy.operation).map(([key, value]) => [key, value[locale] ?? value.en]),
+  );
 
   function clearLoopTimers() {
     loopTimers.current.forEach((timer) => window.clearTimeout(timer));

@@ -12,7 +12,7 @@ Name: Mercury Ooi
 
 Site: Mercury Lab
 
-Positioning: I turn complex creative needs into clear content structures, practical workflows, and deliverable outcomes. My experience spans publishing, editorial production, cookbook projects, e-commerce visuals, multimedia design, and AI-assisted interactive storytelling.
+Positioning: I turn complex creative needs into clear content structures, practical production workflows, and deliverable outcomes. My experience spans publishing, editorial production, cookbook projects, e-commerce visuals, multimedia design, and AI-assisted interactive storytelling.
 
 Collaboration: I am open to freelance work, part-time roles, full-time opportunities, and project-based collaboration. Across several roles, my work has often sat in a PM-style position: clarifying needs, coordinating people and materials, organizing production steps, and helping projects move toward delivery.
 
@@ -71,11 +71,11 @@ Reading routes:
 
 ### Operation Control Room (2016–2018)
 - Area: Delivery Control Level
-- Scope: Creative workflow development
-- Summary: Helped an early-stage media advertising company establish practical creative-production workflows, turning scattered tasks, vendors, materials, and delivery needs into a more organized operating rhythm.
-- Evidence: LinkedIn record; selected event and coordination materials
-- Evidence summary: Coordination work across community pages, activity materials, workshop records, people flow, public communication, and practical handoff between planning and delivery.
-- Roles: Workflow coordination, Community page operation, Activity material preparation, On-site communication, Workshop documentation
+- Scope: Creative workflow development and cross-role coordination
+- Summary: Helped an early-stage media advertising company establish practical creative-production and delivery workflows, turning scattered tasks, vendor communication, material organization, community-facing content, and delivery needs into a more trackable operating rhythm.
+- Evidence: LinkedIn record; selected workflow and coordination materials
+- Evidence summary: Coordination work across task breakdown, vendor and collaborator communication, material organization, community-facing content, workshop records, public communication, and practical handoff between planning and delivery.
+- Roles: Workflow design, Task breakdown, Vendor / collaborator coordination, Material organization, Delivery tracking
 
 ### Commerce Visual Line (2018–2020)
 - Area: Delivery Control Level
@@ -134,7 +134,7 @@ Reading routes:
 
 ### Creative Operations for an Early Media Startup
 - Status: Selected evidence available
-- Note: Event and coordination records showing how planning, activity materials, community pages, workshop documentation, and on-site communication supported public-facing delivery.
+- Note: Workflow and coordination records showing how task breakdown, materials, community-facing content, workshop documentation, collaborator communication, and handoff supported public-facing delivery.
 
 ### E-commerce Visual Production for GSK
 - Status: Selected evidence available
@@ -154,7 +154,7 @@ Reading routes:
 
 網站：Mercury Lab
 
-定位：我擅長把複雜需求整理成清楚的內容架構、製作流程與可執行成果。經驗橫跨出版、編輯、食譜書製作、電商視覺、多媒體設計與 AI 輔助互動敘事。
+定位：我擅長把複雜需求整理成清楚的內容架構、實際製作流程與可執行成果。經驗橫跨出版、編輯、食譜書製作、電商視覺、多媒體設計與 AI 輔助互動敘事。
 
 合作方向：我開放外包接案、兼職、全職職缺與專案型合作。在多段工作經驗中，我經常站在 PM 式的位置：釐清需求、協調人員與素材、整理製作流程，並推動專案往交付前進。
 
@@ -213,11 +213,11 @@ Reading routes:
 
 ### 營運控制室 (2016–2018)
 - Area: 交付控制層
-- Scope: 創意製作流程建立
-- Summary: 協助早期媒體廣告公司建立可執行的創意製作流程，將零散任務、外包、素材與交付需求整理成更有秩序的運作節奏。
-- Evidence: LinkedIn 記錄；精選活動與協調材料
-- Evidence summary: 協調工作涵蓋社群頁面、活動素材、工作坊紀錄、人員動線、公開溝通，以及企劃到交付之間的實際交接。
-- Roles: 流程協調, 社群頁面經營, 活動素材準備, 現場溝通, 工作坊記錄
+- Scope: 創意製作流程建立與跨角色協調
+- Summary: 協助早期媒體廣告公司建立可執行的創意製作與交付流程，將零散任務、外包溝通、素材整理、社群內容與交付需求整理成可追蹤的運作節奏。
+- Evidence: LinkedIn 記錄；精選流程與協調材料
+- Evidence summary: 協調工作涵蓋任務拆解、外包／協作者溝通、素材整理、社群內容、工作坊紀錄、公開溝通，以及從企劃到交付之間的實際銜接。
+- Roles: 流程建立, 任務拆解, 外包／協作者協調, 素材管理, 交付追蹤
 
 ### 電商視覺產線 (2018–2020)
 - Area: 交付控制層
@@ -276,7 +276,7 @@ Reading routes:
 
 ### 早期媒體公司的創意營運
 - Status: 已有精選證據
-- Note: 活動與協調記錄呈現企劃、活動素材、社群頁面、工作坊紀錄與現場溝通如何支援對外執行與交付。
+- Note: 流程與協調記錄呈現任務拆解、素材整理、社群內容、工作坊紀錄、協作者溝通與交接如何支援對外執行與交付。
 
 ### GSK 電商視覺製作
 - Status: 已有精選證據

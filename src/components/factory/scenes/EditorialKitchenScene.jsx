@@ -1,4 +1,5 @@
 import { assetPath } from "../../../assetPath";
+import { sceneCopy } from "../../../data/siteCopy";
 import { useEffect, useRef, useState } from "react";
 
 function EditorialTarget({ children, className, effectKey, label, onTrigger }) {
@@ -19,15 +20,9 @@ export default function EditorialKitchenScene({ locale }) {
   const [activeStage, setActiveStage] = useState(null);
   const effectSequence = useRef({});
   const activeStageTimer = useRef(null);
-  const isZh = locale === "zh";
-  const labels = {
-    draft: isZh ? "草稿" : "Draft",
-    layout: isZh ? "排版" : "Layout",
-    edit: isZh ? "編輯" : "Edit",
-    release: isZh ? "發布" : "Release",
-    keySmall: isZh ? "編輯循環" : "Editorial cycle",
-    keyStrong: isZh ? "金色 / 核准流程" : "Gold / approved pass",
-  };
+  const labels = Object.fromEntries(
+    Object.entries(sceneCopy.editorial).map(([key, value]) => [key, value[locale] ?? value.en]),
+  );
 
   useEffect(() => () => {
     window.clearTimeout(activeStageTimer.current);

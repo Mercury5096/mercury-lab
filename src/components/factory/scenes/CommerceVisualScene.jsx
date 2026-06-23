@@ -1,4 +1,5 @@
 import { assetPath } from "../../../assetPath";
+import { sceneCopy } from "../../../data/siteCopy";
 import { useEffect, useRef, useState } from "react";
 
 const commerceStages = ["sample", "compose", "adapt", "export"];
@@ -22,15 +23,9 @@ export default function CommerceVisualScene({ locale }) {
   const [loopKey, setLoopKey] = useState(0);
   const effectSequence = useRef({});
   const loopTimers = useRef([]);
-  const isZh = locale === "zh";
-  const labels = {
-    sample: isZh ? "取樣" : "Sample",
-    compose: isZh ? "編排" : "Compose",
-    adapt: isZh ? "適配" : "Adapt",
-    export: isZh ? "輸出" : "Export",
-    keySmall: isZh ? "視覺適配" : "Visual adaptation",
-    keyStrong: isZh ? "金色 / 已核准樣本" : "Gold / approved sample",
-  };
+  const labels = Object.fromEntries(
+    Object.entries(sceneCopy.commerce).map(([key, value]) => [key, value[locale] ?? value.en]),
+  );
 
   function clearLoopTimers() {
     loopTimers.current.forEach((timer) => window.clearTimeout(timer));

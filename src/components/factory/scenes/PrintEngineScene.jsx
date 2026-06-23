@@ -1,4 +1,5 @@
 import { assetPath } from "../../../assetPath";
+import { sceneCopy } from "../../../data/siteCopy";
 import { useEffect, useRef, useState } from "react";
 
 function PrintTarget({ children, className, effectKey, label, onTrigger }) {
@@ -19,15 +20,9 @@ export default function PrintEngineScene({ locale }) {
   const [activeStage, setActiveStage] = useState(null);
   const effectSequence = useRef({});
   const activeStageTimer = useRef(null);
-  const isZh = locale === "zh";
-  const labels = {
-    scan: isZh ? "掃描" : "Scan",
-    arrange: isZh ? "編排" : "Arrange",
-    proof: isZh ? "校樣" : "Proof",
-    output: isZh ? "輸出" : "Output",
-    keySmall: isZh ? "印前引擎" : "Prepress engine",
-    keyStrong: isZh ? "金色 / 已檢查輸出" : "Gold / checked output",
-  };
+  const labels = Object.fromEntries(
+    Object.entries(sceneCopy.print).map(([key, value]) => [key, value[locale] ?? value.en]),
+  );
 
   useEffect(() => () => {
     window.clearTimeout(activeStageTimer.current);

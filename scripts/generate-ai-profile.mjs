@@ -8,7 +8,7 @@ import {
   rooms,
   sectionContent,
   usageSteps,
-} from "../src/content.js";
+} from "../src/data/siteCopy.js";
 
 const rootDir = dirname(fileURLToPath(new URL("../package.json", import.meta.url)));
 const publicDir = join(rootDir, "public");

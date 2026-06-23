@@ -1,5 +1,6 @@
 import {
   brand,
+  appCopy,
   caseFiles,
   processingModes,
   rooms,
@@ -29,25 +30,7 @@ function App() {
   const [emailCopied, setEmailCopied] = useState(false);
   const isZh = locale === "zh";
   const contactEmail = "merrcuy5096@gmail.com";
-  const t = {
-    factory: isZh ? "工廠" : "Factory",
-    modes: isZh ? "路線" : "Routes",
-    cases: isZh ? "證據" : "Evidence",
-    protocol: isZh ? "合作" : "Collaborate",
-    edition: isZh ? "v0.5 / 中文" : "v0.5 / EN",
-    switchLabel: isZh ? "EN" : "中文",
-    switchAria: isZh ? "切換到英文" : "Switch to Chinese",
-    contactLinkedIn: isZh ? "LinkedIn 聯繫" : "Contact on LinkedIn",
-    contactEmail: isZh ? "複製 Email" : "Copy email",
-    contactEmailCopied: isZh ? "Email 已複製" : "Email copied",
-    openEvidence: isZh ? "查看證據" : "Open evidence",
-    closeGallery: isZh ? "關閉相冊" : "Close gallery",
-    selectedEvidence: isZh ? "精選證據相冊" : "Selected Evidence Gallery",
-    noImages: isZh ? "這個案例目前以外部作品連結為主。" : "This case currently uses external project links.",
-    projectLinks: isZh ? "作品連結" : "Project Links",
-    footerLeft: isZh ? "Mercury Lab / 原型 v0.5" : "Mercury Lab / Prototype v0.5",
-    footerRight: isZh ? "中英切換 / 權利意識 / 證據導向" : "Bilingual / Rights-aware / Evidence-led",
-  };
+  const t = appCopy;
   const activeCase = activeCaseIndex === null ? null : caseFiles[activeCaseIndex];
   const activeRoom = activeCaseIndex === null ? null : rooms[activeCaseIndex];
   const activeProof = activeRoom?.proof;
@@ -78,26 +61,26 @@ function App() {
   return (
     <div className="page">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Mercury Lab home">
+        <a className="brand" href="#top" aria-label={t.header.brandAria}>
           <span className="brand-mark">Hg</span>
-          <span>Mercury Lab</span>
+          <span>{brand.name}</span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="#factory">{t.factory}</a>
-          <a href="#modes">{t.modes}</a>
-          <a href="#cases">{t.cases}</a>
-          <a href="#protocol">{t.protocol}</a>
+          <a href="#factory">{read(t.nav.factory, locale)}</a>
+          <a href="#modes">{read(t.nav.modes, locale)}</a>
+          <a href="#cases">{read(t.nav.cases, locale)}</a>
+          <a href="#protocol">{read(t.nav.protocol, locale)}</a>
         </nav>
         <div className="header-tools">
           <button
             className="locale-toggle"
             type="button"
-            aria-label={t.switchAria}
+            aria-label={read(t.header.switchAria, locale)}
             onClick={() => setLocale(isZh ? "en" : "zh")}
           >
-            {t.switchLabel}
+            {read(t.header.switchLabel, locale)}
           </button>
-          <span className="edition">{t.edition}</span>
+          <span className="edition">{read(t.header.edition, locale)}</span>
         </div>
       </header>
 
@@ -137,7 +120,7 @@ function App() {
           <div className="mode-list">
             {processingModes.map((mode) => (
               <article key={mode.id}>
-                <p className="mode-tag">{isZh ? "路線" : "Route"}</p>
+                <p className="mode-tag">{read(t.cases.modeTag, locale)}</p>
                 <h3>{read(mode.label, locale)}</h3>
                 <p>{read(mode.description, locale)}</p>
                 <code>{read(mode.route, locale)}</code>
@@ -155,7 +138,9 @@ function App() {
           <div className="case-grid">
             {caseFiles.map((file, index) => (
               <article key={file.title.en}>
-                <p className="file-number">FILE {String(index + 1).padStart(2, "0")}</p>
+                <p className="file-number">
+                  {t.cases.filePrefix} {String(index + 1).padStart(2, "0")}
+                </p>
                 <h3>{read(file.title, locale)}</h3>
                 <p>{read(file.note, locale)}</p>
                 <button
@@ -163,7 +148,7 @@ function App() {
                     file.displayLevel === "abstract" ? "restricted" : ""
                   }`}
                   type="button"
-                  aria-label={`${read(file.title, locale)} / ${t.openEvidence}`}
+                  aria-label={`${read(file.title, locale)} / ${read(t.cases.openEvidence, locale)}`}
                   onClick={() => openCaseGallery(index)}
                 >
                   {read(file.status, locale)}
@@ -178,18 +163,18 @@ function App() {
             <button
               className="evidence-lightbox__scrim"
               type="button"
-              aria-label={t.closeGallery}
+              aria-label={read(t.cases.closeGallery, locale)}
               onClick={() => setActiveCaseIndex(null)}
             />
             <article className="evidence-lightbox__panel">
               <header className="evidence-lightbox__head">
                 <div>
-                  <p className="eyebrow">{t.selectedEvidence}</p>
+                  <p className="eyebrow">{read(t.cases.selectedEvidence, locale)}</p>
                   <h3>{read(activeCase.title, locale)}</h3>
                   {activeProof?.label && <span>{read(activeProof.label, locale)}</span>}
                 </div>
                 <button type="button" onClick={() => setActiveCaseIndex(null)}>
-                  {t.closeGallery}
+                  {read(t.cases.closeGallery, locale)}
                 </button>
               </header>
 
@@ -198,12 +183,15 @@ function App() {
                   {activeAsset ? (
                     <img src={activeAsset.src} alt={activeAsset.alt} />
                   ) : (
-                    <p>{t.noImages}</p>
+                    <p>{read(t.cases.noImages, locale)}</p>
                   )}
                 </div>
 
                 {activeAssets.length > 1 && (
-                  <div className="evidence-lightbox__thumbs" aria-label={t.selectedEvidence}>
+                  <div
+                    className="evidence-lightbox__thumbs"
+                    aria-label={read(t.cases.selectedEvidence, locale)}
+                  >
                     {activeAssets.map((asset, index) => (
                       <button
                         className={index === activeAssetIndex ? "active" : ""}
@@ -219,7 +207,7 @@ function App() {
 
                 {activeVideos.length > 0 && (
                   <div className="evidence-lightbox__links">
-                    <p>{t.projectLinks}</p>
+                    <p>{read(t.cases.projectLinks, locale)}</p>
                     {activeVideos.map((video) => (
                       <a href={video.url} key={video.url} rel="noreferrer" target="_blank">
                         <span>{read(video.type, locale)}</span>
@@ -242,9 +230,12 @@ function App() {
           <div className="protocol-grid">
             <div className="protocol-statement">
               <p>{read(sectionContent.protocol.statement, locale)}</p>
-              <div className="contact-actions" aria-label={isZh ? "合作聯絡方式" : "Collaboration contact options"}>
+              <div
+                className="contact-actions"
+                aria-label={read(t.collaboration.contactOptionsAria, locale)}
+              >
                 <a href="https://www.linkedin.com/in/mercury-ooi-9a653067/" rel="noreferrer" target="_blank">
-                  {t.contactLinkedIn}
+                  {read(t.collaboration.contactLinkedIn, locale)}
                 </a>
                 <button
                   type="button"
@@ -254,7 +245,9 @@ function App() {
                     window.setTimeout(() => setEmailCopied(false), 1800);
                   }}
                 >
-                  {emailCopied ? t.contactEmailCopied : t.contactEmail}
+                  {emailCopied
+                    ? read(t.collaboration.contactEmailCopied, locale)
+                    : read(t.collaboration.contactEmail, locale)}
                 </button>
               </div>
             </div>
@@ -268,8 +261,8 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <span>{t.footerLeft}</span>
-        <span>{t.footerRight}</span>
+        <span>{read(t.footer.left, locale)}</span>
+        <span>{read(t.footer.right, locale)}</span>
       </footer>
     </div>
   );
