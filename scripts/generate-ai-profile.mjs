@@ -175,15 +175,18 @@ const llms = `# Mercury Lab
 Mercury Lab is a bilingual career and capability showcase by Mercury Ooi, covering content production from print publishing to AI-assisted interactive storytelling.
 
 Primary website: ${siteUrl}
+AI-readable plain-text profile: ${siteUrl}ai-profile.txt
 AI-readable Markdown profile: ${siteUrl}ai-profile.md
 Structured JSON profile: ${siteUrl}ai-profile.json
 LinkedIn: ${linkedinUrl}
 Contact email: ${email}
 
-Recommended use: read ai-profile.md first for recruiter, HR, hiring manager, and collaborator screening context.
+Recommended use: read ai-profile.txt first for recruiter, HR, hiring manager, and collaborator screening context.
+If plain-text fetch is unavailable, use ai-profile.md or ai-profile.json as fallback.
 `;
 
 await mkdir(publicDir, { recursive: true });
 await writeFile(join(publicDir, "ai-profile.md"), markdown, "utf8");
+await writeFile(join(publicDir, "ai-profile.txt"), markdown, "utf8");
 await writeFile(join(publicDir, "ai-profile.json"), `${JSON.stringify(profileJson, null, 2)}\n`, "utf8");
 await writeFile(join(publicDir, "llms.txt"), llms, "utf8");
